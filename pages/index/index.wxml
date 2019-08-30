@@ -1,0 +1,26 @@
+<view>
+	<image src="../images/ty11.png" style="width: {{windowWidth}}px; height: {{windowHeight}}px;" />
+	<view class="title">
+		<view class="title_cell">{{title}}</view>
+		<view style="height: 20px" />
+		<view class="title_cell" style="font-size: 14px">已有{{num}}人参与健康计划</view>
+	<view
+	 class="title_cell area"
+	 hover-class="none"
+	 hover-stop-propagation="false"/>
+	</view>
+	<view class="btn_style">
+		<button
+		 class="btn"
+		 type="primary"
+		 loading="{{loading}}"
+		 disabled="{{disabled}}"
+		 bindtap="onTap"
+		 style="background: url('../images/ty2.png') "
+		>
+			按钮文本
+		</button>
+	</view>
+
+</view>
+

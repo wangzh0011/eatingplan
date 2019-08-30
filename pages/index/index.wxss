@@ -1,12 +1,17 @@
 .title{
     position: absolute; 
-    left: 50%; 
     top: 20px
 }
 .title .title_cell{
-    position: relative; 
-    left: -50%; 
-    font-size: 24px; 
+    text-align: center;
+    font-size: 54rpx; 
+    color: #ffffff;
+    font-weight: bold
+}
+
+.title_cell_num{
+    text-align: center;
+    font-size: 30rpx; 
     color: #ffffff
 }
 
@@ -17,10 +22,53 @@
     display: flex;
     flex-flow: row wrap;
     z-index: 10;
+    
+}
+
+.btn{
+    border-radius: 16px; 
+    width: 300px
 }
 
 .area{
+    position: absolute;
+    top: 120px;
     background-color:#ffffff; 
-    height: 50px; 
-    width: 50px
+    border-radius: 12px
+}
+
+.area_title{
+    margin: 20px;
+    color: #46bcac;
+    font-size: 36rpx;
+}
+
+.area_text{
+    margin: 25px;
+    color: #555e87;
+    font-size: 24rpx;
+    text-indent: 2em;
+}
+
+.area_pic{
+    position: absolute;
+    bottom: 0px;
+    margin: 20px;
+    left:0px;
+    right: 0px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start; /*从左边开始向右排*/
+}
+
+.area_pic_cell{
+    display: flex;
+    flex-flow: column wrap; /*纵向排列*/
+    justify-content: center;
+    align-items: center;
+}
+
+.area_pic_text{
+    font-size: 24rpx;
+    color: #7e87e2
 }

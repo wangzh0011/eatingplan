@@ -1,0 +1,81 @@
+.title_area{
+    position: absolute;
+    top: 40px;
+    border-radius: 10px;
+    background-color: #29BE98
+}
+
+.title_text{
+    text-align: center;
+    color: #ffffff;
+    font-size: 22px;
+    padding: 5px;
+}
+
+.area_title{
+    margin: 20px;
+    color: #555e87;
+    font-size: 34rpx;
+}
+
+.area_sex{
+    margin-left: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start; /*从左边开始向右排*/
+}
+
+.area_sex_text{
+    margin-left: 20px;
+    margin-bottom: 10px;
+    color: #555e87;
+    font-size: 28rpx;
+}
+
+.area_sex_man{
+    width: 40px;
+    height: 40px;
+    background-color: #00D5D9;
+    margin-right: 10px;
+}
+
+.area_sex_woman{
+    width: 40px;
+    height: 40px;
+    background-color: #FE8DB9;
+    margin-left: 10px;
+}
+
+.area_age{
+    margin: 20px;
+    color: #555e87;
+    font-size: 28rpx;
+}
+
+.area_age_input{
+    border: 1px solid #D1D2E7
+}
+
+.area_height{
+    margin: 20px;
+    color: #555e87;
+    font-size: 28rpx;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start; /*从左边开始向右排*/
+}
+
+.area_hw_text{
+    margin-left: 20px;
+    color: #555e87;
+    font-size: 28rpx;
+}
+
+.area_height_input{
+    border: 1px solid #D1D2E7
+}
+
+.area_weight_input{
+    border: 1px solid #D1D2E7
+}

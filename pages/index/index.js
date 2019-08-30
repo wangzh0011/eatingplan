@@ -24,11 +24,38 @@ Page({
             complete: ()=>{}
         });
 
-        var num = 10000;
+        var num = 1000000000;
+
+        var windowWidth = that.data.windowWidth;
         that.setData({
             num: num,
+            area_pic_width: windowWidth/5,
+            area_pic_padding: (windowWidth-50-40-windowWidth*3/5)/6
         })
+
+        var area_pic_padding = that.data.area_pic_padding;
+        var windowHeight = that.data.windowHeight;
+        var area_pic_width = that.data.area_pic_width;//图片的宽高
+
+        wx.setStorageSync("windowWidth", windowWidth);
+        wx.setStorageSync("windowHeight", windowHeight);
+        wx.setStorageSync("area_pic_width", area_pic_width);
+        wx.setStorageSync("area_pic_padding", area_pic_padding);
     
+    },
+
+    /**
+     * 设置检测参数界面
+     */
+    goParameter: function () {
+        wx.navigateTo({
+            url: '/pages/parameter/parameter',
+            success: (result)=>{
+                
+            },
+            fail: ()=>{},
+            complete: ()=>{}
+        });
     },
   
     /**

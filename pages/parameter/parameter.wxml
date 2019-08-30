@@ -1,0 +1,48 @@
+<view>
+	<image src="../images/ty11.png" style="width: {{windowWidth}}px; height: {{windowHeight}}px;" />
+	<view class="title_area" style="width: {{windowWidth-180}}px; left: 90px">
+		<view class="title_text" >设置检测参数</view>
+	</view>
+
+	<view
+	class="area"
+	hover-class="none"
+	hover-stop-propagation="false"
+	style="left: {{50/2}}px; height: {{windowHeight-250}}px; width: {{windowWidth-50}}px">
+
+        <view class="area_title">请填写真实参数以获取真情报告</view>
+
+        <view class="area_sex_text">选择您的性别：</view>
+        <view class="area_sex">
+            <view class="area_sex_man"></view>
+            <view class="area_sex_woman"></view>
+        </view>
+        
+        <view class="area_age">
+            <view class="area_age_text">年龄：</view>
+            <view class="area_age_input" style="width: {{windowWidth-50-40}}px"><input type="text" /></view>
+        </view>
+
+        <view class="area_hw_text">身高/体重：</view>
+        <view class="area_height">
+            <view class="area_height_input" style="width: {{(windowWidth-50-40)/2-30}}px"><input type="text" /></view><view style="width: 20px; margin-right: 30px; margin-left: 5px; color: #8c8fa1">cm</view>
+            <view class="area_weight_input" style="width: {{(windowWidth-50-40)/2-60}}px"><input type="text" /></view><view style="width: 20px; margin-left: 5px; color: #8c8fa1">kg</view>
+        </view>
+
+	</view>
+
+	<view class="btn_style">
+		<button
+		 class="btn"
+		 type="primary"
+		 loading="{{loading}}"
+		 disabled="{{disabled}}"
+		 bindtap="onTap"
+		>
+		<!-- background: url('../images/ty2.png'); -->
+			设置检测参数
+		</button>
+	</view>
+
+</view>
+

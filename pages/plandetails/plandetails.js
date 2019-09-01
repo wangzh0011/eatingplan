@@ -1,4 +1,4 @@
-// pages/parameter/parameter.js
+// pages/plandetails/plandetails.js
 Page({
 
   /**
@@ -12,23 +12,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
     this.setData({
       windowWidth: wx.getStorageSync("windowWidth"),
       windowHeight: wx.getStorageSync("windowHeight"),
     })
-    
-  },
-
-  onTap: function () {
-    wx.navigateTo({
-      url: '/pages/calculate/calculate',
-      success: (result)=>{
-        
-      },
-      fail: ()=>{},
-      complete: ()=>{}
-    });
   },
 
   /**

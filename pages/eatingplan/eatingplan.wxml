@@ -1,0 +1,79 @@
+<!--pages/eatingplan/eatingplan.wxml-->
+<view>
+	<image src="../images/ty11.png" style="width: {{windowWidth}}px; height: {{windowHeight}}px;" />
+	<view class="title_area" style="width: {{windowWidth-140}}px; left: 70px">
+		<view class="title_text" >制定健康饮食计划</view>
+	</view>
+
+	<view
+	class="area"
+	hover-class="none"
+	hover-stop-propagation="false"
+	style="left: {{50/2}}px; height: {{windowHeight-240}}px; width: {{windowWidth-50}}px">
+
+        <view class="area_title">请输入您的目标体重 我们将根据您的选择制定健康饮食计划</view>
+
+        <view class="area_weight">
+            <view class="area_weight_input" style="width: {{(windowWidth-50-40)/2-30}}px">
+                <view class="area_weight_text">目标体重：</view>
+				<input type="text" class="input_border" />
+			</view>
+			<view class="area_height_cm">kg</view>
+            <view class="area_weight_input" style="width: {{(windowWidth-50-40)/2-50}}px">
+                <view class="area_weight_text">参考标准：</view>
+				<input type="text" class="input_border" value="72" disabled="{{true}}"/>
+			</view>
+			<view class="area_weight_kg">kg</view>
+        </view>
+
+		<view class="area_time">
+            <view class="area_weight_input" style="width: {{(windowWidth-50-40)/2-30}}px">
+                <view class="area_weight_text">计划用时：</view>
+				<input type="text" class="input_border" />
+			</view>
+			<view class="area_height_cm">天</view>
+            <view class="area_weight_input" style="width: {{(windowWidth-50-40)/2-50}}px">
+                <view class="area_weight_text">建议：</view>
+				<input type="text" class="input_border" value="60" disabled="{{true}}"/>
+			</view>
+			<view class="area_weight_kg">天</view>
+        </view>
+
+        <view class="area_desc_text">
+            <view class="area_desc_text_input" >
+				<input type="text"  class="input_desc_text_border" value="BMI指数" disabled="{{true}}"/>
+			</view>
+            <view class="area_desc_text_input" >
+				<input type="text" class="input_desc_text_border" value="年龄" disabled="{{true}}"/>
+            </view>
+            <view class="area_desc_text_input" >
+				<input type="text" class="input_desc_text_border" value="性别偏差" disabled="{{true}}"/>
+			</view>
+        </view>
+        <view class="area_desc_text_2">
+            <view class="area_desc_text_input" >
+				<input type="text"  class="input_desc_text_border" value="亚洲人体型标准" disabled="{{true}}"/>
+			</view>
+            <view class="area_desc_text_input" >
+				<input type="text" class="input_desc_text_border" value="100万人数据对比" disabled="{{true}}"/>
+            </view>
+        </view>
+
+	</view>
+
+	<view class="btn_style">
+		<button
+		 class="btn"
+		 type="primary"
+		 loading="{{loading}}"
+		 disabled="{{disabled}}"
+		 bindtap="onTap"
+		>
+		<!-- background: url('../images/ty2.png'); -->
+			制定我的计划
+		</button>
+	</view>
+
+</view>
+
+

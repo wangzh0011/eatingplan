@@ -18,7 +18,7 @@
 .btn_style{
     width: 100vw;
     position: fixed;
-    bottom: 80rpx;
+    bottom: 30px;
     display: flex;
     flex-flow: row wrap;
     z-index: 10;
@@ -46,7 +46,7 @@
 .area_text{
     margin: 25px;
     color: #555e87;
-    font-size: 24rpx;
+    font-size: 26rpx;
     text-indent: 2em;
 }
 

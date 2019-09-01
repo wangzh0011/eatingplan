@@ -1,0 +1,24 @@
+/* pages/plandetails/plandetails.wxss */
+.title_area{
+    position: absolute;
+    top: 0px;
+}
+
+.userinfo-avatar {
+    width: 128rpx;
+    height: 128rpx;
+    border-radius: 50%;
+    display: block;
+    overflow: hidden;
+}
+  
+.userinfo-nickname {
+    color: #ffffff;
+}
+
+.userinfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}

@@ -1,0 +1,39 @@
+/* pages/calculate/calculate.wxss */
+.person_area{
+    position: absolute;
+    top: 30px;
+}
+
+.person{
+    text-align: center
+}
+
+.circle_outside{
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 1px solid #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle_inside{
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background-color: #ffffff
+}
+
+.line{
+    position: absolute;
+    height: 1px;
+    background-color: #ffffff;
+}
+
+.person_data_text{
+    font-size: 30rpx;
+    color: #ffffff;
+    position: absolute;
+}

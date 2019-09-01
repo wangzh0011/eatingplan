@@ -1,0 +1,91 @@
+<view>
+	<image src="../images/ty11.png" style="width: {{windowWidth}}px; height: {{windowHeight}}px;" />
+	<view class="person_area" style="width: {{windowWidth-50}}px; left: 25px">
+		<view class="person" >
+			<image style="height: {{(windowHeight-20)/3}}px; width: {{(windowWidth-50)/2}}px" src="../images/3-1.png" />
+		</view>
+		<view class="person_data">
+
+			<!--左边-->
+			<!--圆-->
+			<view class="circle_outside" style="top: 10px; left: {{(windowWidth-50)*7/16-18}}px">
+				<view class="circle_inside"></view>
+			</view>
+			<!--线-->
+			<view class="line" style="top: 17px; left: {{(windowWidth-50)*7/16-18-(windowWidth-50)/3}}px; width: {{(windowWidth-50)/3}}px"></view>
+			<!--文字-->
+			<view class="person_data_text" style="top: -4px; left: {{(windowWidth-50)*7/16-18-(windowWidth-50)/3}}px;">{{sex}}</view>
+			<!--圆-->
+			<view class="circle_outside" style="top: {{(windowHeight-20)/12}}px; left: {{(windowWidth-50)*2/5-24}}px">
+				<view class="circle_inside"></view>
+			</view>
+			<!--线-->
+			<view class="line" style="top: {{(windowHeight-20)/12+7}}px; left: {{(windowWidth-50)*2/5-24-(windowWidth-50)/3}}px; width: {{(windowWidth-50)/3}}px"></view>
+			<!--文字-->
+			<view class="person_data_text" style="top: {{(windowHeight-20)/12+7-20}}px; left: {{(windowWidth-50)*2/5-24-(windowWidth-50)/3}}px;">{{age}}</view>
+			<!--圆-->
+			<view class="circle_outside" style="top: {{(windowHeight-20)/6}}px; left: {{(windowWidth-50)*2/5-18}}px">
+				<view class="circle_inside"></view>
+			</view>
+			<!--线-->
+			<view class="line" style="top: {{(windowHeight-20)/6+7}}px; left: {{(windowWidth-50)*2/5-18-(windowWidth-50)/3}}px; width: {{(windowWidth-50)/3}}px"></view>
+			<!--文字-->
+			<view class="person_data_text" style="top: {{(windowHeight-20)/6+7-20}}px; left: {{(windowWidth-50)*2/5-18-(windowWidth-50)/3}}px;">{{weight}}</view>
+			
+			<!--右边-->
+			<!--圆-->
+			<view class="circle_outside" style="top: 0px; right: {{(windowWidth-50)*7/16-18}}px">
+				<view class="circle_inside"></view>
+			</view>
+			<!--线-->
+			<view class="line" style="top: 7px; right: {{(windowWidth-50)*7/16-18-(windowWidth-50)/3}}px; width: {{(windowWidth-50)/3}}px"></view>
+			<!--文字-->
+			<view class="person_data_text" style="top: -14px; right: {{(windowWidth-50)*7/16-18-(windowWidth-50)/3}}px;">{{height}}</view>
+			<!--圆-->
+			<view class="circle_outside" style="top: {{(windowHeight-20)/12-10}}px; right: {{(windowWidth-50)*2/5-24}}px">
+				<view class="circle_inside"></view>
+			</view>
+			<!--线-->
+			<view class="line" style="top: {{(windowHeight-20)/12+7-10}}px; right: {{(windowWidth-50)*2/5-24-(windowWidth-50)/3}}px; width: {{(windowWidth-50)/3}}px"></view>
+			<!--文字-->
+			<view class="person_data_text" style="top: {{(windowHeight-20)/12+7-10-20}}px; right: {{(windowWidth-50)*2/5-24-(windowWidth-50)/3}}px;">{{sleepDesc}}</view>
+			<!--圆-->
+			<view class="circle_outside" style="top: {{(windowHeight-20)/6-10}}px; right: {{(windowWidth-50)*2/5-18}}px">
+				<view class="circle_inside"></view>
+			</view>
+			<!--线-->
+			<view class="line" style="top: {{(windowHeight-20)/6+7-10}}px; right: {{(windowWidth-50)*2/5-18-(windowWidth-50)/3}}px; width: {{(windowWidth-50)/3}}px"></view>
+			<!--文字-->
+			<view class="person_data_text" style="top: {{(windowHeight-20)/6+7-10-20}}px; right: {{(windowWidth-50)*2/5-18-(windowWidth-50)/3}}px;">{{BMI}}</view>
+		</view>
+	</view>
+
+	<view
+	class="area"
+	hover-class="none"
+	hover-stop-propagation="false"
+	style="left: {{50/2}}px; height: {{windowHeight-(windowHeight-20)/3-140}}px; width: {{windowWidth-50}}px; top: {{(windowHeight-20)/3+30}}px">
+
+        <view class="area_title">健康建议</view>
+
+        <view class="area_text">寒蝉凄切，对长亭晚，骤雨初歇。都门帐饮无绪，留恋处，兰舟催发。执手相看泪眼，竟无语凝噎。念去去，千里烟波，暮霭沉沉楚天阔。
+　　多情自古伤离别，更那堪冷落清秋节，今宵酒醒何处？杨柳岸晓风残月。此去经年，应是良辰好景虚设。便纵有千种风情，更与何人说。
+		</view>
+
+	</view>
+
+	<view class="btn_style">
+		<button
+		 class="btn"
+		 type="primary"
+		 loading="{{loading}}"
+		 disabled="{{disabled}}"
+		 bindtap="onTap"
+		>
+		<!-- background: url('../images/ty2.png'); -->
+			制定健康饮食计划
+		</button>
+	</view>
+
+</view>
+

@@ -1,4 +1,4 @@
-// pages/parameter/parameter.js
+// pages/calculate/calculate.js
 Page({
 
   /**
@@ -12,17 +12,22 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
     this.setData({
       windowWidth: wx.getStorageSync("windowWidth"),
       windowHeight: wx.getStorageSync("windowHeight"),
+      sex: "男性",
+      age: "18"+ "岁",
+      weight: "68" + "kg",
+      height: "178" + "cm",
+      sleepDesc: "缺少睡眠",
+      BMI: "BMI26.3"
     })
     
   },
 
   onTap: function () {
     wx.navigateTo({
-      url: '/pages/calculate/calculate',
+      url: '/pages/eatingplan/eatingplan',
       success: (result)=>{
         
       },

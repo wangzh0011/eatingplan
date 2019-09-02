@@ -1,35 +1,95 @@
 <!--pages/plandetails/plandetails.wxml-->
-<view>
-	<image src="../images/ty11.png" style="width: {{windowWidth}}px; height: {{windowHeight}}px;" />
+<view class="background-img">
+	<image src="../images/ty11.png" style="width: 100%; height: 100%; position: absolute;" />
 	<view class="title_area" style="width: {{windowWidth-140}}px; left: 70px">
-		<view class="userinfo">
-            <open-data class="userinfo-avatar" background-size="cover" type="userAvatarUrl" style="width:{{windowHeight/4}}px; height:{{windowHeight/4}}px"></open-data>
-            <!-- <open-data class="userinfo-nickname" type="userNickName" data-ooo="userinfo-nickname"></open-data> -->
-        </view>
+		<view class="title_text" >{{username}}的健康饮食计划</view>
 	</view>
 
-	<view
-	class="area"
-	hover-class="none"
-	hover-stop-propagation="false"
-    
-	style="left: {{50/2}}px; height: {{windowHeight/4}}px; width: {{windowWidth-50}}px; top: {{windowHeight/4+40}}px">
-
-        <view class="area_text">寒蝉凄切，对长亭晚，骤雨初歇。都门帐饮无绪，留恋处，兰舟催发。执手相看泪眼，竟无语凝噎。念去去，千里烟波，暮霭沉沉楚天阔。
-　　多情自古伤离别，更那堪冷落清秋节，今宵酒醒何处？杨柳岸晓风残月。此去经年，应是良辰好景虚设。便纵有千种风情，更与何人说。
-		</view>
-
-        <view class="userinfo-name" style=" top:40px">
-            <view class="userinfo-name-title">
-                请输入姓名领取计划
-            </view>
-            <view class="userinfo-name-input">
-                <input type="text" placeholder="例：张三"/>
-            </view>
+	<view class="plandata" style="width: {{windowWidth-50}}px; left: 25px; ">
+        <view class="echart">
 
         </view>
+
+        <view class="weui-tab">
+            <view class="weui-navbar">
+                <block wx:for="{{tabs}}" wx:key="*this">
+                    <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                        <view class="weui-navbar__title">{{item}}</view>
+                    </view>
+                </block>
+                <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);" />
+            </view>
+            
+            <view class="weui-tab__panel">
+                <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+                    <view class="breakfast">
+                        <view class="title">
+                            早餐摄入热量{{breakfast}}焦耳
+                        </view>
+                        <view class="subtitle">
+                            选择其一作为早餐
+                        </view>
+                        <view class="details">
+                            <view class="item">
+                                <image src="../images/6-5.png" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
+                                <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px"></view>
+                            </view>
+                            <view class="item">
+                                <image src="../images/6-5.png" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
+                                <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px"></view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+
+                <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+                    <view class="lunch">
+                        <view class="title">
+                            午餐摄入热量{{lunch}}焦耳
+                        </view>
+                        <view class="subtitle">
+                            选择其一作为午餐
+                        </view>
+                        <view class="details">
+                            <view class="item">
+                                <image src="../images/6-5.png" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
+                                <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px"></view>
+                            </view>
+                            <view class="item">
+                                <image src="../images/6-5.png" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
+                                <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px"></view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+
+                <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+                    <view class="dinner">
+                        <view class="title">
+                            晚餐摄入热量{{dinner}}焦耳
+                        </view>
+                        <view class="subtitle">
+                            选择其一作为晚餐
+                        </view>
+                        <view class="details">
+                            <view class="item">
+                                <image src="../images/6-5.png" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
+                                <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px"></view>
+                            </view>
+                            <view class="item">
+                                <image src="../images/6-5.png" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
+                                <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px"></view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        
+        
+        
     </view>
-    
 
 	<view class="btn_style">
 		<button
@@ -40,7 +100,7 @@
 		 bindtap="onTap"
 		>
 		<!-- background: url('../images/ty2.png'); -->
-			支付14元领取计划
+			开始云计算
 		</button>
 	</view>
 

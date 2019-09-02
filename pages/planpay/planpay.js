@@ -1,4 +1,4 @@
-// pages/eatingplan/eatingplan.js
+// pages/plandetails/plandetails.js
 Page({
 
   /**
@@ -19,14 +19,42 @@ Page({
   },
 
   onTap: function () {
+    var username = this.data.username;
+    if(username != undefined && parseInt(username.length) > 0) {
+      username = username.trim();
+    }
+    if(username == undefined || username == '') {
+      wx.showToast({
+        title: '请输入姓名',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: false,
+        success: (result)=>{
+        },
+        fail: ()=>{},
+        complete: ()=>{}
+      });
+      this.setData({
+        value: ""
+      })
+      return;
+    }
     wx.navigateTo({
-      url: '/pages/planpay/planpay',
+      url: '/pages/plandetails/plandetails?username=' + username,
       success: (result)=>{
           
       },
       fail: ()=>{},
       complete: ()=>{}
-  });
+    });
+  },
+
+  inputTap: function (e) {
+    var username = e.detail.value;
+    this.setData({
+      username: username,
+    })
   },
 
   /**

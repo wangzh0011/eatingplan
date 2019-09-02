@@ -1,43 +1,97 @@
 /* pages/plandetails/plandetails.wxss */
+/* .background-img{
+    background-image: url('./../images/ty11.png');
+    width:100%;
+    height:100%;
+    background-attachment: scroll;
+    position: absolute;
+
+} */
+
 .title_area{
     position: absolute;
-    top: 0px;
+    top: 40px;
+    border-radius: 15px;
+    background-color: #29BE98
 }
 
-.userinfo-avatar {
-    border-radius: 50%;
-    display: block;
-    overflow: hidden;
+.title_text{
+    text-align: center;
+    color: #ffffff;
+    font-size: 42rpx;
+    padding: 5px;
 }
-  
-.userinfo-nickname {
+
+.plandata{
+    position: absolute;
+    top: 120px;
+}
+
+.echart{
+    /* position: relative; */
+    height: 100px;/**由数据的最高栏决定**/
+    background-color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.breakfast{
+    margin-bottom: 20px;
+}
+
+.lunch{
+    margin-bottom: 20px;
+}
+
+.dinner{
+    margin-bottom: 20px;
+}
+
+.btn_style{
+    width: 100vw;
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    flex-flow: row wrap;
+    z-index: 10;
+}
+
+.title{
+    top:0px;
+    position: relative;
+    text-align: center;
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    font-size: 30rpx;
     color: #ffffff;
 }
 
-.userinfo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem;
-}
-
-.userinfo-name{
-    position: relative;
+.subtitle{
+    margin: 10px;
     text-align: center;
-    padding: 20px;
-    /* width: 150px; */
+    font-size: 26rpx;
+    color: #ceffe2;
 }
 
-.userinfo-name-title{
-    font-size: 28rpx;
-    color: #555e87;
-    margin: 10px;
+.details{
+    position: relative;
+    display: flex;
+    flex-flow: column wrap; /*纵向排列*/
 }
 
-.userinfo-name-input{
-    font-size: 28rpx;
-    color: #8c8fa1;
-    margin: 10px;
-    border-bottom: 2px solid #555e87;
-    
+.item{
+    display: flex;
+    flex-flow: row wrap;/*横向排列*/
+    justify-content: flex-start;
+}
+
+.pic{
+    border-radius: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px; 
+}
+
+.desc{
+    border-radius: 5px;
+    background-color: #ffffff;
+    margin-bottom: 5px;
 }

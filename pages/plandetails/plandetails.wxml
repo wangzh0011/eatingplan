@@ -1,49 +1,58 @@
 <!--pages/plandetails/plandetails.wxml-->
-<view class="background-img">
+<view>
 	<image src="../images/ty11.png" style="width: 100%; height: 100%; position: absolute;" />
-	<view class="title_area" style="width: {{windowWidth-140}}px; left: 70px">
+	<view class="title_area" style="width: {{windowWidth-140}}px; left: 70px; top: {{windowHeight/16}}px">
 		<view class="title_text" >{{username}}的健康饮食计划</view>
 	</view>
 
-	<view class="plandata" style="width: {{windowWidth-50}}px; left: 25px; ">
+	<view class="plandata" style="width: {{windowWidth-50}}px; left: 25px; top: {{windowHeight/6}}px">
         <view class="echart">
 
         </view>
 
         <view class="weui-tab">
+
             <view class="weui-navbar">
                 <block wx:for="{{tabs}}" wx:key="*this">
                     <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
-                        <view class="weui-navbar__title">{{item}}</view>
+                        <view class="weui-navbar__title" style="color: #ffffff;font-size: 32rpx">{{item}}</view>
                     </view>
                 </block>
                 <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);" />
             </view>
             
             <view class="weui-tab__panel">
+
                 <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
-                    <view class="breakfast">
+                    <view class="food">
                         <view class="title">
                             早餐摄入热量{{breakfast}}焦耳
                         </view>
                         <view class="subtitle">
                             选择其一作为早餐
-                        </view>
-                        <view class="details">
-                            <view class="item">
-                                <image src="../images/6-5.png" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
-                                <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px"></view>
-                            </view>
-                            <view class="item">
-                                <image src="../images/6-5.png" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
-                                <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px"></view>
-                            </view>
-                        </view>
+						</view>
+						
+							
+							<view class="details">
+								<scroll-view class="scroll-view" style="height:{{windowHeight/3}}px;" scroll-x="false" scroll-y="true" upper-threshold="50" lower-threshold="50" 
+									scroll-top="0" scroll-left="0" scroll-into-view="" scroll-with-animation="false" enable-back-to-top="false" 
+									bindscrolltoupper="" bindscrolltolower="" bindscroll="">
+									<view wx:for="{{itemslist}}">
+										<view class="item">
+											<image src="../images/6-5.png" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
+											<view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px">
+												<view class="desc_title">一小碗白米饭</view>
+												<view class="desc_subtitle">热量： 336大卡 150克</view>
+											</view>
+										</view>
+									</view>
+								</scroll-view>
+							</view>
                     </view>
                 </view>
 
                 <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
-                    <view class="lunch">
+                    <view class="food">
                         <view class="title">
                             午餐摄入热量{{lunch}}焦耳
                         </view>
@@ -64,7 +73,7 @@
                 </view>
 
                 <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
-                    <view class="dinner">
+                    <view class="food">
                         <view class="title">
                             晚餐摄入热量{{dinner}}焦耳
                         </view>
@@ -82,13 +91,10 @@
                             </view>
                         </view>
                     </view>
-                </view>
+				</view>
+				
             </view>
         </view>
-
-        
-        
-        
     </view>
 
 	<view class="btn_style">

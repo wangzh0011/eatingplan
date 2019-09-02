@@ -1,7 +1,7 @@
 <!--pages/eatingplan/eatingplan.wxml-->
 <view>
-	<image src="../images/ty11.png" style="width: {{windowWidth}}px; height: {{windowHeight}}px;" />
-	<view class="title_area" style="width: {{windowWidth-140}}px; left: 70px">
+	<image src="../images/ty11.png" class="background-img"/>
+	<view class="title_area" style="width: {{windowWidth-140}}px; left: 70px; top: {{windowHeight/16}}px">
 		<view class="title_text" >制定健康饮食计划</view>
 	</view>
 
@@ -9,7 +9,7 @@
 	class="area"
 	hover-class="none"
 	hover-stop-propagation="false"
-	style="left: {{50/2}}px; height: {{windowHeight-240}}px; width: {{windowWidth-50}}px">
+	style="left: {{50/2}}px; height: {{windowHeight-240}}px; width: {{windowWidth-50}}px; top:{{windowHeight/4}}px">
 
         <view class="area_title">请输入您的目标体重 我们将根据您的选择制定健康饮食计划</view>
 

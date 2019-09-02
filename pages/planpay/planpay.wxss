@@ -1,5 +1,5 @@
 /* pages/plandetails/plandetails.wxss */
-.title_area{
+.title_area_override{
     position: absolute;
     top: 0px;
 }

@@ -1,19 +1,3 @@
-/* pages/plandetails/plandetails.wxss */
-/* .background-img{
-    background-image: url('./../images/ty11.png');
-    width:100%;
-    height:100%;
-    background-attachment: scroll;
-    position: absolute;
-
-} */
-
-.title_area{
-    position: absolute;
-    top: 40px;
-    border-radius: 15px;
-    background-color: #29BE98
-}
 
 .title_text{
     text-align: center;
@@ -24,26 +8,16 @@
 
 .plandata{
     position: absolute;
-    top: 120px;
 }
 
 .echart{
     /* position: relative; */
     height: 100px;/**由数据的最高栏决定**/
     background-color: #ffffff;
-    margin-bottom: 20px;
 }
 
-.breakfast{
-    margin-bottom: 20px;
-}
-
-.lunch{
-    margin-bottom: 20px;
-}
-
-.dinner{
-    margin-bottom: 20px;
+.food{
+    margin-top: 20px;
 }
 
 .btn_style{
@@ -94,4 +68,19 @@
     border-radius: 5px;
     background-color: #ffffff;
     margin-bottom: 5px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+}
+
+.desc_title{
+    margin-left: 20px;
+    font-size: 30rpx;
+    color: #40465f;
+}
+
+.desc_subtitle{
+    margin-left: 20px;
+    font-size: 24rpx;
+    color: #9fa1ad;
 }

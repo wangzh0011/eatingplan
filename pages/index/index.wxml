@@ -1,8 +1,7 @@
 <view>
-	<image src="../images/ty11.png" style="width: {{windowWidth}}px; height: {{windowHeight}}px;" />
-	<view class="title" style="width: {{windowWidth-160}}px; left: 80px">
+	<image src="../images/ty11.png" class="background-img" />
+	<view class="title" style="width: {{windowWidth-160}}px; left: 80px; top: {{windowHeight/16}}px">
 		<view class="title_cell">{{title}}</view>
-		<view style="height: 20px" />
 		<view class="title_cell_num">已有{{num}}人参与健康计划</view>
 	</view>
 
@@ -10,7 +9,7 @@
 	class="area"
 	hover-class="none"
 	hover-stop-propagation="false"
-	style="left: {{50/2}}px; height: {{windowHeight-250}}px; width: {{windowWidth-50}}px">
+	style="left: {{50/2}}px; height: {{windowHeight/1.8}}px; width: {{windowWidth-50}}px; top:{{windowHeight/4}}px">
 
 		<view class="area_title">科学减肥 系统高效</view>
 		<view class="area_text">寒蝉凄切，对长亭晚，骤雨初歇。都门帐饮无绪，留恋处，兰舟催发。执手相看泪眼，竟无语凝噎。念去去，千里烟波，暮霭沉沉楚天阔。

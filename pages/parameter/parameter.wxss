@@ -1,9 +1,3 @@
-.title_area{
-    position: absolute;
-    top: 40px;
-    border-radius: 15px;
-    background-color: #29BE98
-}
 
 .title_text{
     text-align: center;

@@ -1,7 +1,7 @@
 <!--pages/plandetails/plandetails.wxml-->
 <view>
-	<image src="../images/ty11.png" style="width: {{windowWidth}}px; height: {{windowHeight}}px;" />
-	<view class="title_area" style="width: {{windowWidth-140}}px; left: 70px">
+	<image src="../images/ty11.png" class="background-img"/>
+	<view class="title_area_override" style="width: {{windowWidth-140}}px; left: 70px">
 		<view class="userinfo">
             <open-data class="userinfo-avatar" background-size="cover" type="userAvatarUrl" style="width:{{windowHeight/4}}px; height:{{windowHeight/4}}px"></open-data>
             <!-- <open-data class="userinfo-nickname" type="userNickName" data-ooo="userinfo-nickname"></open-data> -->

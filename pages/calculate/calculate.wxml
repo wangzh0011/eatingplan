@@ -1,5 +1,5 @@
 <view>
-	<image src="../images/ty11.png" style="width: {{windowWidth}}px; height: {{windowHeight}}px;" />
+	<image src="../images/ty11.png" class="background-img" />
 	<view class="person_area" style="width: {{windowWidth-50}}px; left: 25px">
 		<view class="person" >
 			<image style="height: {{(windowHeight-20)/3}}px; width: {{(windowWidth-50)/2}}px" src="../images/3-1.png" />

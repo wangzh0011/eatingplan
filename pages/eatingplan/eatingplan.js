@@ -35,10 +35,32 @@ Page({
   },
 
   /**
+   * 验证输入的是否为数字
+   * @param {*} para 
+   */
+  validate: function (para) {
+    if(!/^[0-9]{1,}$/.test(para)){
+      wx.showToast({
+        title: '请输入正确的数值',
+        icon: 'none',
+        duration: 1500,
+      });
+      return false;
+    }
+  },
+
+
+  /**
    * 目标体重
    */
   targetWeightTap: function (e) {
     var targetWeight = e.detail.value;
+    if (this.validate(targetWeight) == false) {
+      this.setData({
+        targetWeight: ''
+      })
+      return;
+    } 
     this.setData({
       targetWeight: targetWeight
     })
@@ -49,6 +71,12 @@ Page({
    */
   targetDayTap: function (e) {
     var targetDay = e.detail.value;
+    if (this.validate(targetDay) == false) {
+      this.setData({
+        targetDay: ''
+      })
+      return;
+    } 
     this.setData({
       targetDay: targetDay
     })

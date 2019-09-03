@@ -29,7 +29,8 @@ Page({
       title_area_left: app.position.title_area_left,
       username: username,
       btn_width: app.btn.btn_width,
-      btn_height: app.btn.btn_height
+      btn_height: app.btn.btn_height,
+      atbs_pic_style: app.systemInfo.windowHeight/24
     })
 
     //计算tab下面横条的中间位置

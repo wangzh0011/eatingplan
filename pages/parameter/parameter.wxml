@@ -31,18 +31,18 @@
         <view class="area_age">
             <view class="area_age_text">年龄：</view>
             <view class="area_age_input" style="width: {{windowWidth-50-40}}px">
-                <input type="text" bindinput="ageTap" value="{{value_age}}" maxlength="2"/>
+                <input type="number" bindinput="ageTap" value="{{age}}" maxlength="2"/>
             </view>
         </view>
 
         <view class="area_hw_text">身高/体重：</view>
         <view class="area_height">
             <view class="area_height_input" style="width: {{(windowWidth-50-40)/2-30}}px">
-				<input type="text" bindinput="heightTap" value="{{value_height}}" maxlength="3"/>
+				<input type="number" bindinput="heightTap" value="{{height}}" maxlength="3"/>
 			</view>
 			<view class="area_height_cm">cm</view>
             <view class="area_weight_input" style="width: {{(windowWidth-50-40)/2-50}}px">
-				<input type="text" bindinput="weightTap" value="{{value_weight}}" maxlength="3"/>
+				<input type="number" bindinput="weightTap" value="{{weight}}" maxlength="3"/>
 			</view>
 			<view class="area_weight_kg">kg</view>
         </view>
@@ -50,13 +50,13 @@
 		<view class="area_age"><!-- 与age样式一致，所以复用其样式-->
             <view class="area_age_text">平均睡眠时长：</view>
             <view class="area_age_input" style="width: {{windowWidth-50-40}}px">
-                <input type="text" bindinput="sleepTap" value="{{value_sleep}}" maxlength="2"/>
+                <input type="number" bindinput="sleepTap" value="{{sleep}}" maxlength="2"/>
             </view>
         </view>
 
 	</view>
 
-	<view class="btn_style" style="left:{{(windowWidth-btn_width)/2}}px; height: {{btn_height}}px; width:{{btn_width}}px">
+	<view class="btn_style" style="left:{{(windowWidth-btn_width)/2}}px; width:{{btn_width}}px">
 		<button
 		 class="btn"
 		 type="primary"

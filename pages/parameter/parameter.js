@@ -43,10 +43,32 @@ Page({
   },
 
   /**
+   * 验证输入的是否为数字
+   * @param {*} para 
+   */
+  validate: function (para) {
+    if(!/^[0-9]{1,}$/.test(para)){
+      wx.showToast({
+        title: '请输入正确的数值',
+        icon: 'none',
+        duration: 1500,
+      });
+      return false;
+    }
+  },
+
+  /**
    * 年龄
    */
   ageTap: function (e) {
     var age = e.detail.value;
+    var that =this;
+    if(this.validate(age) == false) {
+      that.setData({
+        age: ''
+      })
+      return;
+    }
     this.setData({
       age: age
     })
@@ -58,6 +80,13 @@ Page({
    */
   heightTap: function (e) {
     var height = e.detail.value;
+    var that =this;
+    if(this.validate(height) == false) {
+      that.setData({
+        height: ''
+      })
+      return;
+    }
     this.setData({
       height: height
     })
@@ -69,6 +98,13 @@ Page({
    */
   weightTap: function (e) {
     var weight = e.detail.value;
+    var that =this;
+    if(this.validate(weight) == false) {
+      that.setData({
+        weight: ''
+      })
+      return;
+    }
     this.setData({
       weight: weight
     })
@@ -80,6 +116,13 @@ Page({
    */
   sleepTap: function (e){
     var sleep = e.detail.value;
+    var that =this;
+    if(this.validate(sleep) == false) {
+      that.setData({
+        sleep: ''
+      })
+      return;
+    }
     this.setData({
       sleep: sleep
     })
@@ -134,7 +177,7 @@ Page({
         duration: 1500,
       });
       that.setData({
-        value_age: ""
+        age: ""
       })
       return false;
     }else if(height.trim() == ''){
@@ -144,7 +187,7 @@ Page({
         duration: 1500,
       });
       that.setData({
-        value_height: ""
+        height: ""
       })
       return false;
     }else if(weight.trim() == ''){
@@ -154,7 +197,7 @@ Page({
         duration: 1500,
       });
       that.setData({
-        value_weight: ""
+        weight: ""
       })
       return false;
     }else if(sleep.trim() == ''){
@@ -164,7 +207,7 @@ Page({
         duration: 1500,
       });
       that.setData({
-        value_sleep: ""
+        sleep: ""
       })
       return false;
     }

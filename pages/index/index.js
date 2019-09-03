@@ -27,7 +27,13 @@ Page({
             btn_height: app.btn.btn_height,
             textDesc: '健康饮食计划基于国内3位从业十余年的资深营养大师整理的营养理论，和13位人工智能工程师设计的智能运算方式，结合当代云技术采集近10万人群数据比对，从而完善的真正科学有效的饮食计划。'
         })
-    
+
+        setInterval(() => {
+            num = num + Math.floor(Math.random()*9 + 1);
+            this.setData({
+                num: num
+            })
+        }, 1000);
     },
 
     /**
@@ -55,13 +61,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        var num = this.data.num;
-        setInterval(() => {
-            num = num + Math.floor(Math.random()*9 + 1);
-            this.setData({
-                num: num
-            })
-        }, 1000);
+        
     },
   
     /**

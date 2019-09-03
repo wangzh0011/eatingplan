@@ -24,13 +24,13 @@
 			请输入姓名领取计划
 		</view>
 		<view class="userinfo-name-input">
-			<input bindinput="inputTap" value="{{value}}" maxlength="10" type="text" placeholder="例：张三"/>
+			<input bindinput="inputTap" value="{{value}}" maxlength="6" type="text" placeholder="例：张三"/>
 		</view>
 
 	</view>
     
 
-	<view class="btn_style" style="left:{{(windowWidth-btn_width)/2}}px; height: {{btn_height}}px; width:{{btn_width}}px">
+	<view class="btn_style" style="left:{{(windowWidth-btn_width)/2}}px; width:{{btn_width}}px">
 		<button
 		 class="btn"
 		 type="primary"

@@ -5,7 +5,7 @@
 		<view class="title_text" >{{username}}的健康饮食计划</view>
 	</view>
 
-	<view class="plandata" style="width: {{windowWidth-50}}px; left: 25px; top: {{windowHeight/6}}px">
+	<view class="plandata" style="width: {{windowWidth-50}}px; left: 25px; top: {{windowHeight/7}}px">
         <view class="echart">
 
         </view>
@@ -32,7 +32,6 @@
                             选择其一作为早餐
 						</view>
 						
-							
 							<view class="details">
 								<scroll-view class="scroll-view" style="height:{{windowHeight/3}}px;" scroll-x="false" scroll-y="true" upper-threshold="50" lower-threshold="50" 
 									scroll-top="0" scroll-left="0" scroll-into-view="" scroll-with-animation="false" enable-back-to-top="false" 
@@ -48,6 +47,7 @@
 									</view>
 								</scroll-view>
 							</view>
+
                     </view>
                 </view>
 
@@ -97,18 +97,24 @@
         </view>
     </view>
 
-	<view class="btn_style" style="left:{{(windowWidth-btn_width)/2}}px; height: {{btn_height}}px; width:{{btn_width}}px">
-		<button
-		 class="btn"
-		 type="primary"
-		 loading="{{loading}}"
-		 disabled="{{disabled}}"
-		 bindtap="onTap"
-		>
-		<!-- background: url('../images/ty2.png'); -->
-			开始云计算
-		</button>
-	</view>
+    <view class="tabs" style="height: {{windowHeight/12}}px">
+        <view class="tabs_item">
+            <image src="../images/ty7.png" style="height: {{atbs_pic_style}}px; width: {{atbs_pic_style}}px"/>
+            <text class="tabs_text">客服</text>
+        </view>
+        <view class="tabs_item">
+            <!-- <image src="../images/ty6.png" style="height: {{atbs_pic_style*4}}px; width: {{atbs_pic_style*4}}px;bottom: 0px"/> -->
+        </view>
+        <view class="tabs_item">
+            <image src="../images/ty8.png" style="height: {{atbs_pic_style}}px; width: {{atbs_pic_style}}px"/>
+            <text class="tabs_text">合作</text>
+        </view>
+    </view>
+
+    <view class="share">
+        <image src="../images/ty6.png" style="height: {{atbs_pic_style*3}}px; width: {{atbs_pic_style*3}}px"/>
+    </view>
+
 
 </view>
 

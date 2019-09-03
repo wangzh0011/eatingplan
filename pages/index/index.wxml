@@ -32,7 +32,7 @@
 
 	</view>
 
-	<view class="btn_style" style="left:{{(windowWidth-btn_width)/2}}px; height: {{btn_height}}px; width:{{btn_width}}px">
+	<view class="btn_style" style="left:{{(windowWidth-btn_width)/2}}px; width:{{btn_width}}px">
 		<button
 		 class="btn"
 		 type="primary"

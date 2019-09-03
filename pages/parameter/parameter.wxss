@@ -1,10 +1,4 @@
 
-.title_text{
-    text-align: center;
-    color: #ffffff;
-    font-size: 42rpx;
-    padding: 5px;
-}
 
 .area_title{
     margin: 20px;

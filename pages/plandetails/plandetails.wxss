@@ -1,11 +1,4 @@
 
-.title_text{
-    text-align: center;
-    color: #ffffff;
-    font-size: 42rpx;
-    padding: 5px;
-}
-
 .plandata{
     position: absolute;
 }
@@ -18,15 +11,6 @@
 
 .food{
     margin-top: 20px;
-}
-
-.btn_style{
-    width: 100vw;
-    position: fixed;
-    bottom: 0px;
-    display: flex;
-    flex-flow: row wrap;
-    z-index: 10;
 }
 
 .title{

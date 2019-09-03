@@ -1,11 +1,5 @@
 /* pages/eatingplan/eatingplan.wxss */
 
-.title_text{
-    text-align: center;
-    color: #ffffff;
-    font-size: 42rpx;
-    padding: 5px;
-}
 
 .area_title{
     margin: 20px;
@@ -85,8 +79,8 @@
 }
 
 .input_desc_text_border{
-    background-color: yellowgreen;
-    border: 1px solid #D1D2E7;
+    background-color: #F6F2E9;
+    border: 1px solid #FEC55F;
     text-align: center;
     color: #676f7c;
     font-size: 30rpx;

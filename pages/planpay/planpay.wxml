@@ -3,7 +3,7 @@
 	<image src="../images/ty11.png" class="background-img"/>
 	<view class="title_area_override" style="width: {{windowWidth-140}}px; left: 70px">
 		<view class="userinfo">
-            <open-data class="userinfo-avatar" background-size="cover" type="userAvatarUrl" style="width:{{windowHeight/4}}px; height:{{windowHeight/4}}px"></open-data>
+            <open-data class="userinfo-avatar" background-size="cover" type="userAvatarUrl" style="width:{{windowHeight/3.6}}px; height:{{windowHeight/3.6}}px"></open-data>
             <!-- <open-data class="userinfo-nickname" type="userNickName" data-ooo="userinfo-nickname"></open-data> -->
         </view>
 	</view>
@@ -13,25 +13,24 @@
 	hover-class="none"
 	hover-stop-propagation="false"
     
-	style="left: {{50/2}}px; height: {{windowHeight/4}}px; width: {{windowWidth-50}}px; top: {{windowHeight/4+40}}px">
+	style="left: {{50/2}}px; height: {{windowHeight/3.4}}px; width: {{windowWidth-50}}px; top: {{windowHeight/2.7}}px">
 
-        <view class="area_text">寒蝉凄切，对长亭晚，骤雨初歇。都门帐饮无绪，留恋处，兰舟催发。执手相看泪眼，竟无语凝噎。念去去，千里烟波，暮霭沉沉楚天阔。
-　　多情自古伤离别，更那堪冷落清秋节，今宵酒醒何处？杨柳岸晓风残月。此去经年，应是良辰好景虚设。便纵有千种风情，更与何人说。
+        <view class="area_text" style="margin-top: 20px;">{{textDesc}}</view>
+
+	</view>
+	
+	<view class="userinfo-name" style="top: {{windowHeight/1.4}}px">
+		<view class="userinfo-name-title">
+			请输入姓名领取计划
+		</view>
+		<view class="userinfo-name-input">
+			<input bindinput="inputTap" value="{{value}}" maxlength="10" type="text" placeholder="例：张三"/>
 		</view>
 
-        <view class="userinfo-name" style=" top:40px">
-            <view class="userinfo-name-title">
-                请输入姓名领取计划
-            </view>
-            <view class="userinfo-name-input">
-                <input bindinput="inputTap" value="{{value}}" maxlength="10" type="text" placeholder="例：张三"/>
-            </view>
-
-        </view>
-    </view>
+	</view>
     
 
-	<view class="btn_style">
+	<view class="btn_style" style="left:{{(windowWidth-btn_width)/2}}px; height: {{btn_height}}px; width:{{btn_width}}px">
 		<button
 		 class="btn"
 		 type="primary"

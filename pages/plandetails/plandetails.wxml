@@ -1,7 +1,7 @@
 <!--pages/plandetails/plandetails.wxml-->
 <view>
 	<image src="../images/ty11.png" style="width: 100%; height: 100%; position: absolute;" />
-	<view class="title_area" style="width: {{windowWidth-140}}px; left: 70px; top: {{windowHeight/16}}px">
+	<view class="title_area" style="width: {{title_area_width}}px; left: {{title_area_left}}px; top: {{title_area_top}}px">
 		<view class="title_text" >{{username}}的健康饮食计划</view>
 	</view>
 
@@ -37,7 +37,7 @@
 								<scroll-view class="scroll-view" style="height:{{windowHeight/3}}px;" scroll-x="false" scroll-y="true" upper-threshold="50" lower-threshold="50" 
 									scroll-top="0" scroll-left="0" scroll-into-view="" scroll-with-animation="false" enable-back-to-top="false" 
 									bindscrolltoupper="" bindscrolltolower="" bindscroll="">
-									<view wx:for="{{itemslist}}">
+									<view wx:for="{{itemslist}}" wx:key="*this">
 										<view class="item">
 											<image src="../images/6-5.png" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
 											<view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px">
@@ -97,7 +97,7 @@
         </view>
     </view>
 
-	<view class="btn_style">
+	<view class="btn_style" style="left:{{(windowWidth-btn_width)/2}}px; height: {{btn_height}}px; width:{{btn_width}}px">
 		<button
 		 class="btn"
 		 type="primary"

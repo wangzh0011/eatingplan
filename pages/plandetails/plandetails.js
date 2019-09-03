@@ -1,5 +1,6 @@
 // pages/plandetails/plandetails.js
 var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
+var app = getApp();
 Page({
 
   /**
@@ -17,21 +18,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    var that = this;
     var username = options.username;
     this.setData({
-      windowWidth: wx.getStorageSync("windowWidth"),
-      windowHeight: wx.getStorageSync("windowHeight"),
-      username: username
+      windowWidth: app.systemInfo.windowWidth,
+      windowHeight: app.systemInfo.windowHeight,
+      title_area_width: app.position.title_area_width,
+      title_area_top: app.position.title_area_top,
+      title_area_left: app.position.title_area_left,
+      username: username,
+      btn_width: app.btn.btn_width,
+      btn_height: app.btn.btn_height
     })
 
     //计算tab下面横条的中间位置
     wx.getSystemInfo({
-      success: function (res) {
-        that.setData({
-          sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
-          sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
-        });
-      }
+      // success: function (res) {
+      //   that.setData({
+      //     sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
+      //     sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
+      //   });
+      // }
     });
   },
 

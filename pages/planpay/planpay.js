@@ -1,11 +1,12 @@
 // pages/plandetails/plandetails.js
+var app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    username: ''
   },
 
   /**
@@ -13,27 +14,22 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      windowWidth: wx.getStorageSync("windowWidth"),
-      windowHeight: wx.getStorageSync("windowHeight"),
+      windowWidth: app.systemInfo.windowWidth,
+      windowHeight: app.systemInfo.windowHeight,
+      btn_width: app.btn.btn_width,
+      btn_height: app.btn.btn_height,
+      textDesc: '中国人现状每100人中就有10个不同程度的肥胖症，而肥胖是各种慢性疾病的主要高危元素国际和国家专家报告，为预防慢性病呼吁群众采取健康饮食计划。'
     })
   },
 
   onTap: function () {
     var username = this.data.username;
-    if(username != undefined && parseInt(username.length) > 0) {
-      username = username.trim();
-    }
-    if(username == undefined || username == '') {
+    
+    if(username.trim() == '') {
       wx.showToast({
         title: '请输入姓名',
         icon: 'none',
-        image: '',
         duration: 1500,
-        mask: false,
-        success: (result)=>{
-        },
-        fail: ()=>{},
-        complete: ()=>{}
       });
       this.setData({
         value: ""
@@ -50,6 +46,10 @@ Page({
     });
   },
 
+  /**
+   * 获取用户名
+   * @param {*} e 
+   */
   inputTap: function (e) {
     var username = e.detail.value;
     this.setData({

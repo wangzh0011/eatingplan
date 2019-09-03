@@ -1,6 +1,8 @@
 //app.js
 App({
   onLaunch: function () {
+    var that = this;
+
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -32,8 +34,40 @@ App({
         }
       }
     })
+
+    //获取设备信息
+    wx.getSystemInfo({
+      success: (result)=>{
+        that.systemInfo.windowWidth = result.windowWidth,
+        that.systemInfo.windowHeight = result.windowHeight
+        that.position.title_area_width = result.windowWidth/1.7,
+        that.position.title_area_top = result.windowHeight/18.6,
+        that.position.title_area_left = (result.windowWidth-result.windowWidth/1.7)/2,
+        that.btn.btn_width = result.windowWidth/1.6,
+        that.btn.btn_height = result.windowHeight/16.6
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
   },
   globalData: {
     userInfo: null
+  },
+
+  systemInfo: {
+    windowWidth: null,
+    windowHeight: null
+  },
+
+  position: {
+    title_area_width: null,
+    title_area_top: null,
+    title_area_left: null,
+  },
+
+  btn: {
+    btn_width: null,
+    btn_height: null
   }
+
 })

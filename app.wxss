@@ -12,3 +12,15 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+.title_area{
+  position: absolute;
+  border-radius: 15px;
+  background-color: #29BE98
+}
+
+.title_text{
+  text-align: center;
+  color: #ffffff;
+  font-size: 42rpx;
+}

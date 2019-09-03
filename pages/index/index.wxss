@@ -22,13 +22,11 @@
 }
 
 .btn_style{
-    width: 100vw;
     position: fixed;
     bottom: 30px;
     display: flex;
     flex-flow: row wrap;
     z-index: 10;
-    
 }
 
 .btn{
@@ -43,13 +41,16 @@
 }
 
 .area_title{
-    margin: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
     color: #46bcac;
     font-size: 36rpx;
 }
 
 .area_text{
-    margin: 25px;
+    margin-top: 10px;
+    margin-left: 25px;
+    margin-right: 25px;
     color: #555e87;
     font-size: 26rpx;
     text-indent: 2em;
@@ -78,8 +79,3 @@
     color: #7e87e2
 }
 
-.title_area{
-    position: absolute;
-    border-radius: 15px;
-    background-color: #29BE98
-}

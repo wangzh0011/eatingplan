@@ -1,6 +1,6 @@
 <view>
 	<image src="../images/ty11.png" class="background-img"/>
-	<view class="title_area" style="width: {{windowWidth-140}}px; left: 70px; top: {{windowHeight/16}}px">
+	<view class="title_area" style="width: {{title_area_width}}px; left: {{title_area_left}}px; top: {{title_area_top}}px">
 		<view class="title_text" >设置检测参数</view>
 	</view>
 
@@ -8,21 +8,21 @@
 	class="area"
 	hover-class="none"
 	hover-stop-propagation="false"
-	style="left: {{50/2}}px; height: {{windowHeight-240}}px; width: {{windowWidth-50}}px; top:{{windowHeight/4}}px">
+	style="left: {{50/2}}px; height: {{windowHeight/1.5}}px; width: {{windowWidth-50}}px; top:{{windowHeight/7.7}}px">
 
         <view class="area_title">请填写真实参数以获取真情报告</view>
 
         <view class="area_sex_text">选择您的性别：</view>
         <view class="area_sex">
-			<radio-group class="group">
+			<radio-group class="group" bindchange="chooseSex">
 				<view class="attr_value_man">
 					<label class="radio_label">
-						<radio> <text style="color: #ffffff">男</text></radio>
+						<radio value="man"> <text style="color: #ffffff">男</text></radio>
 					</label>
 				</view>
 				<view class="attr_value_woman">
 					<label class="radio_label">
-						<radio> <text style="color: #ffffff">女</text></radio>
+						<radio value="woman"> <text style="color: #ffffff">女</text></radio>
 					</label>
 				</view>
 			</radio-group>
@@ -30,29 +30,33 @@
         
         <view class="area_age">
             <view class="area_age_text">年龄：</view>
-            <view class="area_age_input" style="width: {{windowWidth-50-40}}px"><input type="text" /></view>
+            <view class="area_age_input" style="width: {{windowWidth-50-40}}px">
+                <input type="text" bindinput="ageTap" value="{{value_age}}" maxlength="2"/>
+            </view>
         </view>
 
         <view class="area_hw_text">身高/体重：</view>
         <view class="area_height">
             <view class="area_height_input" style="width: {{(windowWidth-50-40)/2-30}}px">
-				<input type="text" />
+				<input type="text" bindinput="heightTap" value="{{value_height}}" maxlength="3"/>
 			</view>
 			<view class="area_height_cm">cm</view>
             <view class="area_weight_input" style="width: {{(windowWidth-50-40)/2-50}}px">
-				<input type="text" />
+				<input type="text" bindinput="weightTap" value="{{value_weight}}" maxlength="3"/>
 			</view>
 			<view class="area_weight_kg">kg</view>
         </view>
 
 		<view class="area_age"><!-- 与age样式一致，所以复用其样式-->
             <view class="area_age_text">平均睡眠时长：</view>
-            <view class="area_age_input" style="width: {{windowWidth-50-40}}px"><input type="text" /></view>
+            <view class="area_age_input" style="width: {{windowWidth-50-40}}px">
+                <input type="text" bindinput="sleepTap" value="{{value_sleep}}" maxlength="2"/>
+            </view>
         </view>
 
 	</view>
 
-	<view class="btn_style">
+	<view class="btn_style" style="left:{{(windowWidth-btn_width)/2}}px; height: {{btn_height}}px; width:{{btn_width}}px">
 		<button
 		 class="btn"
 		 type="primary"

@@ -1,5 +1,14 @@
 //app.js
 App({
+
+  /**请求后台url */
+  data: {
+    uploadUrl:
+      "http://127.0.0.1:8080/upload/",
+    server:
+      "http://127.0.0.1:8080/eatingplan/"  
+  },
+
   onLaunch: function () {
     var that = this;
 
@@ -12,8 +21,24 @@ App({
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        wx.request({
+          url: this.data.server + 'login',
+          data: {
+            code: res.code
+          },
+          header: {'content-type':'application/json'},
+          method: 'GET',
+          dataType: 'json',
+          responseType: 'text',
+          success: (result)=>{
+            this.userInfo.userInfo = result.data//将openId, sessionKey, unionId赋值给userInfo.userInfo
+          },
+          fail: ()=>{},
+          complete: ()=>{}
+        });
       }
     })
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -68,6 +93,10 @@ App({
   btn: {
     btn_width: null,
     btn_height: null
+  },
+
+  userInfo: {
+    userInfo: null
   }
 
 })

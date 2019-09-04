@@ -102,3 +102,11 @@
     color: #40465f;
     font-size: 28rpx
 }
+
+.echart_item{
+    height: 100%;
+    width: 25%;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}

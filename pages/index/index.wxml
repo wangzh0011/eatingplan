@@ -1,5 +1,7 @@
 <view>
-	<image src="../images/ty11.png" class="background-img" />
+	<image src="../images/ty11.png" class="background-img" >
+		<view class="background-block"></view>
+	</image>
 	<view class="title" style="width: {{windowWidth-160}}px; left: 80px; top: {{windowHeight/16}}px">
 		<view class="title_cell">{{title}}</view>
 		<view class="title_cell_num">已有{{num}}人参与健康计划</view>
@@ -36,8 +38,9 @@
 		<button
 		 class="btn"
 		 type="primary"
-		 bindtap="goParameter">
-		<!-- background: url('../images/ty2.png'); -->
+		 bindtap="goParameter"
+		 style=" background: url('../images/ty2.png');"
+		 >
 			设置检测参数
 		</button>
 	</view>

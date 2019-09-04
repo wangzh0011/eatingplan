@@ -33,15 +33,18 @@ Page({
       atbs_pic_style: app.systemInfo.windowHeight/24
     })
 
-    //计算tab下面横条的中间位置
-    wx.getSystemInfo({
-      // success: function (res) {
-      //   that.setData({
-      //     sliderLeft: (res.windowWidth / that.data.tabs.length - sliderWidth) / 2,
-      //     sliderOffset: res.windowWidth / that.data.tabs.length * that.data.activeIndex
-      //   });
-      // }
-    });
+    var weight = wx.getStorageSync("weight");//目前体重
+    var targetWeight = wx.getStorageSync("targetWeight");//目标体重
+    var targetDay = wx.getStorageSync("targetDay");//目标用时
+    var referDay = wx.getStorageSync("referDay");//建议用时
+    var weightLoss = weight - targetWeight;//减重
+    if (weightLoss > 20) {
+      weightLoss = 20;//封顶20
+    }
+    if (targetDay > referDay) {
+      targetDay = referDay;//封顶建议用时
+    }
+
   },
 
   /**

@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/planpay/planpay",
-    "pages/plandetails/plandetails",
     "pages/index/index",
+    "pages/plandetails/plandetails",
+    "pages/planpay/planpay",
     "pages/eatingplan/eatingplan",
     "pages/calculate/calculate",
     "pages/parameter/parameter",

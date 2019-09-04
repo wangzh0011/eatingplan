@@ -32,6 +32,8 @@ Page({
       referWeight: referWeight,
       referDay: referDay
     })
+
+    wx.setStorageSync("referDay",referDay);
   },
 
   /**
@@ -64,6 +66,7 @@ Page({
     this.setData({
       targetWeight: targetWeight
     })
+    wx.setStorageSync("targetWeight",targetWeight);
   },
 
   /**
@@ -80,6 +83,7 @@ Page({
     this.setData({
       targetDay: targetDay
     })
+    wx.setStorageSync("targetDay",targetDay);
   },
 
   /**

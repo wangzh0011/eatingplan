@@ -1,6 +1,50 @@
 // pages/plandetails/plandetails.js
+import * as echarts from '../../ec-canvas/echarts';
+
 var sliderWidth = 96; // 需要设置slider的宽度，用于计算中间位置
 var app = getApp();
+
+function getBarOption(weightLoss,targetDay,totalExp,dayExp) {
+  var weightLoss = wx.getStorageSync("weightLoss")
+  var targetDay = wx.getStorageSync("targetDay")
+  var totalExp = wx.getStorageSync("totalExp")
+  var dayExp = wx.getStorageSync("dayExp")
+  return {
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {            // 坐标轴指示器，坐标轴触发有效
+        type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+      }
+    },
+    grid: {
+      left: 0,
+      right: 0,
+      bottom: 0,
+      top: 10,
+      containLabel: true,
+      height: 100,
+      width: app.systemInfo.windowWidth-50
+    },
+    legend: {
+        data:['销量']
+    },
+    xAxis: {
+        data: ["减重","天数","基耗","日消"]
+    },
+    yAxis: {},
+    series: [{
+        type: 'bar',
+        data: [weightLoss, targetDay, totalExp, dayExp],
+        itemStyle : { normal: {label : {show: true}}},
+        // color: ['#2f4554', '#61a0a8', ]
+        color: function(params) { 
+          var colorList = ['#C33531','#EFE42A','#64BD3D','#EE9201','#29AAE3', '#B74AE5','#0AAF9F','#E89589','#16A085','#4A235A','#C39BD3 ','#F9E79F','#BA4A00','#ECF0F1','#616A6B','#EAF2F8','#4A235A','#3498DB' ]; 
+          return colorList[params.dataIndex] 
+      }
+    }]
+  };
+}
+
 Page({
 
   /**
@@ -11,7 +55,24 @@ Page({
     activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0,
-    itemslist: ["","","","","",]
+    itemslist: ["","","","","",],
+    weightLoss: '',
+
+    ecBar: {
+      // 如果想要禁止触屏事件，以保证在图表区域内触摸移动仍能滚动页面，
+      // 就将 disableTouch 设为 true
+      disableTouch: true,
+      onInit: function (canvas, width, height) {
+        const barChart = echarts.init(canvas, null, {
+          width: width,
+          height: height
+        });
+        canvas.setChart(barChart);
+        barChart.setOption(getBarOption());
+
+        return barChart;
+      }
+    }
   },
 
   /**
@@ -62,9 +123,13 @@ Page({
     this.setData({
       breakfast: Math.round(breakfast),
       lunch: Math.round(lunch),
-      dinner: Math.round(dinner)
+      dinner: Math.round(dinner),
     })
 
+    wx.setStorageSync("weightLoss", weightLoss);
+    wx.setStorageSync("targetDay", targetDay);
+    wx.setStorageSync("totalExp", totalExp);
+    wx.setStorageSync("dayExp", dayExp);
   },
 
   /**

@@ -5,28 +5,10 @@
 		<view class="title_text" >{{username}}的健康饮食计划</view>
 	</view>
 
-	<view class="plandata" style="width: {{windowWidth-50}}px; left: 25px; top: {{windowHeight/7}}px">
-        <view class="echart">
-            <view class="echart_item">
-                <view class="weightLoss">
-                    
-                </view>
-            </view>
-            <view class="echart_item">
-                <view class="days">
-
-                </view>
-            </view>
-            <view class="echart_item">
-                <view class="totalExp">
-
-                </view>
-            </view>
-            <view class="echart_item">
-                 <view class="dayExp">
-
-                 </view>
-            </view>
+    <view class="plandata" style="width: {{windowWidth-50}}px; left: 25px; top: {{windowHeight/10}}px">
+    
+        <view class="move-container">
+            <ec-canvas id="mychart-dom-move-bar" canvas-id="mychart-move-bar" ec="{{ ecBar }}"></ec-canvas>
         </view>
 
         <view class="weui-tab">

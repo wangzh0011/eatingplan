@@ -31,6 +31,7 @@ App({
           dataType: 'json',
           responseType: 'text',
           success: (result)=>{
+            console.log(result.data)
             this.userInfo.userInfo = result.data//将openId, sessionKey, unionId赋值给userInfo.userInfo
           },
           fail: ()=>{},

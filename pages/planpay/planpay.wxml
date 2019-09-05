@@ -1,6 +1,8 @@
 <!--pages/plandetails/plandetails.wxml-->
 <view>
-	<image src="../images/ty11.png" class="background-img"/>
+	<image src="../images/ty11.png" class="background-img" >
+		<view class="background-block" />
+	</image>
 	<view class="title_area_override" style="width: {{windowWidth-140}}px; left: 70px">
 		<view class="userinfo">
             <open-data class="userinfo-avatar" background-size="cover" type="userAvatarUrl" style="width:{{windowHeight/3.6}}px; height:{{windowHeight/3.6}}px"></open-data>
@@ -29,18 +31,12 @@
 
 	</view>
     
-
-	<view class="btn_style" style="left:{{(windowWidth-btn_width)/2}}px; width:{{btn_width}}px">
-		<button
-		 class="btn"
-		 type="primary"
-		 loading="{{loading}}"
-		 disabled="{{disabled}}"
-		 bindtap="onTap"
-		>
-		<!-- background: url('../images/ty2.png'); -->
-			支付14元领取计划
-		</button>
+	<view  class="btn_style" >
+		<image src="../images/ty2.png" style="position: absolute; left:{{(windowWidth-btn_width)/2}}px; width:{{btn_width}}px; height:{{btn_height}}px;">
+		</image>
+	</view>
+	<view class="btn" bindtap="onTap" style="width:{{btn_width}}px; left:{{(windowWidth-btn_width)/2}}px;">
+		支付14元领取计划
 	</view>
 
 </view>

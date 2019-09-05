@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/bar/index",
     "pages/index/index",
     "pages/plandetails/plandetails",
     "pages/planpay/planpay",

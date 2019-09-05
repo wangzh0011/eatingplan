@@ -43,3 +43,11 @@
     border-bottom: 1px solid #555e87;
     
 }
+
+.background-block{
+    position: absolute;
+    bottom: 0px;
+    background-color: #E2ECF5;
+    width: 100%;
+    height: 56%;
+}

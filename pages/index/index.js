@@ -39,7 +39,7 @@ Page({
     /**
      * 设置检测参数界面
      */
-    goParameter: function () {
+    onTap: function () {
         wx.navigateTo({
             url: '/pages/parameter/parameter',
             success: (result)=>{

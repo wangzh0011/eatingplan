@@ -1,5 +1,7 @@
 <view>
-	<image src="../images/ty11.png" class="background-img"/>
+	<image src="../images/ty11.png" class="background-img" >
+		<view class="background-block" />
+	</image>
 	<view class="title_area" style="width: {{title_area_width}}px; left: {{title_area_left}}px; top: {{title_area_top}}px">
 		<view class="title_text" >设置检测参数</view>
 	</view>
@@ -56,17 +58,12 @@
 
 	</view>
 
-	<view class="btn_style" style="left:{{(windowWidth-btn_width)/2}}px; width:{{btn_width}}px">
-		<button
-		 class="btn"
-		 type="primary"
-		 loading="{{loading}}"
-		 disabled="{{disabled}}"
-		 bindtap="onTap"
-		>
-		<!-- background: url('../images/ty2.png'); -->
-			开始云计算
-		</button>
+	<view  class="btn_style" >
+		<image src="../images/ty2.png" style="position: absolute; left:{{(windowWidth-btn_width)/2}}px; width:{{btn_width}}px; height:{{btn_height}}px;">
+		</image>
+	</view>
+	<view class="btn" bindtap="onTap" style="width:{{btn_width}}px; left:{{(windowWidth-btn_width)/2}}px;">
+		开始云计算
 	</view>
 
 </view>

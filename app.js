@@ -69,7 +69,7 @@ App({
         that.position.title_area_top = result.windowHeight/18.6,
         that.position.title_area_left = (result.windowWidth-result.windowWidth/1.7)/2,
         that.btn.btn_width = result.windowWidth/1.6,
-        that.btn.btn_height = result.windowHeight/16.6
+        that.btn.btn_height = result.windowHeight/12
       },
       fail: ()=>{},
       complete: ()=>{}

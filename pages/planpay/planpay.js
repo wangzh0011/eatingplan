@@ -47,14 +47,14 @@ Page({
       fail (res) { }
     })
 
-    // wx.navigateTo({
-    //   url: '/pages/plandetails/plandetails?username=' + username,
-    //   success: (result)=>{
+    wx.navigateTo({
+      url: '/pages/plandetails/plandetails?username=' + username,
+      success: (result)=>{
           
-    //   },
-    //   fail: ()=>{},
-    //   complete: ()=>{}
-    // });
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
   },
 
   /**

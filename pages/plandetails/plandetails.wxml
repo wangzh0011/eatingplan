@@ -1,6 +1,6 @@
 <!--pages/plandetails/plandetails.wxml-->
 <view>
-	<image src="../images/ty11.png" style="width: 100%; height: 100%; position: absolute;" />
+	<image class="background-img" src="../images/ty11.png" />
 	<view class="title_area" style="width: {{title_area_width}}px; left: {{title_area_left}}px; top: {{title_area_top}}px">
 		<view class="title_text" >{{username}}的健康饮食计划</view>
 	</view>

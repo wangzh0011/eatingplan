@@ -17,28 +17,32 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        wx.request({
-          url: this.data.server + 'login',
-          data: {
-            code: res.code
-          },
-          header: {'content-type':'application/json'},
-          method: 'GET',
-          dataType: 'json',
-          responseType: 'text',
-          success: (result)=>{
-            console.log(result.data)
-            this.userInfo.userInfo = result.data//将openId, sessionKey, unionId赋值给userInfo.userInfo
-          },
-          fail: ()=>{},
-          complete: ()=>{}
-        });
-      }
-    })
+    if (!wx.getStorageSync("wxData")) {
+      // 登录
+      wx.login({
+        success: res => {
+          // 发送 res.code 到后台换取 openId, sessionKey, unionId
+          wx.request({
+            url: this.data.server + 'login',
+            data: {
+              code: res.code
+            },
+            header: {'content-type':'application/json'},
+            method: 'GET',
+            dataType: 'json',
+            responseType: 'text',
+            success: (result)=>{
+              console.log("微信接口返回数据：")
+              console.log(result.data)
+              this.userInfo.userInfo = result.data//将openId, sessionKey, unionId赋值给userInfo.userInfo
+              wx.setStorageSync("wxData",result.data);
+            },
+            fail: ()=>{},
+            complete: ()=>{}
+          });
+        }
+      })
+    }
 
     // 获取用户信息
     wx.getSetting({

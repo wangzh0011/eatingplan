@@ -99,10 +99,10 @@
     </view>
 
     <view class="tabs" style="height: {{windowHeight/12}}px">
-        <view class="tabs_item">
-            <image src="../images/ty7.png" style="height: {{atbs_pic_style}}px; width: {{atbs_pic_style}}px"/>
+        <button class="tabs_item" open-type="contact">
+            <image src="../images/ty7.png" bindtap="" style="height: {{atbs_pic_style}}px; width: {{atbs_pic_style}}px"/>
             <text class="tabs_text">客服</text>
-        </view>
+        </button>
         <view class="tabs_item">
             <!-- <image src="../images/ty6.png" style="height: {{atbs_pic_style*4}}px; width: {{atbs_pic_style*4}}px;bottom: 0px"/> -->
         </view>
@@ -112,9 +112,12 @@
         </view>
     </view>
 
-    <view class="share">
-        <image src="../images/ty6.png" style="height: {{atbs_pic_style*3}}px; width: {{atbs_pic_style*3}}px"/>
-    </view>
+    <!-- <view class="share"> -->
+        <button class="share" loading="{{loading}}" disabled="{{disabled}}" open-type="share">
+            <image src="../images/ty6.png" bindtap="onShare" style="height: {{atbs_pic_style*3}}px; width: {{atbs_pic_style*3}}px"/>
+        </button>
+        
+    <!-- </view> -->
 
 
 </view>

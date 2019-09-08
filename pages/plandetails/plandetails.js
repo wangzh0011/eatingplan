@@ -8,7 +8,9 @@ function getBarOption(weightLoss,targetDay,totalExp,dayExp) {
   var weightLoss = wx.getStorageSync("weightLoss")
   var targetDay = wx.getStorageSync("targetDay")
   var totalExp = wx.getStorageSync("totalExp")
+  totalExp = Math.round(totalExp)
   var dayExp = wx.getStorageSync("dayExp")
+  dayExp = Math.round(dayExp)
   return {
     tooltip: {
       trigger: 'axis',

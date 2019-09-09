@@ -17,6 +17,7 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
+    console.log(wx.getStorageSync("wxData"))
     if (!wx.getStorageSync("wxData")) {
       // 登录
       wx.login({

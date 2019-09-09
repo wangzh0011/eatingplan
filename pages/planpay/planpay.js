@@ -37,15 +37,30 @@ Page({
       return;
     }
 
-    wx.requestPayment({
-      timeStamp: '',
-      nonceStr: '',
-      package: '',
-      signType: 'MD5',
-      paySign: '',
-      success (res) { },
-      fail (res) { }
-    })
+      wx.request({
+      url: app.data.server + 'pay',
+      data: {
+        openId: wx.getStorageSync("wxData").openid
+      },
+      header: {'content-type':'application/json'},
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: (result)=>{
+        wx.requestPayment({
+          timeStamp: '',
+          nonceStr: '',
+          package: '',
+          signType: 'MD5',
+          paySign: '',
+          success (res) { },
+          fail (res) { }
+        })
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+
 
     wx.navigateTo({
       url: '/pages/plandetails/plandetails?username=' + username,

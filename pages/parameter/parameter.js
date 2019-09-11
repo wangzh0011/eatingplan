@@ -60,15 +60,15 @@ Page({
   /**
    * 年龄
    */
-  ageTap: function (e) {
+  bindDateChange: function (e) {
     var age = e.detail.value;
     var that =this;
-    if(this.validate(age) == false) {
-      that.setData({
-        age: ''
-      })
-      return;
-    }
+    // if(this.validate(age) == false) {
+    //   that.setData({
+    //     age: ''
+    //   })
+    //   return;
+    // }
     this.setData({
       age: age
     })

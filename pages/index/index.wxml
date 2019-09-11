@@ -21,7 +21,7 @@
 		<view class="area_pic">
 			<view class="area_pic_cell">
 				<image src="../images/1-1.png" style="width: {{area_pic_width}}px; height: {{area_pic_width}}px; padding-left: {{area_pic_padding}}px; padding-right: {{area_pic_padding}}px" />
-				<text class="area_pic_text">BMI指数</text>
+				<text class="area_pic_text">健康指数</text>
 			</view>
 			<view class="area_pic_cell">
 				<image src="../images/1-2.png" style="width: {{area_pic_width}}px; height: {{area_pic_width}}px; padding-left: {{area_pic_padding}}px; padding-right: {{area_pic_padding}}px" />

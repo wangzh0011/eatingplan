@@ -32,8 +32,8 @@
 .btn{
     text-align: center;
     position: absolute;
-    bottom: 6%;
-    font-size: 30rpx;
+    bottom: 5.5%;
+    font-size: 32rpx;
     color: #ffffff;
     
 }

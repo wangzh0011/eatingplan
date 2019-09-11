@@ -32,9 +32,9 @@
         
         <view class="area_age">
             <view class="area_age_text">年龄：</view>
-            <view class="area_age_input" style="width: {{windowWidth-50-40}}px">
-                <input type="number" bindinput="ageTap" value="{{age}}" maxlength="2"/>
-            </view>
+			<picker class="area_age_input" style="width: {{windowWidth-50-40}}px" mode="date" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
+                <input value="{{age}}" disabled="{{true}}"/>
+            </picker>
         </view>
 
         <view class="area_hw_text">身高/体重：</view>

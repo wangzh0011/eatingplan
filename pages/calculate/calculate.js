@@ -44,7 +44,7 @@ Page({
       weight: weight + 'kg',
       height: height + 'cm',
       sleepDesc: sleepDesc,
-      BMI: 'BMI' + BMI + '(' + BMIdesc + ')',
+      BMI: '健康状态' + '(' + BMIdesc + ')',
       textDesc: textDesc
     })
     

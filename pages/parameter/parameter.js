@@ -7,16 +7,43 @@ Page({
    */
   data: {
     sex: '',
-    age: '',
+    birth: '',
     height: '',
     weight: '',
-    sleep: ''
+    sleep: '',
+    endDate: '',
+    startDate: '',
+    heightArray: [145],
+    weightArray: [30],
+    sleepArray: [1]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
+    var date = new Date();
+    var heightArray = this.data.heightArray;
+    var weightArray = this.data.weightArray;
+    var sleepArray = this.data.sleepArray;
+
+    /**设置身高数组 */
+    for (let index = 0,height = 145;height <= 210 ; index++,height++) {
+      heightArray[index] = height
+    }
+
+    /**设置体重数组 */
+    for (let index = 0,weight = 30;weight <= 110 ; index++,weight++) {
+      weightArray[index] = weight
+    }
+
+    /**设置睡眠数组 */
+    for (let index = 0,sleep = 1;sleep <= 24 ; index++,sleep++) {
+      sleepArray[index] = sleep
+    }
+
+
     
     this.setData({
       windowWidth: app.systemInfo.windowWidth,
@@ -26,8 +53,14 @@ Page({
       title_area_left: app.position.title_area_left,
       title_area_left: app.position.title_area_left,
       btn_width: app.btn.btn_width,
-      btn_height: app.btn.btn_height
+      btn_height: app.btn.btn_height,
+      startDate: "1960-01-01",
+      endDate: date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDay(),
+      heightArray: heightArray,
+      weightArray: weightArray,
+      sleepArray: sleepArray
     })
+
     
   },
 
@@ -61,8 +94,17 @@ Page({
    * 年龄
    */
   bindDateChange: function (e) {
-    var age = e.detail.value;
-    var that =this;
+    var birth = e.detail.value;
+    var date = new Date();
+    var year = birth.substring(0,4)
+    var month = birth.substring(5,7)
+    var day = birth.substring(8,10)
+    var age = date.getFullYear() - year
+    if ((date.getMonth() + 1) < month) {
+      age = age - 1;
+    } else if ((date.getMonth() + 1) == month && date.getDate() < day) {
+      age = age - 1;
+    }
     // if(this.validate(age) == false) {
     //   that.setData({
     //     age: ''
@@ -70,6 +112,7 @@ Page({
     //   return;
     // }
     this.setData({
+      birth: birth,
       age: age
     })
     wx.setStorageSync("age", age);
@@ -79,15 +122,10 @@ Page({
    * 身高
    */
   heightTap: function (e) {
-    var height = e.detail.value;
-    var that =this;
-    if(this.validate(height) == false) {
-      that.setData({
-        height: ''
-      })
-      return;
-    }
+    var index = e.detail.value;
+    var height = this.data.heightArray[index];
     this.setData({
+      index_height: index,
       height: height
     })
     wx.setStorageSync("height", height);
@@ -97,15 +135,10 @@ Page({
    * 体重
    */
   weightTap: function (e) {
-    var weight = e.detail.value;
-    var that =this;
-    if(this.validate(weight) == false) {
-      that.setData({
-        weight: ''
-      })
-      return;
-    }
+    var index = e.detail.value;
+    var weight = this.data.weightArray[index];
     this.setData({
+      index_weight: index,
       weight: weight
     })
     wx.setStorageSync("weight", weight);
@@ -115,15 +148,10 @@ Page({
    * 睡眠
    */
   sleepTap: function (e){
-    var sleep = e.detail.value;
-    var that =this;
-    if(this.validate(sleep) == false) {
-      that.setData({
-        sleep: ''
-      })
-      return;
-    }
+    var index = e.detail.value;
+    var sleep = this.data.sleepArray[index];
     this.setData({
+      index_sleep: index,
       sleep: sleep
     })
   },
@@ -132,13 +160,15 @@ Page({
    * btn按钮
    */
   onTap: function () {
+
     var sex = this.data.sex;
+    var birth = this.data.birth;
     var age = this.data.age;
     var height = this.data.height;
     var weight = this.data.weight;
     var sleep = this.data.sleep;
 
-    var isnull = this.paraIsNull(sex,age,height,weight,sleep);
+    var isnull = this.paraIsNull(sex,birth,height,weight,sleep);
     if (isnull == false) {
       return;
     }
@@ -148,14 +178,21 @@ Page({
     wx.setStorageSync("BMI",BMI);
     wx.setStorageSync("sleepStatus",sleepStatus);
 
-    wx.navigateTo({
-      url: '/pages/calculate/calculate',
-      success: (result)=>{
-        
-      },
-      fail: ()=>{},
-      complete: ()=>{}
+    wx.showLoading({
+      title: "云计算中",
+      mask: true,
     });
+
+    
+
+    setTimeout(() => {
+      wx.hideLoading()
+      wx.navigateTo({
+        url: '/pages/calculate/calculate',
+      });
+    }, 2000);
+    
+    
   },
 
   /**
@@ -172,7 +209,7 @@ Page({
       return false;
     }else if(age.trim() == ''){
       wx.showToast({
-        title: '请输入您的年龄',
+        title: '请选择您的出生年月',
         icon: 'none',
         duration: 1500,
       });
@@ -180,35 +217,26 @@ Page({
         age: ""
       })
       return false;
-    }else if(height.trim() == ''){
+    }else if(height == ''){
       wx.showToast({
         title: '请输入您的身高',
         icon: 'none',
         duration: 1500,
       });
-      that.setData({
-        height: ""
-      })
       return false;
-    }else if(weight.trim() == ''){
+    }else if(weight == ''){
       wx.showToast({
         title: '请输入您的体重',
         icon: 'none',
         duration: 1500,
       });
-      that.setData({
-        weight: ""
-      })
       return false;
-    }else if(sleep.trim() == ''){
+    }else if(sleep == ''){
       wx.showToast({
         title: '请输入您的平均睡眠时长',
         icon: 'none',
         duration: 1500,
       });
-      that.setData({
-        sleep: ""
-      })
       return false;
     }
   },

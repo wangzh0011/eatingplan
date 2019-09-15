@@ -31,29 +31,29 @@
         </view>
         
         <view class="area_age">
-            <view class="area_age_text">年龄：</view>
-			<picker class="area_age_input" style="width: {{windowWidth-50-40}}px" mode="date" start="2015-09-01" end="2017-09-01" bindchange="bindDateChange">
-                <input value="{{age}}" disabled="{{true}}"/>
+            <view class="area_age_text">出生年月：</view>
+			<picker class="area_age_input" style="width: {{windowWidth-50-40}}px" mode="date" start="{{startDate}}" end="{{endDate}}" bindchange="bindDateChange">
+                <input value="{{birth}}" disabled="{{true}}"/>
             </picker>
         </view>
 
         <view class="area_hw_text">身高/体重：</view>
         <view class="area_height">
-            <view class="area_height_input" style="width: {{(windowWidth-50-40)/2-30}}px">
-				<input type="number" bindinput="heightTap" value="{{height}}" maxlength="3"/>
-			</view>
+            <picker class="area_height_input" style="width: {{(windowWidth-50-40)/2-30}}px" mode="selector" bindchange="heightTap" range="{{heightArray}}">
+				<input disabled="{{true}}" value="{{heightArray[index_height]}}"/>
+			</picker>
 			<view class="area_height_cm">cm</view>
-            <view class="area_weight_input" style="width: {{(windowWidth-50-40)/2-50}}px">
-				<input type="number" bindinput="weightTap" value="{{weight}}" maxlength="3"/>
-			</view>
+            <picker class="area_weight_input" style="width: {{(windowWidth-50-40)/2-50}}px" mode="selector" bindchange="weightTap" range="{{weightArray}}">
+				<input value="{{weightArray[index_weight]}}" disabled="{{true}}"/>
+			</picker>
 			<view class="area_weight_kg">kg</view>
         </view>
 
 		<view class="area_age"><!-- 与age样式一致，所以复用其样式-->
             <view class="area_age_text">平均睡眠时长：</view>
-            <view class="area_age_input" style="width: {{windowWidth-50-40}}px">
-                <input type="number" bindinput="sleepTap" value="{{sleep}}" maxlength="2"/>
-            </view>
+            <picker class="area_age_input" style="width: {{windowWidth-50-40}}px" mode="selector" bindchange="sleepTap" range="{{sleepArray}}">
+                <input value="{{sleepArray[index_sleep]}}" disabled="{{true}}"/>
+            </picker>
         </view>
 
 	</view>

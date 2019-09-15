@@ -18,7 +18,9 @@
         <view class="area_weight">
             <view class="area_weight_input" style="width: {{(windowWidth-50-40)/2-30}}px">
                 <view class="area_weight_text">目标体重：</view>
-				<input type="number" maxlength="3" class="input_border" bindinput="targetWeightTap" value="{{targetWeight}}"/>
+				<picker mode="selector" bindchange="targetWeightTap" range="{{weightArray}}">
+					<input class="input_border" value="{{weightArray[index_weight]}}" disabled="{{true}}"/>
+				</picker>
 			</view>
 			<view class="area_height_cm">kg</view>
             <view class="area_weight_input" style="width: {{(windowWidth-50-40)/2-50}}px">
@@ -31,7 +33,9 @@
 		<view class="area_time">
             <view class="area_weight_input" style="width: {{(windowWidth-50-40)/2-30}}px">
                 <view class="area_weight_text">计划用时：</view>
-				<input type="number" maxlength="3" class="input_border" bindinput="targetDayTap" value="{{targetDay}}"/>
+				<picker mode="selector" bindchange="targetDayTap" range="{{dayArray}}">
+					<input class="input_border"  value="{{dayArray[index_day]}}" disabled="{{true}}"/>
+				</picker>
 			</view>
 			<view class="area_height_cm">天</view>
             <view class="area_weight_input" style="width: {{(windowWidth-50-40)/2-50}}px">

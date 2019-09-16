@@ -8,7 +8,7 @@
     <view class="plandata" style="width: {{windowWidth-50}}px; left: 25px; top: {{windowHeight/10}}px">
     
         <view class="move-container">
-            <ec-canvas id="mychart-dom-move-bar" canvas-id="mychart-move-bar" ec="{{ ecBar }}"></ec-canvas>
+            <!-- <ec-canvas id="mychart-dom-move-bar" canvas-id="mychart-move-bar" ec="{{ ecBar }}"></ec-canvas> -->
         </view>
 
         <view class="weui-tab">

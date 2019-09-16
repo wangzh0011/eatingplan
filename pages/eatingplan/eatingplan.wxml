@@ -45,9 +45,10 @@
 			<view class="area_weight_kg">天</view>
         </view>
 
+		<view class="area_desc_text_title">我们将根据大数据为您定制计划</view>
         <view class="area_desc_text">
             <view class="area_desc_text_input" >
-				<input type="text"  class="input_desc_text_border" value="BMI指数" disabled="{{true}}"/>
+				<input type="text"  class="input_desc_text_border" value="营养学" disabled="{{true}}"/>
 			</view>
             <view class="area_desc_text_input" >
 				<input type="text" class="input_desc_text_border" value="年龄" disabled="{{true}}"/>
@@ -70,9 +71,9 @@
 	<view  class="btn_style" >
 		<image src="../images/ty2.png" style="position: absolute; left:{{(windowWidth-btn_width)/2}}px; width:{{btn_width}}px; height:{{btn_height}}px;">
 		</image>
-	</view>
-	<view class="btn" bindtap="onTap" style="width:{{btn_width}}px; left:{{(windowWidth-btn_width)/2}}px;">
-		制定我的计划
+		<view class="btn" bindtap="onTap" style="width:{{btn_width}}px; left:{{(windowWidth-btn_width)/2}}px;">
+			制定我的计划
+		</view>
 	</view>
 
 </view>

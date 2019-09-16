@@ -6,7 +6,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    username: ''
+    username: '',
+    showFanqie: false
   },
 
   /**
@@ -80,6 +81,15 @@ Page({
     var username = e.detail.value;
     this.setData({
       username: username,
+    })
+  },
+
+  /**
+   * 弹出健康番茄页面
+   */
+  fanqieTap: function () {
+    this.setData({
+      showFanqie: true
     })
   },
 

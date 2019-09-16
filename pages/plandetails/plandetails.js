@@ -162,7 +162,7 @@ Page({
    * @param {日消} dayExp 
    */
   totalExp: function (dayExp) {
-    return (dayExp+476.976)*1.1;
+    return (Math.round(dayExp)+476.976)*1.1;
   },
 
   /**

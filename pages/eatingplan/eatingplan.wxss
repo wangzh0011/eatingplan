@@ -58,8 +58,15 @@
     justify-content: flex-start; /*从左边开始向右排*/
 }
 
+.area_desc_text_title{
+    margin-top: 55px;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center
+}
+
 .area_desc_text{
-    margin-top: 60px;
+    margin-top: 5px;
     margin-left: 20px;
     margin-right: 10px;
     display: flex;

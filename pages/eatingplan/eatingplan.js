@@ -7,7 +7,9 @@ Page({
    */
   data: {
     targetWeight: '',
-    targetDay: ''
+    targetDay: '',
+    weightArray: [],
+    dayArray: []
   },
 
   /**
@@ -20,6 +22,17 @@ Page({
     var sex = wx.getStorageSync("sex");
     var referWeight = this.referWeight(height,sex);
     var referDay = this.referDay(BMI);
+    var weightArray = this.data.weightArray;
+    var dayArray = this.data.dayArray;
+
+    /**设置目标体重数组 */
+    for (let index = 0,targetWeight = referWeight - 15; targetWeight <= referWeight; index++,targetWeight++) {
+      weightArray[index] = targetWeight;
+    }
+    /**设置计划用时数组 */
+    for (let index = 0,targetDay = referDay - 30; targetDay <= (Math.round(referDay) + 30); index++,targetDay++) {
+      dayArray[index] = targetDay;
+    }
 
     this.setData({
       windowWidth: app.systemInfo.windowWidth,
@@ -30,7 +43,9 @@ Page({
       btn_width: app.btn.btn_width,
       btn_height: app.btn.btn_height,
       referWeight: referWeight,
-      referDay: referDay
+      referDay: referDay,
+      weightArray: weightArray,
+      dayArray: dayArray
     })
 
     wx.setStorageSync("referDay",referDay);
@@ -56,34 +71,38 @@ Page({
    * 目标体重
    */
   targetWeightTap: function (e) {
-    var targetWeight = e.detail.value;
-    if (this.validate(targetWeight) == false) {
-      this.setData({
-        targetWeight: ''
-      })
-      return;
-    } 
+    var index = e.detail.value;
+    var weightArray = this.data.weightArray;
+    // if (this.validate(targetWeight) == false) {
+    //   this.setData({
+    //     targetWeight: ''
+    //   })
+    //   return;
+    // } 
     this.setData({
-      targetWeight: targetWeight
+      targetWeight: weightArray[index],
+      index_weight: index
     })
-    wx.setStorageSync("targetWeight",targetWeight);
+    wx.setStorageSync("targetWeight",weightArray[index]);
   },
 
   /**
    * 目标天数
    */
   targetDayTap: function (e) {
-    var targetDay = e.detail.value;
-    if (this.validate(targetDay) == false) {
-      this.setData({
-        targetDay: ''
-      })
-      return;
-    } 
+    var index = e.detail.value;
+    var dayArray = this.data.dayArray;
+    // if (this.validate(targetDay) == false) {
+    //   this.setData({
+    //     targetDay: ''
+    //   })
+    //   return;
+    // } 
     this.setData({
-      targetDay: targetDay
+      targetDay: dayArray[index],
+      index_day: index
     })
-    wx.setStorageSync("targetDay",targetDay);
+    wx.setStorageSync("targetDay",dayArray[index]);
   },
 
   /**
@@ -129,7 +148,7 @@ Page({
     var targetDay = this.data.targetDay;
     var targetWeight = this.data.targetWeight;
 
-    if (targetWeight.trim() == '') {
+    if (targetWeight == '') {
       wx.showToast({
         title: '请输入目标体重',
         icon: 'none',
@@ -139,7 +158,7 @@ Page({
         targetWeight: ''
       })
       return;
-    } else if (targetDay.trim() == '') {
+    } else if (targetDay == '') {
       wx.showToast({
         title: '请输入计划用时',
         icon: 'none',

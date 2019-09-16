@@ -44,8 +44,15 @@
 
 	<!--健康番茄遮罩层-->
 	<view wx:if="{{showFanqie}}" class="mask">
-		<view class="fanqie"></view>
-		<image src="../images/xty10.png" />
+		<view class="fanqie">
+			<view class="image">
+				<image src="../images/xty8.png" />
+				<image style="width: 120px" src="../images/xty9.png" />
+			</view>
+			<view class="text"></view>
+			<view class="qccode"></view>
+		</view>
+		<image class="fanqie_close" bindtap="closeTap" src="../images/xty10.png" />
 	</view>
 
 </view>

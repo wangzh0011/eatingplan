@@ -88,3 +88,29 @@
     top: 10%;
     left: 10%;
 }
+
+.fanqie_close{
+    position: absolute;
+    top: 8%;
+    left: 83%;
+    width: 45px;
+    height: 45px;
+}
+
+.fanqie .image{
+    display: flex;
+    flex-flow: row;
+}
+
+.fanqie .image image{
+    width: 90px;
+    height: 90px;
+}
+
+.fanqie .text{
+
+}
+
+.fanqie .qccode{
+
+}

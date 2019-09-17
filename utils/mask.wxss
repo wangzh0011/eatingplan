@@ -112,6 +112,11 @@
     color: #ffffff
 }
 
+.share_img{
+    width: 60px;
+    height: 60px
+}
+
 /*重置button样式*/
 button::after {
     border: none

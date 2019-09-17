@@ -1,5 +1,6 @@
 /* pages/plandetails/plandetails.wxss */
 @import "/utils/mask.wxss";
+@import "/utils/tabs.wxss";
 
 .title_area_override{
     position: absolute;

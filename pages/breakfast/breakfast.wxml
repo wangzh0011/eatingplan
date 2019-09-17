@@ -1,0 +1,28 @@
+<!--pages/breakfast/breakfast.wxml-->
+<view >
+    <image src="../images/ty11.png" class="background-img"></image>
+
+    <view class="title_area" style="width: {{title_area_width}}px; left: {{title_area_left}}px; top: {{title_area_top}}px">
+		<view class="title_text" >选择早餐习惯</view>
+	</view>
+
+    <view class="subtitle">请选择1-12项日常早餐 可多选</view>
+
+    <checkbox-group class="foods_area">
+        <label class="item" wx:for="{{foodsList}}" wx:key="*this" wx:for-item="item">
+            <image src="../images/6-5.png" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
+            <checkbox class="foods_name" style="width: {{windowHeight/6}}px; height: {{windowHeight/12}}px" value="{{item.name}}" >
+                <text >豆浆</text>
+            </checkbox>
+        </label>
+    </checkbox-group>
+
+    <view  class="btn_style" >
+		<image src="../images/ty2.png" style="position: absolute; left:{{(windowWidth-btn_width)/2}}px; width:{{btn_width}}px; height:{{btn_height}}px;">
+		</image>
+		<view class="btn" bindtap="onTap" style="width:{{btn_width}}px; left:{{(windowWidth-btn_width)/2}}px;">
+			前往选择午餐
+		</view>
+	</view>
+
+</view>

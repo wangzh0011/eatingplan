@@ -1,0 +1,2 @@
+/* pages/breakfast/breakfast.wxss */
+@import "/utils/foods.wxss";

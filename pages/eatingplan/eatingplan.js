@@ -171,7 +171,7 @@ Page({
     }
 
     wx.navigateTo({
-      url: '/pages/planpay/planpay',
+      url: '/pages/breakfast/breakfast',
       success: (result)=>{
           
       },

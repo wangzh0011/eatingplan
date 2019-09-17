@@ -51,7 +51,6 @@ Page({
       title_area_width: app.position.title_area_width,
       title_area_top: app.position.title_area_top,
       title_area_left: app.position.title_area_left,
-      title_area_left: app.position.title_area_left,
       btn_width: app.btn.btn_width,
       btn_height: app.btn.btn_height,
       startDate: "1960-01-01",

@@ -1,3 +1,4 @@
+@import "/utils/mask.wxss";
 
 .plandata{
     position: absolute;

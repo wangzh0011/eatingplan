@@ -34,7 +34,7 @@
 	<view  class="btn_style" >
 		<image src="../images/ty2.png" style="position: absolute; left:{{(windowWidth-btn_width)/2}}px; width:{{btn_width}}px; height:{{btn_height}}px;">
 		</image>
-		<view class="btn" bindtap="onTap" style="width:{{btn_width}}px; left:{{(windowWidth-btn_width)/2}}px;">
+		<view class="btn" bindtap="onTap" style="width:{{btn_width}}px; left:{{(windowWidth-btn_width)/2}}px; height:{{btn_height/2}}px;">
 			支付14元领取计划
 		</view>
 		<view class="fanqie_link" bindtap="fanqieTap">
@@ -46,13 +46,36 @@
 	<view wx:if="{{showFanqie}}" class="mask">
 		<view class="fanqie">
 			<view class="image">
-				<image src="../images/xty8.png" />
-				<image style="width: 120px" src="../images/xty9.png" />
+				<image class="style1" src="../images/xty14.png" />
+				<image class="style2" src="../images/xty9.png" />
+				<!-- <view >要么瘦</view>
+				<view >要么死</view> -->
+				<image class="text" src="../images/xty15.png"/>
 			</view>
-			<view class="text"></view>
-			<view class="qccode"></view>
+			<view class="text">
+				<view style="font-size: 30rpx">众人皆胖 我独瘦</view>
+				<view >我将参与健康番茄</view>
+				<view >全民减脂计划</view>
+				<view >用我的科学减脂甩掉肉肉</view>
+				<view >再见了胖友们</view>
+			</view>
+			<view class="text_bottom">
+				<text >健康番茄</text>
+			</view>
+			<image class="qccode" src="../images/xty13.png" />
 		</view>
 		<image class="fanqie_close" bindtap="closeTap" src="../images/xty10.png" />
+
+		<view class="fanqie_share">
+			<button class="share_area" open-type="share">
+				<image class="chat" src="../images/xty12.png" style="width: 70px; height: 70px"/><!--好友分享-->
+				<text class="share_text">好友分享</text>
+			</button>
+			<view class="share_area">
+				<image class="friend" src="../images/xty13.png" style="width: 70px; height: 70px"/><!--朋友圈-->
+				<text class="share_text">朋友圈</text>
+			</view>
+		</view>
 	</view>
 
 </view>

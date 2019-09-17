@@ -59,6 +59,7 @@ Page({
     sliderLeft: 0,
     itemslist: ["","","","","",],
     weightLoss: '',
+    showFanqie: false,
 
     ecBar: {
       // 如果想要禁止触屏事件，以保证在图表区域内触摸移动仍能滚动页面，
@@ -126,6 +127,9 @@ Page({
       breakfast: Math.round(breakfast),
       lunch: Math.round(lunch),
       dinner: Math.round(dinner),
+      sex: sex,
+      targetDay: targetDay,
+      weightLoss: weightLoss
     })
 
     wx.setStorageSync("weightLoss", weightLoss);
@@ -173,6 +177,19 @@ Page({
       sliderOffset: e.currentTarget.offsetLeft,
       activeIndex: e.currentTarget.id
     });
+  },
+
+  /**分享按钮 */
+  onShare: function () {
+    this.setData({
+      showFanqie: true
+    })
+  },
+
+  closeTap: function () {
+    this.setData({
+      showFanqie: false
+    })
   },
 
   /**

@@ -1,12 +1,12 @@
 {
   "pages": [
-    "pages/planpay/planpay",
-    "pages/index/index",
     "pages/plandetails/plandetails",
-    "pages/eatingplan/eatingplan",
-    "pages/bar/index",
-    "pages/calculate/calculate",
+    "pages/index/index",
+    "pages/planpay/planpay",
     "pages/parameter/parameter",
+    "pages/bar/index",
+    "pages/eatingplan/eatingplan",
+    "pages/calculate/calculate",
     "pages/logs/logs"
   ],
   "permission": {

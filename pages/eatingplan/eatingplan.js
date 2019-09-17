@@ -26,7 +26,7 @@ Page({
     var dayArray = this.data.dayArray;
 
     /**设置目标体重数组 */
-    for (let index = 0,targetWeight = referWeight - 15; targetWeight <= referWeight; index++,targetWeight++) {
+    for (let index = 0,targetWeight = referWeight - 20; targetWeight <= referWeight; index++,targetWeight++) {
       weightArray[index] = targetWeight;
     }
     /**设置计划用时数组 */

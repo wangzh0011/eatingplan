@@ -55,7 +55,7 @@ Page({
       btn_width: app.btn.btn_width,
       btn_height: app.btn.btn_height,
       startDate: "1960-01-01",
-      endDate: date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDay(),
+      endDate: date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate(),
       heightArray: heightArray,
       weightArray: weightArray,
       sleepArray: sleepArray

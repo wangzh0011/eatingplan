@@ -33,21 +33,21 @@
                             选择其一作为早餐
 						</view>
 						
-							<view class="details">
-								<scroll-view class="scroll-view" style="height:{{windowHeight/3}}px;" scroll-x="false" scroll-y="true" upper-threshold="50" lower-threshold="50" 
-									scroll-top="0" scroll-left="0" scroll-into-view="" scroll-with-animation="false" enable-back-to-top="false" 
-									bindscrolltoupper="" bindscrolltolower="" bindscroll="">
-									<view wx:for="{{itemslist}}" wx:key="*this">
-										<view class="item">
-											<image src="../images/6-5.png" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
-											<view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px">
-												<view class="desc_title">一小碗白米饭</view>
-												<view class="desc_subtitle">热量： 336大卡 150克</view>
-											</view>
-										</view>
-									</view>
-								</scroll-view>
-							</view>
+                        <view class="details">
+                            <scroll-view class="scroll-view" style="height:{{windowHeight/3}}px;" scroll-x="false" scroll-y="true" upper-threshold="50" lower-threshold="50" 
+                                scroll-top="0" scroll-left="0" scroll-into-view="" scroll-with-animation="false" enable-back-to-top="false" 
+                                bindscrolltoupper="" bindscrolltolower="" bindscroll="">
+                                <view wx:for="{{breakfastArray}}" wx:key="*this" wx:for-item="item">
+                                    <view class="item">
+                                        <image src="{{item[0]}}" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
+                                        <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px">
+                                            <view class="desc_title">{{item[1]}}</view>
+                                            <view class="desc_subtitle">热量： 336大卡 150克</view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </scroll-view>
+                        </view>
 
                     </view>
                 </view>
@@ -60,16 +60,23 @@
                         <view class="subtitle">
                             选择其一作为午餐
                         </view>
+                        
                         <view class="details">
-                            <view class="item">
-                                <image src="../images/6-5.png" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
-                                <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px"></view>
-                            </view>
-                            <view class="item">
-                                <image src="../images/6-5.png" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
-                                <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px"></view>
-                            </view>
+                            <scroll-view class="scroll-view" style="height:{{windowHeight/3}}px;" scroll-x="false" scroll-y="true" upper-threshold="50" lower-threshold="50" 
+                                scroll-top="0" scroll-left="0" scroll-into-view="" scroll-with-animation="false" enable-back-to-top="false" 
+                                bindscrolltoupper="" bindscrolltolower="" bindscroll="">
+                                <view wx:for="{{lunchArray}}" wx:key="*this" wx:for-item="item">
+                                    <view class="item">
+                                        <image src="{{item[0]}}" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
+                                        <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px">
+                                            <view class="desc_title">{{item[1]}}</view>
+                                            <view class="desc_subtitle">热量： 336大卡 150克</view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </scroll-view>
                         </view>
+
                     </view>
                 </view>
 
@@ -81,16 +88,23 @@
                         <view class="subtitle">
                             选择其一作为晚餐
                         </view>
+                        
                         <view class="details">
-                            <view class="item">
-                                <image src="../images/6-5.png" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
-                                <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px"></view>
-                            </view>
-                            <view class="item">
-                                <image src="../images/6-5.png" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
-                                <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px"></view>
-                            </view>
+                            <scroll-view class="scroll-view" style="height:{{windowHeight/3}}px;" scroll-x="false" scroll-y="true" upper-threshold="50" lower-threshold="50" 
+                                scroll-top="0" scroll-left="0" scroll-into-view="" scroll-with-animation="false" enable-back-to-top="false" 
+                                bindscrolltoupper="" bindscrolltolower="" bindscroll="">
+                                <view wx:for="{{dinnerArray}}" wx:key="*this" wx:for-item="item">
+                                    <view class="item">
+                                        <image src="{{item[0]}}" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
+                                        <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px">
+                                            <view class="desc_title">{{item[1]}}</view>
+                                            <view class="desc_subtitle">热量： 336大卡 150克</view>
+                                        </view>
+                                    </view>
+                                </view>
+                            </scroll-view>
                         </view>
+
                     </view>
 				</view>
 				

@@ -57,7 +57,6 @@ Page({
     activeIndex: 0,
     sliderOffset: 0,
     sliderLeft: 0,
-    itemslist: ["","","","","",],
     weightLoss: '',
     showFanqie: false,
 
@@ -85,6 +84,16 @@ Page({
 
     var that = this;
     var username = options.username;
+    //早餐数组
+    var breakfastArray = wx.getStorageSync("breakfastArray");
+    console.log(breakfastArray)
+    //午餐数组
+    var lunchArray = wx.getStorageSync("lunchArray");
+    console.log(lunchArray)
+    //晚餐数组
+    var dinnerArray = wx.getStorageSync("dinnerArray");
+    console.log(dinnerArray)
+
     this.setData({
       windowWidth: app.systemInfo.windowWidth,
       windowHeight: app.systemInfo.windowHeight,
@@ -94,7 +103,10 @@ Page({
       username: username,
       btn_width: app.btn.btn_width,
       btn_height: app.btn.btn_height,
-      atbs_pic_style: app.systemInfo.windowHeight/24
+      atbs_pic_style: app.systemInfo.windowHeight/24,
+      breakfastArray: breakfastArray,
+      lunchArray: lunchArray,
+      dinnerArray: dinnerArray
     })
 
     var weight = wx.getStorageSync("weight");//目前体重

@@ -8,11 +8,11 @@
 
     <view class="subtitle">请选择1-12项日常晚餐 可多选</view>
 
-    <checkbox-group class="foods_area">
+    <checkbox-group class="foods_area" bindchange="checkboxChange">
         <label class="item" wx:for="{{foodsList}}" wx:key="*this" wx:for-item="item">
-            <image src="../images/6-5.png" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
-            <checkbox class="foods_name" style="width: {{windowHeight/6}}px; height: {{windowHeight/12}}px" value="{{item.name}}" >
-                <text >豆浆</text>
+            <image src="{{item.imgUrl}}" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
+            <checkbox class="foods_name" style="width: {{windowHeight/6}}px; height: {{windowHeight/12}}px" value="{{item.imgUrl}},{{item.name}}" >
+                <text >{{item.name}}</text>
             </checkbox>
         </label>
     </checkbox-group>

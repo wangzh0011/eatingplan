@@ -7,7 +7,20 @@ Page({
    * 页面的初始数据
    */
   data: {
-    foodsList: ["","","","","","","","","","","",""]
+    foodsList: [
+                {imgUrl: "../images/6-5.png", name: "豆浆"},
+                {imgUrl: "../images/6-6.png", name: "油条"},
+                {imgUrl: "../images/6-5.png", name: "豆浆"},
+                {imgUrl: "../images/6-6.png", name: "油条"},
+                {imgUrl: "../images/6-5.png", name: "豆浆"},
+                {imgUrl: "../images/6-6.png", name: "油条"},
+                {imgUrl: "../images/6-5.png", name: "豆浆"},
+                {imgUrl: "../images/6-6.png", name: "油条"},
+                {imgUrl: "../images/6-5.png", name: "豆浆"},
+                {imgUrl: "../images/6-6.png", name: "油条"},
+                {imgUrl: "../images/6-5.png", name: "豆浆"},
+                {imgUrl: "../images/6-6.png", name: "油条"},
+              ]
   },
 
   /**
@@ -34,6 +47,20 @@ Page({
       fail: ()=>{},
       complete: ()=>{}
     });
+  },
+
+  /**
+   * 触发CheckBox
+   */
+  checkboxChange: function (e) {
+
+    //后续使用请求后台的方式获取对象
+
+    var lunch = e.detail.value;
+    for (const key in lunch) {
+      lunch[key] = lunch[key].split(",")
+    }
+    wx.setStorageSync("lunchArray",lunch);
   },
 
   /**

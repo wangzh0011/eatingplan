@@ -204,6 +204,22 @@ Page({
     })
   },
 
+   /**
+   * 跳转到赚番茄小程序
+   */
+  navigateToFanqieTap: function () {
+    wx.navigateToMiniProgram({
+      appId: 'wxc93c5a0a640a29bb',
+      path: 'pages/index/index',
+      extraData: {
+      },
+      envVersion: 'trial',   /*develop	开发版	trial	体验版	release 正式版*/
+      success(res) {
+        // 打开成功
+      }
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

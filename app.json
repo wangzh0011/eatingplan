@@ -1,12 +1,12 @@
 {
   "pages": [
-    "pages/parameter/parameter",
+    "pages/index/index",
     "pages/breakfast/breakfast",
     "pages/plandetails/plandetails",
-    "pages/index/index",
     "pages/lunch/lunch",
-    "pages/dinner/dinner",
     "pages/planpay/planpay",
+    "pages/dinner/dinner",
+    "pages/parameter/parameter",
     "pages/bar/index",
     "pages/eatingplan/eatingplan",
     "pages/calculate/calculate",
@@ -23,5 +23,7 @@
     "navigationBarTitleText": "健康饮食计划",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "navigateToMiniProgramAppIdList": ["wxc93c5a0a640a29bb"]
+
 }

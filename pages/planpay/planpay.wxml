@@ -45,8 +45,8 @@
 	<!--底部状态栏-->
 	<block wx:if="{{showTabs}}">
 		<view class="tabs" style="height: {{windowHeight/12}}px">
-			<button class="tabs_item" >
-				<image src="../images/ty13.png" bindtap="" style="height: {{atbs_pic_style}}px; width: {{atbs_pic_style}}px"/>
+			<button class="tabs_item" bindtap="navigateToFanqieTap">
+				<image src="../images/ty13.png" style="height: {{atbs_pic_style}}px; width: {{atbs_pic_style}}px"/>
 				<text class="tabs_text">赚番茄</text>
 			</button>
 			<view class="tabs_item">
@@ -58,7 +58,7 @@
 			</button>
 		</view>
 	
-		<button bindtap="fanqieTap" class="share" loading="{{loading}}" disabled="{{disabled}}">
+		<button class="share" loading="{{loading}}" disabled="{{disabled}}">
 			<image src="../images/ty6.png" style="height: {{atbs_pic_style*3}}px; width: {{atbs_pic_style*3}}px"/>
 		</button>
 	</block>

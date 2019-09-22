@@ -113,8 +113,8 @@
     </view>
 
     <view class="tabs" style="height: {{windowHeight/12}}px">
-        <button class="tabs_item" >
-            <image src="../images/ty7.png" bindtap="" style="height: {{atbs_pic_style}}px; width: {{atbs_pic_style}}px"/>
+        <button class="tabs_item" bindtap="navigateToFanqieTap">
+            <image src="../images/ty7.png"  style="height: {{atbs_pic_style}}px; width: {{atbs_pic_style}}px"/>
             <text class="tabs_text">赚番茄</text>
         </button>
         <view class="tabs_item">

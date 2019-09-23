@@ -27,6 +27,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this;
+    wx.request({
+      url: app.data.server + '/foods',
+      data: {
+        type: "breakfast"
+      },
+      header: {'content-type':'application/json'},
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: (result)=>{
+        that.setData({
+          foodsList: result.data
+        })
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+
+
     this.setData({
       windowWidth: app.systemInfo.windowWidth,
       windowHeight: app.systemInfo.windowHeight,

@@ -57,7 +57,11 @@ Page({
       endDate: date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate(),
       heightArray: heightArray,
       weightArray: weightArray,
-      sleepArray: sleepArray
+      sleepArray: sleepArray,
+      defaultBirth: '1991-01-01',
+      defaultHeight: '20',// 初始值加上此默认值为页面显示值
+      defaultWeight: '30',
+      defaultSleep: '7'
     })
 
     

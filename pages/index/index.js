@@ -34,6 +34,17 @@ Page({
                 num: num
             })
         }, 1000);
+
+        var uid = wx.getStorageInfoSync("wxData").id;
+
+        //判断是否带有分享信息
+        var shareuid = options.shareuid;
+        if (shareuid != undefined && shareuid != '') {
+            app.setShareInfo(uid,shareuid)
+        }
+
+
+
     },
 
     /**

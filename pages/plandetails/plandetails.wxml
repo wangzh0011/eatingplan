@@ -42,7 +42,7 @@
                                         <image src="{{item[0]}}" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
                                         <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px">
                                             <view class="desc_title">{{item[1]}}</view>
-                                            <view class="desc_subtitle">热量： 336大卡 150克</view>
+                                            <view class="desc_subtitle">热量： {{item[2]}}大卡 {{item[3]}}克</view>
                                         </view>
                                     </view>
                                 </view>
@@ -70,7 +70,7 @@
                                         <image src="{{item[0]}}" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
                                         <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px">
                                             <view class="desc_title">{{item[1]}}</view>
-                                            <view class="desc_subtitle">热量： 336大卡 150克</view>
+                                            <view class="desc_subtitle">热量： {{item[2]}}大卡 {{item[3]}}克</view>
                                         </view>
                                     </view>
                                 </view>
@@ -98,7 +98,7 @@
                                         <image src="{{item[0]}}" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
                                         <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px">
                                             <view class="desc_title">{{item[1]}}</view>
-                                            <view class="desc_subtitle">热量： 336大卡 150克</view>
+                                            <view class="desc_subtitle">热量： {{item[2]}}大卡 {{item[3]}}克</view>
                                         </view>
                                     </view>
                                 </view>

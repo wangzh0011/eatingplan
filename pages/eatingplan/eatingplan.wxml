@@ -18,7 +18,7 @@
         <view class="area_weight">
             <view class="area_weight_input" style="width: {{(windowWidth-50-40)/2-30}}px">
                 <view class="area_weight_text">目标体重：</view>
-				<picker mode="selector" bindchange="targetWeightTap" range="{{weightArray}}">
+				<picker mode="selector" bindchange="targetWeightTap" range="{{weightArray}}" value="{{defaultWeight}}">
 					<input class="input_border" value="{{weightArray[index_weight]}}" disabled="{{true}}"/>
 				</picker>
 			</view>
@@ -33,7 +33,7 @@
 		<view class="area_time">
             <view class="area_weight_input" style="width: {{(windowWidth-50-40)/2-30}}px">
                 <view class="area_weight_text">计划用时：</view>
-				<picker mode="selector" bindchange="targetDayTap" range="{{dayArray}}">
+				<picker mode="selector" bindchange="targetDayTap" range="{{dayArray}}" value="{{defaultDay}}">
 					<input class="input_border"  value="{{dayArray[index_day]}}" disabled="{{true}}"/>
 				</picker>
 			</view>
@@ -71,7 +71,7 @@
 	<view  class="btn_style" >
 		<image src="../images/ty2.png" style="position: absolute; left:{{(windowWidth-btn_width)/2}}px; width:{{btn_width}}px; height:{{btn_height}}px;">
 		</image>
-		<view class="btn" bindtap="onTap" style="width:{{btn_width}}px; left:{{(windowWidth-btn_width)/2}}px;">
+		<view class="btn" bindtap="onTap" style="width:{{btn_width}}px; left:{{(windowWidth-btn_width)/2}}px; height:{{btn_height/2}}px;">
 			选择饮食习惯
 		</view>
 	</view>

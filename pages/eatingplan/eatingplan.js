@@ -26,7 +26,7 @@ Page({
     var dayArray = this.data.dayArray;
 
     /**设置目标体重数组 */
-    for (let index = 0,targetWeight = referWeight - 20; targetWeight <= referWeight; index++,targetWeight++) {
+    for (let index = 0,targetWeight = referWeight - 20; targetWeight <= (Math.round(referWeight) + 20); index++,targetWeight++) {
       weightArray[index] = targetWeight;
     }
     /**设置计划用时数组 */
@@ -45,7 +45,9 @@ Page({
       referWeight: referWeight,
       referDay: referDay,
       weightArray: weightArray,
-      dayArray: dayArray
+      dayArray: dayArray,
+      defaultWeight: '20',
+      defaultDay: '30'
     })
 
     wx.setStorageSync("referDay",referDay);

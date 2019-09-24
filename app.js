@@ -12,6 +12,21 @@ App({
   onLaunch: function () {
     var that = this;
 
+    //获取配置信息
+    wx.request({
+      url: this.data.server + 'getParameters',
+      data: {},
+      header: {'content-type':'application/json'},
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: (result)=>{
+        console.log(result.data)
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
@@ -81,6 +96,37 @@ App({
       complete: ()=>{}
     });
   },
+
+  /**
+   * 保存分享信息
+   */
+  setShareInfo: function (uid,shareuid) {
+    var that = this;
+    wx.getSystemInfo({
+      success: (result)=>{
+        wx.request({
+          url: that.data.server + 'setShareInfo',
+          data: {
+            uid: uid,
+            shareuid: shareuid,
+            brand: result.brand,
+            model: result.model,
+            system: result.system,
+            pixelRatio: result.pixelRatio,
+            language: result.language,
+            version: result.version
+          },
+          success: (res)=> {
+
+          }
+        })
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+  },
+
+
   globalData: {
     userInfo: null
   },

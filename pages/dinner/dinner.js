@@ -20,7 +20,8 @@ Page({
                 {imgUrl: "../images/6-6.png", name: "油条"},
                 {imgUrl: "../images/6-5.png", name: "豆浆"},
                 {imgUrl: "../images/6-6.png", name: "油条"},
-              ]
+              ],
+    dinner: ''          
   },
 
   /**
@@ -61,6 +62,24 @@ Page({
   },
 
   onTap: function () {
+
+    var dinner = this.data.dinner;
+    if (dinner == '') {
+      wx.showToast({
+        title: '请至少选择一种食物作为晚餐',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: false,
+        success: (result)=>{
+          
+        },
+        fail: ()=>{},
+        complete: ()=>{}
+      });
+      return;
+    }
+
     wx.navigateTo({
       url: '/pages/planpay/planpay',
       success: (result)=>{
@@ -82,6 +101,11 @@ Page({
     for (const key in dinner) {
       dinner[key] = dinner[key].split(",")
     }
+
+    this.setData({
+      dinner: dinner
+    })
+
     wx.setStorageSync("dinnerArray",dinner);
   },
 

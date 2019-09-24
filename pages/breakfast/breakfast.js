@@ -20,7 +20,8 @@ Page({
                 {imgUrl: "../images/6-6.png", name: "油条"},
                 {imgUrl: "../images/6-5.png", name: "豆浆"},
                 {imgUrl: "../images/6-6.png", name: "油条"},
-              ]
+              ],
+    breakfast: ''          
   },
 
   /**
@@ -62,6 +63,22 @@ Page({
 
   /**下一页 */
   onTap: function () {
+    var breakfast = this.data.breakfast;
+    if (breakfast == '') {
+      wx.showToast({
+        title: '至少选择一种食物作为早餐',
+        icon: 'none',
+        image: '',
+        duration: 1500,
+        mask: false,
+        success: (result)=>{
+          
+        },
+        fail: ()=>{},
+        complete: ()=>{}
+      });
+      return;
+    }
     wx.navigateTo({
       url: '/pages/lunch/lunch',
       success: (result)=>{
@@ -83,6 +100,11 @@ Page({
     for (const key in breakfast) {
       breakfast[key] = breakfast[key].split(",")
     }
+    //控制页面跳转
+    this.setData({
+      breakfast: breakfast
+    })
+    //在计划详情里显示
     wx.setStorageSync("breakfastArray",breakfast);
   },
 

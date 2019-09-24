@@ -49,12 +49,14 @@ Page({
 
     this.setData({
       windowWidth: app.systemInfo.windowWidth,
+      imgWidth: app.systemInfo.windowWidth/8,
       windowHeight: app.systemInfo.windowHeight,
       title_area_width: app.position.title_area_width,
       title_area_top: app.position.title_area_top,
       title_area_left: app.position.title_area_left,
       btn_width: app.btn.btn_width,
       btn_height: app.btn.btn_height,
+      serverUrl: app.data.uploadUrl
     })
   },
 

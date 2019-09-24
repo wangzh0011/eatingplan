@@ -27,6 +27,26 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+    var that = this;
+    wx.request({
+      url: app.data.server + '/foods',
+      data: {
+        type: "dinner"
+      },
+      header: {'content-type':'application/json'},
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: (result)=>{
+        that.setData({
+          foodsList: result.data
+        })
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+
     this.setData({
       windowWidth: app.systemInfo.windowWidth,
       windowHeight: app.systemInfo.windowHeight,
@@ -35,6 +55,8 @@ Page({
       title_area_left: app.position.title_area_left,
       btn_width: app.btn.btn_width,
       btn_height: app.btn.btn_height,
+      serverUrl: app.data.uploadUrl,
+      imgWidth: app.systemInfo.windowWidth/8,
     })
   },
 

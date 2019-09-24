@@ -10,8 +10,8 @@
 
     <checkbox-group class="foods_area" bindchange="checkboxChange">
         <label class="item" wx:for="{{foodsList}}" wx:key="*this" wx:for-item="item">
-            <image src="{{item.imgUrl}}" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
-            <checkbox class="foods_name" style="width: {{windowHeight/6}}px; height: {{windowHeight/12}}px" value="{{item.imgUrl}},{{item.name}}" >
+            <image src="{{item.imgUrl}}" class="pic" style="width: {{imgWidth}}px; height: {{imgWidth}}px" />
+            <checkbox class="foods_name" style="width: {{imgWidth*2}}px; height: {{imgWidth}}px" value="{{item.imgUrl}},{{item.name}}" >
                 <text >{{item.name}}</text>
             </checkbox>
         </label>

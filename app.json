@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/planpay/planpay",
     "pages/index/index",
+    "pages/planpay/planpay",
     "pages/breakfast/breakfast",
     "pages/eatingplan/eatingplan",
     "pages/parameter/parameter",
@@ -24,6 +24,6 @@
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",
-  "navigateToMiniProgramAppIdList": ["wxc93c5a0a640a29bb"]
+  "navigateToMiniProgramAppIdList": ["wx18a384bbb3417f19"]
 
 }

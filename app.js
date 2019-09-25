@@ -151,6 +151,10 @@ App({
 
   userInfo: {
     userInfo: null
+  },
+
+  fanqieInfo: {
+    appid: 'wx18a384bbb3417f19'
   }
 
 })

@@ -124,8 +124,8 @@ Page({
    */
   navigateToFanqieTap: function () {
     wx.navigateToMiniProgram({
-      appId: 'wxc93c5a0a640a29bb',
-      path: 'pages/index/index',
+      appId: app.fanqieInfo.appid,
+      path: 'pages/index/index?shareid=' + wx.getStorageSync("wxData").id,
       extraData: {
       },
       envVersion: 'trial',/*develop	开发版	trial	体验版	release 正式版*/
@@ -183,7 +183,7 @@ Page({
   onShareAppMessage: function () {
     return {
       title: "您的好友向您推荐健康番茄瘦小程序",
-      path: '/pages/index/index?shareuid=123'  /*wx.getStorageSync("wxData").id*/,
+      path: '/pages/index/index?shareuid=' + wx.getStorageSync("wxData").id,
       success: function (res) {
         // console.log
         wx.getShareInfo({

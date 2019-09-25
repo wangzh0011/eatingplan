@@ -50,21 +50,20 @@ Page({
                 dataType: 'json',
                 responseType: 'text',
                 success: (result)=>{
-                    
+                    //判断是否带有分享信息
+                    var shareuid = options.shareuid;
+                    console.log("shareuid:" + shareuid)
+                    //未注册用户通过分享链接进入 
+                    if (shareuid != undefined && shareuid != '' && result.data.id != shareuid) {
+                        console.log("设置分享信息")
+                        app.setShareInfo(result.data.id,shareuid)
+                    }
                 },
                 fail: ()=>{},
                 complete: ()=>{}
             });
         }
 
-        //判断是否带有分享信息
-        var shareuid = options.shareuid;
-        console.log("shareuid:" + shareuid)
-        //未注册用户通过分享链接进入
-        if ((uid == null || uid == undefined) && shareuid != undefined && shareuid != '' && uid != shareuid) {
-            console.log("设置分享信息")
-            app.setShareInfo(uid,shareuid)
-        }
 
 
 

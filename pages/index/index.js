@@ -35,11 +35,34 @@ Page({
             })
         }, 1000);
 
-        var uid = wx.getStorageInfoSync("wxData").id;
+        var uid = wx.getStorageSync("wxData").id;
+        console.log("uid:" + uid)
+        //注册用户
+        if(uid == null || uid == undefined){
+            console.log("开始注册用户信息")
+            wx.request({
+                url: app.data.server + 'register',
+                data: {
+                    openid: wx.getStorageSync("wxData").openid
+                },
+                header: {'content-type':'application/json'},
+                method: 'GET',
+                dataType: 'json',
+                responseType: 'text',
+                success: (result)=>{
+                    
+                },
+                fail: ()=>{},
+                complete: ()=>{}
+            });
+        }
 
         //判断是否带有分享信息
         var shareuid = options.shareuid;
-        if (shareuid != undefined && shareuid != '') {
+        console.log("shareuid:" + shareuid)
+        //未注册用户通过分享链接进入
+        if ((uid == null || uid == undefined) && shareuid != undefined && shareuid != '' && uid != shareuid) {
+            console.log("设置分享信息")
             app.setShareInfo(uid,shareuid)
         }
 

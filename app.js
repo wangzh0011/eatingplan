@@ -5,8 +5,10 @@ App({
   data: {
     uploadUrl:
       "http://127.0.0.1:8080/upload/",
+      // "http://120.24.5.8:8080/upload/",
     server:
       "http://127.0.0.1:8080/eatingplan/"  
+      // "http://120.24.5.8:8080/eatingplan/"  
   },
 
   onLaunch: function () {
@@ -22,6 +24,7 @@ App({
       responseType: 'text',
       success: (result)=>{
         console.log(result.data)
+        wx.setStorageSync("systemConf",result.data)
       },
       fail: ()=>{},
       complete: ()=>{}
@@ -32,8 +35,7 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    console.log(wx.getStorageSync("wxData"))
-    if (!wx.getStorageSync("wxData")) {
+    // if (!wx.getStorageSync("wxData")) {
       // 登录
       wx.login({
         success: res => {
@@ -51,14 +53,14 @@ App({
               console.log("微信接口返回数据：")
               console.log(result.data)
               this.userInfo.userInfo = result.data//将openId, sessionKey, unionId赋值给userInfo.userInfo
-              wx.setStorageSync("wxData",result.data);
+              wx.setStorageSync("wxData",result.data);//已注册用户返回openID和id，未注册用户返回openID
             },
             fail: ()=>{},
             complete: ()=>{}
           });
         }
       })
-    }
+    // }
 
     // 获取用户信息
     wx.getSetting({

@@ -23,6 +23,20 @@ Page({
       btn_height: app.btn.btn_height,
       textDesc: '中国人现状每100人中就有10个不同程度的肥胖症，而肥胖是各种慢性疾病的主要高危元素国际和国家专家报告，为预防慢性病呼吁群众采取健康饮食计划。'
     })
+
+    wx.showShareMenu({
+      withShareTicket: true,
+      success: function (res) {
+        // 分享成功
+        console.log('shareMenu share success')
+        console.log('分享'+res)
+      },
+      fail: function (res) {
+        // 分享失败
+        console.log(res)
+      }
+    })
+
   },
 
   onTap: function () {
@@ -167,6 +181,22 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    console.log("share")
+    return {
+      title: "您的好友向您推荐健康番茄瘦小程序",
+      path: '/pages/index/index?shareuid=123'  /*wx.getStorageSync("wxData").id*/,
+      success: function (res) {
+        // console.log
+        wx.getShareInfo({
+          shareTicket: res.shareTickets[0],
+          success: function (res) { console.log("分享成功") },
+          fail: function (res) { console.log(res) },
+          complete: function (res) { console.log(res) }
+        })
+      },
+      fail: function (res) {
+        // 分享失败
+        console.log(res)
+      }
+    }
   }
 })

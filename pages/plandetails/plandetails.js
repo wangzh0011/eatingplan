@@ -231,21 +231,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    wx.request({
-      url: app.data.server + 'getFoods',
-      data: {
+    // wx.request({
+    //   url: app.data.server + 'getFoods',
+    //   data: {
         
-      },
-      header: {'content-type':'application/json'},
-      method: 'GET',
-      dataType: 'json',
-      responseType: 'text',
-      success: (result)=>{
+    //   },
+    //   header: {'content-type':'application/json'},
+    //   method: 'GET',
+    //   dataType: 'json',
+    //   responseType: 'text',
+    //   success: (result)=>{
         
-      },
-      fail: ()=>{},
-      complete: ()=>{}
-    });
+    //   },
+    //   fail: ()=>{},
+    //   complete: ()=>{}
+    // });
   },
 
   /**

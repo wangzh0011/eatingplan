@@ -40,33 +40,70 @@ Page({
         //注册用户
         if(uid == null || uid == undefined){
             console.log("开始注册用户信息")
-            wx.request({
-                url: app.data.server + 'register',
-                data: {
-                    openid: wx.getStorageSync("wxData").openid
-                },
-                header: {'content-type':'application/json'},
-                method: 'GET',
-                dataType: 'json',
-                responseType: 'text',
-                success: (result)=>{
-                    //判断是否带有分享信息
-                    var shareuid = options.shareuid;
-                    console.log("shareuid:" + shareuid)
-                    //未注册用户通过分享链接进入 
-                    if (shareuid != undefined && shareuid != '' && result.data.id != shareuid) {
-                        console.log("设置分享信息")
-                        app.setShareInfo(result.data.id,shareuid)
-                    }
-                },
-                fail: ()=>{},
-                complete: ()=>{}
-            });
+            this.registerUser(options.shareuid)
+        }
+
+        if (options.fqId != undefined && options.fqId != '') {
+            //更新用户
+            this.updateUser(wx.getStorageSync("wxData").id,options.fqId)
         }
 
 
 
 
+    },
+    
+    /**
+     * 更新用户
+     * @param {*} id 
+     * @param {*} fqId 
+     */
+    updateUser: function (id,fqId) {
+        wx.request({
+            url: app.data.server + 'updateUser',
+            data: {
+                id: id,
+                fqId: fqId
+            },
+            header: {'content-type':'application/json'},
+            method: 'GET',
+            dataType: 'json',
+            responseType: 'text',
+            success: (result)=>{
+                
+            },
+            fail: ()=>{},
+            complete: ()=>{}
+        });
+    },
+
+    /**
+     * 注册用户
+     */
+    registerUser: function (id) {
+        wx.request({
+            url: app.data.server + 'register',
+            data: {
+                openid: wx.getStorageSync("wxData").openid,
+                type: 'JK'
+            },
+            header: {'content-type':'application/json'},
+            method: 'GET',
+            dataType: 'json',
+            responseType: 'text',
+            success: (result)=>{
+                //判断是否带有分享信息
+                var shareuid = id; //别人的id
+                console.log("shareuid:" + shareuid)
+                //未注册用户通过分享链接进入 
+                if (shareuid != undefined && shareuid != '' && result.data.id != shareuid) {
+                    console.log("设置分享信息")
+                    app.setShareInfo(result.data.id,shareuid)
+                }
+            },
+            fail: ()=>{},
+            complete: ()=>{}
+        });
     },
 
     /**

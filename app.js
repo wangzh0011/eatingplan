@@ -43,7 +43,8 @@ App({
           wx.request({
             url: this.data.server + 'login',
             data: {
-              code: res.code
+              code: res.code,
+              type: 'JK'
             },
             header: {'content-type':'application/json'},
             method: 'GET',

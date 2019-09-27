@@ -11,8 +11,10 @@ App({
       // "http://120.24.5.8:8080/eatingplan/"  
   },
 
-  onLaunch: function () {
+  onLaunch: function (e) {
     var that = this;
+
+    console.log(e.referrerInfo.extraData)
 
     //获取配置信息
     wx.request({

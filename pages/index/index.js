@@ -35,18 +35,25 @@ Page({
             })
         }, 1000);
 
-        var uid = wx.getStorageSync("wxData").id;
-        console.log("uid:" + uid)
+        var userInfo = wx.getStorageSync("wxData");
+        var uid = userInfo.id;
+        console.log("缓存uid:" + uid)
         //注册用户
         if(uid == null || uid == undefined){
             console.log("开始注册用户信息")
             this.registerUser(options.shareuid)
         }
-
-        if (options.fqId != undefined && options.fqId != '') {
-            //更新用户
-            this.updateUser(wx.getStorageSync("wxData").id,options.fqId)
+        console.log(options)
+        //更新用户
+        if (uid != null && uid != undefined) {
+            if (options.fqId != undefined && options.fqId != '') {
+                this.updateUser(userInfo.id,options.fqId,userInfo.id)
+            }
+            if (userInfo.jkId == null || userInfo.jkId == undefined) {
+                this.updateUser(userInfo.id,userInfo.fqId == null ? 0 : userInfo.fqId,userInfo.id)
+            }
         }
+
 
 
 
@@ -58,12 +65,13 @@ Page({
      * @param {*} id 
      * @param {*} fqId 
      */
-    updateUser: function (id,fqId) {
+    updateUser: function (id,fqId,jkId) {
         wx.request({
             url: app.data.server + 'updateUser',
             data: {
                 id: id,
-                fqId: fqId
+                fqId: fqId,
+                jkId: jkId
             },
             header: {'content-type':'application/json'},
             method: 'GET',

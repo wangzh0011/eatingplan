@@ -16,6 +16,7 @@ Page({
     sliderLeft: 0,
     weightLoss: '',
     showFanqie: false,
+    isCanDraw: false
   },
 
   /**
@@ -158,6 +159,16 @@ Page({
       success(res) {
         // 打开成功
       }
+    })
+  },
+
+  /**
+   * 朋友圈分享
+   */
+  createShareImage() {
+    this.setData({
+      isCanDraw: !this.data.isCanDraw,
+      showFanqie: false
     })
   },
 

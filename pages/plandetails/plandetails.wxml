@@ -178,13 +178,14 @@
 				<image class="share_img" src="../images/xty12.png"/><!--好友分享-->
 				<text class="share_text">好友分享</text>
 			</button>
-			<view class="share_area">
+			<view class="share_area" bindtap="createShareImage">
 				<image class="share_img" src="../images/xty13.png"/><!--朋友圈-->
 				<text class="share_text">朋友圈</text>
 			</view>
 		</view>
 	</view>
-
+    
+    <share-box isCanDraw="{{isCanDraw}}" bind:initData="createShareImage" />
 
 </view>
 

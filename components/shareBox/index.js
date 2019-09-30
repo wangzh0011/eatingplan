@@ -37,8 +37,8 @@ Component({
       })
       this.setData({
         imgDraw: {
-          width: '750rpx',
-          height: '1334rpx',
+          width: '730rpx',
+          height: '850rpx',
           borderRadius: '16rpx',
           // background: '/pages/images/1-1.png',
           views: [
@@ -76,59 +76,79 @@ Component({
             },
             {
               type: 'text',
-              text: '我以兄弟单身一辈子发誓\n\r从今天起',
+              text: '我以兄弟单身一辈子发誓',
               css: {
                 top: '380rpx',
                 fontSize: '30rpx',
                 fontWeight: 'bold',
-                // left: '375rpx',
-                width: '750rpx',
-                textAlign: 'center',
+                left: '365rpx',
+                align: 'center',
               }
             },
             {
               type: 'text',
-              text: wx.getStorageSync('nickName') || '青团子',
+              text: '从今天起',
               css: {
-                top: '532rpx',
-                fontSize: '28rpx',
-                left: '375rpx',
-                align: 'center',
-                color: '#3c3c3c'
-              }
-            },
-            {
-              type: 'text',
-              text: `邀请您参与助力活动`,
-              css: {
-                top: '576rpx',
-                left: '375rpx',
-                align: 'center',
-                fontSize: '28rpx',
-                color: '#3c3c3c'
-              }
-            },
-            {
-              type: 'text',
-              text: `宇宙最萌蓝牙耳机测评员`,
-              css: {
-                top: '644rpx',
-                left: '375rpx',
-                maxLines: 1,
-                align: 'center',
+                top: '430rpx',
+                fontSize: '36rpx',
                 fontWeight: 'bold',
-                fontSize: '44rpx',
-                color: '#3c3c3c'
+                left: '365rpx',
+                align: 'center',
+              }
+            },
+            {
+              type: 'text',
+              text: '我要用' + wx.getStorageSync("targetDay") + '天',
+              css: {
+                top: '480rpx',
+                fontSize: '36rpx',
+                fontWeight: 'bold',
+                left: '365rpx',
+                align: 'center',
+              }
+            },
+            {
+              type: 'text',
+              text: '减掉' + wx.getStorageSync("weightLoss")*2 + '斤',
+              css: {
+                top: '530rpx',
+                fontSize: '36rpx',
+                fontWeight: 'bold',
+                left: '365rpx',
+                align: 'center',
+              }
+            },
+            {
+              type: 'text',
+              text: '请兄弟们监督',
+              css: {
+                top: '580rpx',
+                fontSize: '36rpx',
+                fontWeight: 'bold',
+                left: '365rpx',
+                align: 'center',
+              }
+            },
+            {
+              type: 'text',
+              text: '健康番茄',
+              css: {
+                top: '750rpx',
+                fontSize: '30rpx',
+                fontWeight: 'bold',
+                left: '365rpx',
+                align: 'center',
+                color: '#26da40'
               }
             },
             {
               type: 'image',
               url: 'https://qiniu-image.qtshe.com/20190605index.jpg',
               css: {
-                top: '834rpx',
+                top: '640rpx',
                 left: '470rpx',
-                width: '200rpx',
-                height: '200rpx'
+                width: '150rpx',
+                height: '150rpx'
               }
             }
           ]

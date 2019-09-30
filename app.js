@@ -16,6 +16,26 @@ App({
 
     console.log(e.referrerInfo.extraData)
 
+    var qcCode = {
+      "page": 'pages/index/index?shareuid=' + wx.getStorageSync("wxData").id
+    }
+
+    wx.request({
+      url: this.data.server + 'getWxacode',
+      data: {
+        path: JSON.stringify(qcCode)
+      },
+      header: {'content-type':'application/x-www-form-urlencoded'},
+      method: 'POST',
+      dataType: 'json',
+      responseType: 'text',
+      success: (result)=>{
+        
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
+
     //获取配置信息
     wx.request({
       url: this.data.server + 'getParameters',

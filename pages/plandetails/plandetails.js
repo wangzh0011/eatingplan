@@ -28,13 +28,10 @@ Page({
     var username = options.username;
     //早餐数组
     var breakfastArray = wx.getStorageSync("breakfastArray");
-    console.log(breakfastArray)
     //午餐数组
     var lunchArray = wx.getStorageSync("lunchArray");
-    console.log(lunchArray)
     //晚餐数组
     var dinnerArray = wx.getStorageSync("dinnerArray");
-    console.log(dinnerArray)
 
     this.setData({
       windowWidth: app.systemInfo.windowWidth,

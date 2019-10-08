@@ -47,7 +47,9 @@ Page({
       weightArray: weightArray,
       dayArray: dayArray,
       defaultWeight: '20',
-      defaultDay: '30'
+      defaultDay: '30',
+      targetWeight: wx.getStorageSync("targetWeight"),
+      targetDay: wx.getStorageSync("targetDay")
     })
 
     wx.setStorageSync("referDay",referDay);

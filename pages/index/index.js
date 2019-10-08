@@ -25,9 +25,22 @@ Page({
             area_pic_padding: (windowWidth-50-40-windowWidth*3/5)/6,
             btn_width: app.btn.btn_width,
             btn_height: app.btn.btn_height,
-            textDesc: '健康饮食计划基于国内3位从业十余年的资深营养大师整理的营养理论，和13位人工智能工程师设计的智能运算方式，结合当代云技术采集近10万人群数据比对，从而完善的真正科学有效的饮食计划。'
+            textDesc: '健康饮食计划基于国内3位从业十余年的资深营养大师整理的营养理论，和13位人工智能工程师设计的智能运算方式，结合当代云技术采集近10万人群数据比对，从而完善的真正科学有效的饮食计划。',
+            image: app.data.uploadUrl + wx.getStorageSync("image")
         })
+        console.log(wx.getStorageSync("image"))
 
+        //按钮抖动
+        var flag = true;
+        setInterval(() => {
+            this.setData({
+                btn_height: flag ? app.btn.btn_height : app.btn.btn_height*1.1,
+                btn_width: flag ? app.btn.btn_width : app.btn.btn_width*1.1
+            })
+            flag = !flag
+        }, 400);
+
+        //显示参加人数
         setInterval(() => {
             num = num + Math.floor(Math.random()*9 + 1);
             this.setData({

@@ -1,5 +1,5 @@
 <view>
-	<image src="../images/ty11.png" class="background-img">
+	<image src="{{image}}" class="background-img">
 		<view class="background-block" />
 	</image>
 	<view class="title" style="width: {{windowWidth}}px; top: {{windowHeight/16}}px">
@@ -35,7 +35,7 @@
 
 	</view>
 
-	<view  class="btn_style" >
+	<view  class="btn_style">
 		<image src="../images/ty2.png" style="position: absolute; left:{{(windowWidth-btn_width)/2}}px; width:{{btn_width}}px; height:{{btn_height}}px;">
 		</image>
 		<view class="btn" bindtap="onTap" style="width:{{btn_width}}px; left:{{(windowWidth-btn_width)/2}}px; height:{{btn_height/2}}px;">

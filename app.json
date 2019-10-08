@@ -1,11 +1,11 @@
 {
   "pages": [
-    "pages/plandetails/plandetails",
     "pages/index/index",
-    "pages/planpay/planpay",
-    "pages/breakfast/breakfast",
+    "pages/plandetails/plandetails",
     "pages/eatingplan/eatingplan",
     "pages/parameter/parameter",
+    "pages/planpay/planpay",
+    "pages/breakfast/breakfast",
     "pages/lunch/lunch",
     "pages/dinner/dinner",
     "pages/calculate/calculate",

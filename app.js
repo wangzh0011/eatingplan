@@ -17,7 +17,7 @@ App({
     console.log(e.referrerInfo.extraData)
 
     var qcCode = {
-      "page": 'pages/index/index?shareuid=' + wx.getStorageSync("wxData").id
+      "path": 'pages/index/index?shareuid=' + wx.getStorageSync("wxData").id
     }
 
     wx.request({
@@ -30,7 +30,8 @@ App({
       dataType: 'json',
       responseType: 'text',
       success: (result)=>{
-        
+        console.log(result.data)
+        wx.setStorageSync("image",result.data.imageName)
       },
       fail: ()=>{},
       complete: ()=>{}

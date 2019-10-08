@@ -15,7 +15,9 @@ Page({
     startDate: '',
     heightArray: [145],
     weightArray: [30],
-    sleepArray: [1]
+    sleepArray: [1],
+    man: false,
+    woman: false
   },
 
   /**
@@ -61,9 +63,25 @@ Page({
       defaultBirth: '1991-01-01',
       defaultHeight: '20',// 初始值加上此默认值为页面显示值
       defaultWeight: '30',
-      defaultSleep: '7'
+      defaultSleep: '7',
+      //缓存信息
+      birth: wx.getStorageSync("birth"),
+      height: wx.getStorageSync("height"),
+      weight: wx.getStorageSync("weight"),
+      sleep: wx.getStorageSync("sleep"),
+      sex: wx.getStorageSync("sex")
     })
 
+    var sex = wx.getStorageSync("sex")
+    if (sex == 'man') {
+      this.setData({
+        man: true
+      })
+    } else if (sex == 'woman') {
+      this.setData({
+        woman: true
+      })
+    }
     
   },
 
@@ -114,11 +132,13 @@ Page({
     //   })
     //   return;
     // }
+    
     this.setData({
       birth: birth,
       age: age
     })
     wx.setStorageSync("age", age);
+    wx.setStorageSync("birth",birth)
   },
 
   /**
@@ -157,6 +177,7 @@ Page({
       index_sleep: index,
       sleep: sleep
     })
+    wx.setStorageSync("sleep",sleep)
   },
 
   /**

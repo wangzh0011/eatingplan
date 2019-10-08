@@ -8,7 +8,8 @@ Page({
   data: {
     username: '',
     showFanqie: false,
-    showTabs: false
+    showTabs: false,
+    isCanDraw: false
   },
 
   /**
@@ -132,6 +133,16 @@ Page({
       success(res) {
         // 打开成功
       }
+    })
+  },
+
+  /**
+   * 朋友圈分享
+   */
+  createShareImage() {
+    this.setData({
+      isCanDraw: true,
+      showFanqie: false
     })
   },
 

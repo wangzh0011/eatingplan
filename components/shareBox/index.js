@@ -1,3 +1,5 @@
+var app =  getApp();
+
 Component({
   properties: {
     //属性值可以在组件使用时指定
@@ -35,10 +37,45 @@ Component({
       wx.showLoading({
         title: '生成中'
       })
+
+      if(!wx.getStorageSync("image")){
+        /**获取小程序码 begin */
+        var qcCode = {
+          "path": 'pages/index/index?shareuid=' + wx.getStorageSync("wxData").id
+        }
+    
+        wx.request({
+          url: this.data.server + 'getWxacode',
+          data: {
+            path: JSON.stringify(qcCode)
+          },
+          header: {'content-type':'application/x-www-form-urlencoded'},
+          method: 'POST',
+          dataType: 'json',
+          responseType: 'text',
+          success: (result)=>{
+            console.log(result.data)
+            wx.setStorageSync("image",result.data.imageName)
+          },
+          fail: ()=>{},
+          complete: ()=>{}
+        });
+        /**end */
+      }
+
+      if (wx.getStorageSync("sex") == 'man') {
+        this.createImage_man()
+      } else {
+        this.createImage_woman()
+      }
+      
+    },
+    /**男性 已支付 */
+    createImage_man() {
       this.setData({
         imgDraw: {
           width: '730rpx',
-          height: '850rpx',
+          height: '900rpx',
           borderRadius: '16rpx',
           // background: '/pages/images/1-1.png',
           views: [
@@ -46,7 +83,7 @@ Component({
               type: 'image',
               url: '/pages/images/xty14.png',
               css: {
-                top: '50rpx',
+                top: '60rpx',
                 left: '100rpx',
                 // right: '32rpx',
                 width: '270rpx',
@@ -58,7 +95,7 @@ Component({
               type: 'image',
               url: '/pages/images/xty9.png',
               css: {
-                top: '70rpx',
+                top: '80rpx',
                 left: '370rpx',
                 width: '280rpx',
                 height: '180rpx',
@@ -68,7 +105,7 @@ Component({
               type: 'image',
               url: '/pages/images/xty15.png',
               css: {
-                top: '100rpx',
+                top: '120rpx',
                 left: '460rpx',
                 width: '150rpx',
                 height: '100rpx',
@@ -133,7 +170,7 @@ Component({
               type: 'text',
               text: '健康番茄',
               css: {
-                top: '750rpx',
+                top: '790rpx',
                 fontSize: '30rpx',
                 fontWeight: 'bold',
                 left: '365rpx',
@@ -143,10 +180,265 @@ Component({
             },
             {
               type: 'image',
-              url: 'https://qiniu-image.qtshe.com/20190605index.jpg',
+              url: app.data.uploadUrl + wx.getStorageSync("image"),
               css: {
-                top: '640rpx',
-                left: '470rpx',
+                top: '680rpx',
+                left: '500rpx',
+                width: '150rpx',
+                height: '150rpx'
+              }
+            }
+          ]
+        }
+      })
+    },
+    /**女性 已支付 */
+    createImage_woman() {
+      this.setData({
+        imgDraw: {
+          width: '730rpx',
+          height: '900rpx',
+          borderRadius: '16rpx',
+          // background: '/pages/images/1-1.png',
+          views: [
+            {
+              type: 'image',
+              url: '/pages/images/xty8.png',
+              css: {
+                top: '60rpx',
+                left: '100rpx',
+                // right: '32rpx',
+                width: '270rpx',
+                height: '270rpx',
+                // borderRadius: '16rpx'
+              },
+            },
+            {
+              type: 'image',
+              url: '/pages/images/xty9.png',
+              css: {
+                top: '80rpx',
+                left: '370rpx',
+                width: '280rpx',
+                height: '180rpx',
+              }
+            },
+            {
+              type: 'image',
+              url: '/pages/images/xty11.png',
+              css: {
+                top: '120rpx',
+                left: '460rpx',
+                width: '150rpx',
+                height: '100rpx',
+              }
+            },
+            {
+              type: 'text',
+              text: '从今天起',
+              css: {
+                top: '380rpx',
+                fontSize: '36rpx',
+                fontWeight: 'bold',
+                left: '365rpx',
+                align: 'center',
+              }
+            },
+            {
+              type: 'text',
+              text: '我要用' + wx.getStorageSync("targetDay") + '天',
+              css: {
+                top: '430rpx',
+                fontSize: '36rpx',
+                fontWeight: 'bold',
+                left: '365rpx',
+                align: 'center',
+              }
+            },
+            {
+              type: 'text',
+              text: '减掉' + wx.getStorageSync("weightLoss")*2 + '斤',
+              css: {
+                top: '480rpx',
+                fontSize: '36rpx',
+                fontWeight: 'bold',
+                left: '365rpx',
+                align: 'center',
+              }
+            },
+            {
+              type: 'text',
+              text: '如果我做不到',
+              css: {
+                top: '530rpx',
+                fontSize: '36rpx',
+                fontWeight: 'bold',
+                left: '365rpx',
+                align: 'center',
+              }
+            },
+            {
+              type: 'text',
+              text: '就让我接受我最好的朋友',
+              css: {
+                top: '580rpx',
+                fontSize: '30rpx',
+                fontWeight: 'bold',
+                left: '365rpx',
+                align: 'center',
+              }
+            },
+            {
+              type: 'text',
+              text: '长10斤肉肉的惩罚吧',
+              css: {
+                top: '630rpx',
+                fontSize: '30rpx',
+                fontWeight: 'bold',
+                left: '365rpx',
+                align: 'center',
+              }
+            },
+            {
+              type: 'text',
+              text: '健康番茄',
+              css: {
+                top: '790rpx',
+                fontSize: '30rpx',
+                fontWeight: 'bold',
+                left: '365rpx',
+                align: 'center',
+                color: '#26da40'
+              }
+            },
+            {
+              type: 'image',
+              url: app.data.uploadUrl + wx.getStorageSync("image"),
+              css: {
+                top: '680rpx',
+                left: '500rpx',
+                width: '150rpx',
+                height: '150rpx'
+              }
+            }
+          ]
+        }
+      })
+    },
+    /**未支付 */
+    createImage() {
+      this.setData({
+        imgDraw: {
+          width: '730rpx',
+          height: '900rpx',
+          borderRadius: '16rpx',
+          // background: '/pages/images/1-1.png',
+          views: [
+            {
+              type: 'image',
+              url: '/pages/images/xty14.png',
+              css: {
+                top: '60rpx',
+                left: '100rpx',
+                // right: '32rpx',
+                width: '270rpx',
+                height: '270rpx',
+                // borderRadius: '16rpx'
+              },
+            },
+            {
+              type: 'image',
+              url: '/pages/images/xty9.png',
+              css: {
+                top: '80rpx',
+                left: '370rpx',
+                width: '280rpx',
+                height: '180rpx',
+              }
+            },
+            {
+              type: 'image',
+              url: '/pages/images/xty15.png',
+              css: {
+                top: '120rpx',
+                left: '460rpx',
+                width: '150rpx',
+                height: '100rpx',
+              }
+            },
+            {
+              type: 'text',
+              text: '众人皆胖 我独瘦',
+              css: {
+                top: '380rpx',
+                fontSize: '30rpx',
+                fontWeight: 'bold',
+                left: '365rpx',
+                align: 'center',
+              }
+            },
+            {
+              type: 'text',
+              text: '我将参与健康番茄',
+              css: {
+                top: '430rpx',
+                fontSize: '36rpx',
+                fontWeight: 'bold',
+                left: '365rpx',
+                align: 'center',
+              }
+            },
+            {
+              type: 'text',
+              text: '全民减脂计划',
+              css: {
+                top: '480rpx',
+                fontSize: '36rpx',
+                fontWeight: 'bold',
+                left: '365rpx',
+                align: 'center',
+              }
+            },
+            {
+              type: 'text',
+              text: '用我的科学减脂甩掉肉肉',
+              css: {
+                top: '530rpx',
+                fontSize: '36rpx',
+                fontWeight: 'bold',
+                left: '365rpx',
+                align: 'center',
+              }
+            },
+            {
+              type: 'text',
+              text: '再见了胖友们',
+              css: {
+                top: '580rpx',
+                fontSize: '36rpx',
+                fontWeight: 'bold',
+                left: '365rpx',
+                align: 'center',
+              }
+            },
+            {
+              type: 'text',
+              text: '健康番茄',
+              css: {
+                top: '790rpx',
+                fontSize: '30rpx',
+                fontWeight: 'bold',
+                left: '365rpx',
+                align: 'center',
+                color: '#26da40'
+              }
+            },
+            {
+              type: 'image',
+              url: app.data.uploadUrl + wx.getStorageSync("image"),
+              css: {
+                top: '680rpx',
+                left: '500rpx',
                 width: '150rpx',
                 height: '150rpx'
               }

@@ -4,38 +4,17 @@ App({
   /**请求后台url */
   data: {
     uploadUrl:
-      "http://127.0.0.1:8080/upload/",
-      // "http://120.24.5.8:8080/upload/",
+      // "http://127.0.0.1:8080/upload/",
+      "http://120.24.5.8:8080/upload/",
     server:
-      "http://127.0.0.1:8080/eatingplan/"  
-      // "http://120.24.5.8:8080/eatingplan/"  
+      // "http://127.0.0.1:8080/eatingplan/"  
+      "http://120.24.5.8:8080/eatingplan/"  
   },
 
   onLaunch: function (e) {
     var that = this;
 
     console.log(e.referrerInfo.extraData)
-
-    var qcCode = {
-      "path": 'pages/index/index?shareuid=' + wx.getStorageSync("wxData").id
-    }
-
-    wx.request({
-      url: this.data.server + 'getWxacode',
-      data: {
-        path: JSON.stringify(qcCode)
-      },
-      header: {'content-type':'application/x-www-form-urlencoded'},
-      method: 'POST',
-      dataType: 'json',
-      responseType: 'text',
-      success: (result)=>{
-        console.log(result.data)
-        wx.setStorageSync("image",result.data.imageName)
-      },
-      fail: ()=>{},
-      complete: ()=>{}
-    });
 
     //获取配置信息
     wx.request({

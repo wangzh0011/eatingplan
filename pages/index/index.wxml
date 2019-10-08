@@ -1,5 +1,5 @@
 <view>
-	<image src="{{image}}" class="background-img">
+	<image src="../images/ty11.png" class="background-img">
 		<view class="background-block" />
 	</image>
 	<view class="title" style="width: {{windowWidth}}px; top: {{windowHeight/16}}px">

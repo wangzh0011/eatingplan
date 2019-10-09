@@ -35,7 +35,7 @@
 		<image src="../images/ty2.png" style="position: absolute; left:{{(windowWidth-btn_width)/2}}px; width:{{btn_width}}px; height:{{btn_height}}px;">
 		</image>
 		<view class="btn" bindtap="onTap" style="width:{{btn_width}}px; left:{{(windowWidth-btn_width)/2}}px; height:{{btn_height/2}}px;">
-			支付14元领取计划
+			支付{{rmb}}元领取计划
 		</view>
 		<view class="fanqie_link" bindtap="fanqieTap" wx:if="{{!showTabs}}">
 			参与健康番茄全民减脂值

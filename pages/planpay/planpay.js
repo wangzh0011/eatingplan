@@ -22,7 +22,8 @@ Page({
       atbs_pic_style: app.systemInfo.windowHeight/24,
       btn_width: app.btn.btn_width,
       btn_height: app.btn.btn_height,
-      textDesc: '中国人现状每100人中就有10个不同程度的肥胖症，而肥胖是各种慢性疾病的主要高危元素国际和国家专家报告，为预防慢性病呼吁群众采取健康饮食计划。'
+      textDesc: '中国人现状每100人中就有10个不同程度的肥胖症，而肥胖是各种慢性疾病的主要高危元素国际和国家专家报告，为预防慢性病呼吁群众采取健康饮食计划。',
+      rmb: wx.getStorageSync("systemConf").rmb
     })
 
     wx.showShareMenu({
@@ -65,13 +66,25 @@ Page({
       dataType: 'json',
       responseType: 'text',
       success: (result)=>{
+        console.log(result.data)
         wx.requestPayment({
-          timeStamp: '',
-          nonceStr: '',
-          package: '',
+          timeStamp: result.data.timeStamp,
+          nonceStr: result.data.nonceStr,
+          package: result.data.package_pay,
           signType: 'MD5',
-          paySign: '',
-          success (res) { },
+          paySign: result.data.paySign,
+          success (res) {
+            console.log("支付成功")
+            console.log(res)
+            wx.navigateTo({
+              url: '/pages/plandetails/plandetails?username=' + username,
+              success: (result)=>{
+                  wx.setStorageSync("payFlag","Y")//已支付标识
+              },
+              fail: ()=>{},
+              complete: ()=>{}
+            });
+          },
           fail (res) { }
         })
       },
@@ -80,14 +93,7 @@ Page({
     });
 
 
-    wx.navigateTo({
-      url: '/pages/plandetails/plandetails?username=' + username,
-      success: (result)=>{
-          wx.setStorageSync("payFlag","Y")//已支付标识
-      },
-      fail: ()=>{},
-      complete: ()=>{}
-    });
+    
   },
 
   /**
@@ -126,7 +132,7 @@ Page({
   navigateToFanqieTap: function () {
     wx.navigateToMiniProgram({
       appId: app.fanqieInfo.appid,
-      path: 'pages/index/index?shareid=' + wx.getStorageSync("wxData").id,
+      path: 'pages/index/index?shareuid=' + wx.getStorageSync("wxData").id,
       extraData: {
       },
       envVersion: 'trial',/*develop	开发版	trial	体验版	release 正式版*/

@@ -149,7 +149,7 @@ Page({
   navigateToFanqieTap: function () {
     wx.navigateToMiniProgram({
       appId: app.fanqieInfo.appid,
-      path: 'pages/index/index?shareid=' + wx.getStorageSync("wxData").id,
+      path: 'pages/index/index?shareuid=' + wx.getStorageSync("wxData").id,
       extraData: {
       },
       envVersion: 'trial',   /*develop	开发版	trial	体验版	release 正式版*/

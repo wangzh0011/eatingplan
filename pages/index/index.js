@@ -38,7 +38,7 @@ Page({
                 btn_width: flag ? app.btn.btn_width : app.btn.btn_width*1.1
             })
             flag = !flag
-        }, 400);
+        }, 300);
 
         //显示参加人数
         setInterval(() => {

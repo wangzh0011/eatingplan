@@ -8,18 +8,7 @@ Page({
    */
   data: {
     foodsList: [
-                {imgUrl: "../images/6-5.png", name: "豆浆"},
-                {imgUrl: "../images/6-6.png", name: "油条"},
-                {imgUrl: "../images/6-5.png", name: "豆浆"},
-                {imgUrl: "../images/6-6.png", name: "油条"},
-                {imgUrl: "../images/6-5.png", name: "豆浆"},
-                {imgUrl: "../images/6-6.png", name: "油条"},
-                {imgUrl: "../images/6-5.png", name: "豆浆"},
-                {imgUrl: "../images/6-6.png", name: "油条"},
-                {imgUrl: "../images/6-5.png", name: "豆浆"},
-                {imgUrl: "../images/6-6.png", name: "油条"},
-                {imgUrl: "../images/6-5.png", name: "豆浆"},
-                {imgUrl: "../images/6-6.png", name: "油条"},
+                
               ],
     dinner: ''          
   },

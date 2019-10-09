@@ -45,7 +45,7 @@ Component({
         }
     
         wx.request({
-          url: this.data.server + 'getWxacode',
+          url: app.data.server + 'getWxacode',
           data: {
             path: JSON.stringify(qcCode)
           },
@@ -63,10 +63,14 @@ Component({
         /**end */
       }
 
-      if (wx.getStorageSync("sex") == 'man') {
-        this.createImage_man()
+      if (wx.getStorageSync("payFlag") == 'Y') {
+        if (wx.getStorageSync("sex") == 'man') {
+          this.createImage_man()
+        } else {
+          this.createImage_woman()
+        }
       } else {
-        this.createImage_woman()
+        this.createImage_flag()
       }
       
     },
@@ -326,7 +330,7 @@ Component({
       })
     },
     /**未支付 */
-    createImage() {
+    createImage_flag() {
       this.setData({
         imgDraw: {
           width: '730rpx',

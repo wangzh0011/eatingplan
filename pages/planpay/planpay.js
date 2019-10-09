@@ -83,7 +83,7 @@ Page({
     wx.navigateTo({
       url: '/pages/plandetails/plandetails?username=' + username,
       success: (result)=>{
-          
+          wx.setStorageSync("payFlag","Y")//已支付标识
       },
       fail: ()=>{},
       complete: ()=>{}

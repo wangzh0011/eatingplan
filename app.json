@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/calculate/calculate",
     "pages/planpay/planpay",
     "pages/plandetails/plandetails",
     "pages/eatingplan/eatingplan",
@@ -8,7 +9,6 @@
     "pages/breakfast/breakfast",
     "pages/lunch/lunch",
     "pages/dinner/dinner",
-    "pages/calculate/calculate",
     "pages/logs/logs"
   ],
   "permission": {

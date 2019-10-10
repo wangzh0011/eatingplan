@@ -6,7 +6,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-    
+        showIndex: false
     },
   
     /**
@@ -14,6 +14,45 @@ Page({
      */
     onLoad: function (options) {
         var that = this;
+        console.log("hasPay ==> ")
+        console.log(wx.getStorageSync("hasPay"))
+        //查询用户是否支付
+        if(wx.getStorageSync("hasPay") != true) {
+            console.log("判断用户是否支付")
+            wx.request({
+                url: app.data.server + 'getPayOrder',
+                data: {
+                    uid: wx.getStorageSync("wxData").id
+                },
+                header: {'content-type':'application/json'},
+                method: 'GET',
+                dataType: 'json',
+                responseType: 'text',
+                success: (result)=>{
+                    //已支付跳转到饮食计划页面
+                    if(result.data == true) {
+                        console.log("已支付")
+                        wx.setStorageSync("hasPay", result.data);
+                        wx.navigateTo({
+                        url: '/pages/plandetails/plandetails?username=' + wx.getStorageSync("username"),
+                        success: (result)=>{
+                            
+                        }
+                        });
+                    }else{
+                        //未支付进入首页
+                        that.setData({
+                            showIndex: true
+                        })
+                    }
+                },
+                fail: ()=>{},
+                complete: ()=>{}
+            });
+        }
+
+
+        
         var num = Math.floor(Math.random()*4500 + 20000);
         var windowWidth = app.systemInfo.windowWidth;
         that.setData({

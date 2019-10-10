@@ -33,6 +33,7 @@ Page({
 
     var textDesc = this.textDesc(sleepStatus,age);
     var BMIdesc = this.BMIdesc(BMI);
+    var textDesc2 = this.textDesc2(weight,this.referWeight(height,sex),BMIdesc);
 
     this.setData({
       windowWidth: app.systemInfo.windowWidth,
@@ -45,7 +46,8 @@ Page({
       height: height + 'cm',
       sleepDesc: sleepDesc,
       BMI: '健康状态' + '(' + BMIdesc + ')',
-      textDesc: textDesc
+      textDesc: textDesc,
+      textDesc2: textDesc2
     })
     
   },
@@ -64,6 +66,24 @@ Page({
       fail: ()=>{},
       complete: ()=>{}
     });
+  },
+
+  /**
+   * 参考体重
+   * @param {身高} height 
+   * @param {性别} sex 
+   */
+  referWeight: function (height,sex) {
+
+    if(height < 80) {
+      return wx.getStorageSync("weight")
+    }
+
+    if (sex == 'man') {
+      return Math.round((height-80)*0.7)
+    } else {
+      return Math.round((height-70)*0.6)
+    }
   },
 
   /**
@@ -116,6 +136,21 @@ Page({
       } else {
         return age + '岁的您已经属于中年期，30~60岁的成年男子需要6.49小时，妇女需要7.5小时的睡眠时间，但也不宜睡眠过多，根据10万名成年人的22年跟踪发现，睡眠过多的人比睡7~8小时的人死亡率高出24%，过多的睡眠也会致使精神不振，影响记忆力，并且会错过早餐，造成饮食絮乱等，过多的睡眠也是导致肥胖症的诱因之一。'
       }
+    }
+  },
+
+  /**
+   * 文本描述第二段
+   */
+  textDesc2: function (weight,referWeight,BMIDesc) {
+    if (BMIDesc == '偏瘦') {
+      return '根据您当前的身高体重计算，体重至少保持在' + referWeight*0.9 + '以上为正常状态，身体状况为偏瘦，当低于标准时，容易对身体带来危害，如脱发、骨质疏松，贫血，记忆衰退、常犯胃病等。造成瘦弱的原因普遍为先天精气不足，脾胃虚弱，脾肾阳虚，肝肾阴虚。建议应前往医院查找具体原因，除此之外，在生活和饮食习惯中应保持良好的心态，乐观积极，多做一些运动缓解压力，在饮食方面尽量多摄入肉类（牛肉，羊肉，狗肉效果尤佳），除此之后多吃韭菜、核桃、肉桂等蔬果类，可有效改善体质。'
+    } else if (BMIDesc == '正常') {
+      return '根据您当前的身高体重计算，标准体重为' + referWeight +'kg，体重' + weight + 'kg属于正常范围，当前情况下注意保持饮食规律，健康搭配合理即可，在此标准上若想在增重或减重也应保持在' + Math.round(referWeight*0.9) + 'kg~' + Math.round(referWeight*1.1) + 'kg之间，过度的增减都不益于身体健康，在饮食方面建议合理的荤素搭配，以荤素1:4为宜。'
+    } else if (BMIDesc == '超重') {
+      return '根据您当前的身高体重计算，体重' + referWeight*0.9 + '~' + referWeight*1.1 + 'kg为正常范围，当前体重' + weight + 'kg已超出标准线'+ referWeight +'kg，身体状态为超重。科学研究表明超重的人更容易感觉到疲劳，呼吸不畅，偶发性心悸，剧烈运动后更容易引发皮肤疾病。除此之外，行为学家对100名成年男性和女性聚在一起进行测试，最终报告指出，有67名男性更容易对身材较好的异性产生好感，而女性则有84人。最终结论指出，较好的体型更容易在初次见面中获得异性好感。'
+    } else {
+      return '根据您当前的身高体重计算，体重' + referWeight*0.9 + '~' + referWeight*1.1 + 'kg为正常范围，当前体重' + weight + 'kg已超出标准线'+ referWeight +'kg，身体状况为肥胖，已超出健康范围。科学研究报告中指出，肥胖者较之常人更容易感到疲劳，体虚气短，呼吸不畅，运动后更容易引发丘疹等皮肤疾病。同时肥胖更是各种疾病的主要诱因，一项科学研究表明，在猝死的人群中，肥胖者高达43%仅此于长期熬夜，猝死主要为突发性心脏疾病，而心脏疾病的高发人群即为肥胖患者，除心脏病外，肥胖同时还容易引发肠胃疾病、皮肤病、宫颈癌症、糖尿病、不孕不育等症状，在此建议肥胖者重视饮食健康，少吃高脂肪食物和油腻食物，科学合理安排饮食，保持乐观积极心态，热爱生活。'
     }
   },
 

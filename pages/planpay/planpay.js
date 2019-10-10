@@ -43,7 +43,7 @@ Page({
 
   onTap: function () {
     var username = this.data.username;
-    
+    wx.setStorageSync("username",username)
     if(username.trim() == '') {
       wx.showToast({
         title: '请输入姓名',
@@ -56,7 +56,8 @@ Page({
       return;
     }
 
-      wx.request({
+    //支付请求
+    wx.request({
       url: app.data.server + 'pay',
       data: {
         openId: wx.getStorageSync("wxData").openid
@@ -67,19 +68,39 @@ Page({
       responseType: 'text',
       success: (result)=>{
         console.log(result.data)
+        //小程序发起支付
         wx.requestPayment({
-          timeStamp: result.data.timeStamp,
-          nonceStr: result.data.nonceStr,
-          package: result.data.package_pay,
+          timeStamp: result.data.pay.timeStamp,
+          nonceStr: result.data.pay.nonceStr,
+          package: result.data.pay.package_pay,
           signType: 'MD5',
-          paySign: result.data.paySign,
+          paySign: result.data.pay.paySign,
           success (res) {
             console.log("支付成功")
             console.log(res)
-            wx.navigateTo({
-              url: '/pages/plandetails/plandetails?username=' + username,
+            //保存支付记录
+            wx.request({
+              url: app.data.server + 'savePayOrder',
+              data: {
+                uid: wx.getStorageSync("wxData").id,
+                openid: wx.getStorageSync("wxData").openid,
+                tradeNo: result.data.orderParameter.trade_no,
+                totalFee: result.data.orderParameter.total_fee
+              },
+              header: {'content-type':'application/json'},
+              method: 'GET',
+              dataType: 'json',
+              responseType: 'text',
               success: (result)=>{
-                  wx.setStorageSync("payFlag","Y")//已支付标识
+                //跳转到支付之后的页面
+                wx.navigateTo({
+                  url: '/pages/plandetails/plandetails?username=' + username,
+                  success: (result)=>{
+                      // wx.setStorageSync("payFlag","Y")//已支付标识
+                      
+                  }
+                });
+                
               },
               fail: ()=>{},
               complete: ()=>{}

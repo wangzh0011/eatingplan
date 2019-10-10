@@ -14,7 +14,7 @@ App({
   onLaunch: function (e) {
     var that = this;
 
-    console.log(e.referrerInfo.extraData)
+    // console.log(e.referrerInfo.extraData)
 
     //获取配置信息
     wx.request({
@@ -119,7 +119,8 @@ App({
             system: result.system,
             pixelRatio: result.pixelRatio,
             language: result.language,
-            version: result.version
+            version: result.version,
+            isPay: 'N'
           },
           success: (res)=> {
 

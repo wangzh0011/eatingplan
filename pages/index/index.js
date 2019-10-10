@@ -26,9 +26,7 @@ Page({
             btn_width: app.btn.btn_width,
             btn_height: app.btn.btn_height,
             textDesc: '健康饮食计划基于国内3位从业十余年的资深营养大师整理的营养理论，和13位人工智能工程师设计的智能运算方式，结合当代云技术采集近10万人群数据比对，从而完善的真正科学有效的饮食计划。',
-            image: app.data.uploadUrl + wx.getStorageSync("image")
         })
-        console.log(app.data.uploadUrl  + wx.getStorageSync("image"))
 
         //按钮抖动
         var flag = true;
@@ -54,22 +52,17 @@ Page({
         //注册用户
         if(uid == null || uid == undefined){
             console.log("开始注册用户信息")
-            this.registerUser(options.shareuid)
+            userInfo = this.registerUser(options.shareuid)
         }
         console.log(options)
         //更新用户
         if (uid != null && uid != undefined) {
-            if (options.fqId != undefined && options.fqId != '') {
-                this.updateUser(userInfo.id,options.fqId,userInfo.id)
+            var fqId = options.fqId;
+            if (fqId == undefined || fqId == '' || fqId == 'null') {
+                fqId = 0;
             }
-            if (userInfo.jkId == null || userInfo.jkId == undefined) {
-                this.updateUser(userInfo.id,userInfo.fqId == null ? 0 : userInfo.fqId,userInfo.id)
-            }
+            this.updateUser(userInfo.id,fqId,userInfo.id)
         }
-
-
-
-
 
     },
     
@@ -121,6 +114,7 @@ Page({
                     console.log("设置分享信息")
                     app.setShareInfo(result.data.id,shareuid)
                 }
+                return result.data
             },
             fail: ()=>{},
             complete: ()=>{}

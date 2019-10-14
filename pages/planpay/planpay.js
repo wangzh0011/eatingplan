@@ -132,7 +132,10 @@ Page({
    * 弹出健康番茄页面
    */
   fanqieTap: function () {
+    //获取二维码
+    app.getQcCode();
     this.setData({
+      image: app.data.uploadUrl + wx.getStorageSync("image"),//二维码图片
       showFanqie: true,
       showTabs: true
     })

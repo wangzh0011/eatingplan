@@ -159,6 +159,33 @@ App({
 
   fanqieInfo: {
     appid: 'wx18a384bbb3417f19'
+  },
+
+  getQcCode: function () {
+    if(!wx.getStorageSync("image")){
+      /**获取小程序码 begin */
+      var qcCode = {
+        "path": 'pages/index/index?shareuid=' + wx.getStorageSync("wxData").id
+      }
+  
+      wx.request({
+        url: app.data.server + 'getWxacode',
+        data: {
+          path: JSON.stringify(qcCode)
+        },
+        header: {'content-type':'application/x-www-form-urlencoded'},
+        method: 'POST',
+        dataType: 'json',
+        responseType: 'text',
+        success: (result)=>{
+          console.log(result.data)
+          wx.setStorageSync("image",result.data.imageName)
+        },
+        fail: ()=>{},
+        complete: ()=>{}
+      });
+      /**end */
+    }
   }
 
 })

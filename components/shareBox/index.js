@@ -38,39 +38,14 @@ Component({
         title: '生成中'
       })
 
-      if(!wx.getStorageSync("image")){
-        /**获取小程序码 begin */
-        var qcCode = {
-          "path": 'pages/index/index?shareuid=' + wx.getStorageSync("wxData").id
-        }
-    
-        wx.request({
-          url: app.data.server + 'getWxacode',
-          data: {
-            path: JSON.stringify(qcCode)
-          },
-          header: {'content-type':'application/x-www-form-urlencoded'},
-          method: 'POST',
-          dataType: 'json',
-          responseType: 'text',
-          success: (result)=>{
-            console.log(result.data)
-            wx.setStorageSync("image",result.data.imageName)
-          },
-          fail: ()=>{},
-          complete: ()=>{}
-        });
-        /**end */
-      }
-
-      if (wx.getStorageSync("payFlag") == 'Y') {
+      if (wx.getStorageSync("hasPay") != true) {
+        this.createImage_flag()
+      } else {
         if (wx.getStorageSync("sex") == 'man') {
           this.createImage_man()
         } else {
           this.createImage_woman()
         }
-      } else {
-        this.createImage_flag()
       }
       
     },

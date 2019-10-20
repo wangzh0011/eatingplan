@@ -69,14 +69,25 @@ Page({
       return;
     }
 
-    wx.navigateTo({
-      url: '/pages/planpay/planpay',
-      success: (result)=>{
-        
-      },
-      fail: ()=>{},
-      complete: ()=>{}
-    });
+    if (wx.getStorageSync("hasPay") != true) {
+      wx.navigateTo({
+        url: '/pages/planpay/planpay',
+        success: (result)=>{
+          
+        },
+        fail: ()=>{},
+        complete: ()=>{}
+      });
+    } else {
+      wx.navigateTo({
+        url: '/pages/plandetails/plandetails?username=' + wx.getStorageSync("username"),
+        success: (result)=>{
+          
+        },
+        fail: ()=>{},
+        complete: ()=>{}
+      });
+    }
   },
 
   /**

@@ -26,27 +26,7 @@ Page({
 
     var that = this;
     var username = options.username;
-    //早餐数组
-    var breakfastArray = wx.getStorageSync("breakfastArray");
-    //午餐数组
-    var lunchArray = wx.getStorageSync("lunchArray");
-    //晚餐数组
-    var dinnerArray = wx.getStorageSync("dinnerArray");
-
-    this.setData({
-      windowWidth: app.systemInfo.windowWidth,
-      windowHeight: app.systemInfo.windowHeight,
-      title_area_width: app.position.title_area_width,
-      title_area_top: app.position.title_area_top,
-      title_area_left: app.position.title_area_left,
-      username: username,
-      btn_width: app.btn.btn_width,
-      btn_height: app.btn.btn_height,
-      atbs_pic_style: app.systemInfo.windowHeight/24,
-      breakfastArray: breakfastArray,
-      lunchArray: lunchArray,
-      dinnerArray: dinnerArray
-    })
+    
 
     var weight = wx.getStorageSync("weight");//目前体重
     var targetWeight = wx.getStorageSync("targetWeight");//目标体重
@@ -74,7 +54,37 @@ Page({
     //晚餐摄入热量
     var dinner = food*0.4;
 
+    //早餐数组
+    var breakfastArray = wx.getStorageSync("breakfastArray");
+    for (const key in breakfastArray) {
+      breakfastArray[key][4] = (breakfast/breakfastArray[key][2]).toFixed(1)
+    }
+    //午餐数组
+    var lunchArray = wx.getStorageSync("lunchArray");
+    for (const key in lunchArray) {
+      lunchArray[key][4] = (breakfast/lunchArray[key][2]).toFixed(1)
+    }
+    //晚餐数组
+    var dinnerArray = wx.getStorageSync("dinnerArray");
+    for (const key in dinnerArray) {
+      dinnerArray[key][4] = (breakfast/dinnerArray[key][2]).toFixed(1)
+    }
+
+
     this.setData({
+      windowWidth: app.systemInfo.windowWidth,
+      windowHeight: app.systemInfo.windowHeight,
+      title_area_width: app.position.title_area_width,
+      title_area_top: app.position.title_area_top,
+      title_area_left: app.position.title_area_left,
+      username: username,
+      btn_width: app.btn.btn_width,
+      btn_height: app.btn.btn_height,
+      atbs_pic_style: app.systemInfo.windowHeight/24,
+      breakfastArray: breakfastArray,
+      lunchArray: lunchArray,
+      dinnerArray: dinnerArray,
+
       breakfast: Math.round(breakfast),
       lunch: Math.round(lunch),
       dinner: Math.round(dinner),

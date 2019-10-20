@@ -27,10 +27,10 @@
                 <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
                     <view class="food">
                         <view class="title">
-                            早餐摄入热量{{breakfast}}焦耳
+                            早餐摄入热量为：{{breakfast}}kcal(大卡)
                         </view>
                         <view class="subtitle">
-                            选择其一作为早餐
+                            选择其一作为早餐 可参考热量进行饮食搭配
 						</view>
 						
                         <view class="details">
@@ -41,8 +41,8 @@
                                     <view class="item">
                                         <image src="{{item[0]}}" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
                                         <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px">
-                                            <view class="desc_title">{{item[1]}}</view>
-                                            <view class="desc_subtitle">热量： {{item[2]}}大卡 {{item[3]}}克</view>
+                                            <view class="desc_title">{{item[1]}}<text space="nbsp">       可食用{{item[4]}}份</text></view>
+                                            <view class="desc_subtitle">例图：{{item[3]}}克 含热量{{item[2]}}kcal </view>
                                         </view>
                                     </view>
                                 </view>
@@ -55,10 +55,10 @@
                 <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
                     <view class="food">
                         <view class="title">
-                            午餐摄入热量{{lunch}}焦耳
+                            午餐摄入热量为：{{lunch}}kcal(大卡)
                         </view>
                         <view class="subtitle">
-                            选择其一作为午餐
+                            选择其一作为午餐 可参考热量进行饮食搭配
                         </view>
                         
                         <view class="details">
@@ -69,8 +69,8 @@
                                     <view class="item">
                                         <image src="{{item[0]}}" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
                                         <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px">
-                                            <view class="desc_title">{{item[1]}}</view>
-                                            <view class="desc_subtitle">热量： {{item[2]}}大卡 {{item[3]}}克</view>
+                                            <view class="desc_title">{{item[1]}}<text space="nbsp">       可食用{{item[4]}}份</text></view>
+                                            <view class="desc_subtitle">例图：{{item[3]}}克 含热量{{item[2]}}kcal </view>
                                         </view>
                                     </view>
                                 </view>
@@ -83,10 +83,10 @@
                 <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
                     <view class="food">
                         <view class="title">
-                            晚餐摄入热量{{dinner}}焦耳
+                            晚餐摄入热量为：{{dinner}}kcal(大卡)
                         </view>
                         <view class="subtitle">
-                            选择其一作为晚餐
+                            选择其一作为晚餐 可参考热量进行饮食搭配
                         </view>
                         
                         <view class="details">
@@ -97,8 +97,8 @@
                                     <view class="item">
                                         <image src="{{item[0]}}" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
                                         <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px">
-                                            <view class="desc_title">{{item[1]}}</view>
-                                            <view class="desc_subtitle">热量： {{item[2]}}大卡 {{item[3]}}克</view>
+                                            <view class="desc_title">{{item[1]}}<text space="nbsp">       可食用{{item[4]}}份</text></view>
+                                            <view class="desc_subtitle">例图：{{item[3]}}克 含热量{{item[2]}}kcal </view>
                                         </view>
                                     </view>
                                 </view>

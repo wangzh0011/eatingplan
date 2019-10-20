@@ -1,9 +1,9 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/plandetails/plandetails",
     "pages/calculate/calculate",
     "pages/planpay/planpay",
-    "pages/plandetails/plandetails",
     "pages/eatingplan/eatingplan",
     "pages/parameter/parameter",
     "pages/breakfast/breakfast",

@@ -17,42 +17,8 @@ Page({
         console.log("hasPay ==> ")
         console.log(wx.getStorageSync("hasPay"))
         //查询用户是否支付
-        if(wx.getStorageSync("hasPay") != true) {
-            console.log("判断用户是否支付")
-            wx.request({
-                url: app.data.server + 'getPayOrder',
-                data: {
-                    uid: wx.getStorageSync("wxData").id
-                },
-                header: {'content-type':'application/json'},
-                method: 'GET',
-                dataType: 'json',
-                responseType: 'text',
-                success: (result)=>{
-                    //已支付跳转到饮食计划页面
-                    if(result.data == true) {
-                        console.log("已支付")
-                        wx.setStorageSync("hasPay", result.data);
-                        wx.navigateTo({
-                        url: '/pages/plandetails/plandetails?username=' + wx.getStorageSync("username"),
-                        success: (result)=>{
-                            
-                        }
-                        });
-                    }else{
-                        //未支付进入首页
-                        that.setData({
-                            showIndex: true
-                        })
-                    }
-                },
-                fail: ()=>{},
-                complete: ()=>{}
-            });
-        }
+        this.isPay();
 
-
-        
         var num = Math.floor(Math.random()*4500 + 20000);
         var windowWidth = app.systemInfo.windowWidth;
         that.setData({
@@ -173,6 +139,57 @@ Page({
             complete: ()=>{}
         });
     },
+
+    isPay: function () {
+        var that = this;
+        //查询用户是否支付
+        if(wx.getStorageSync("hasPay") != true) {
+            console.log("判断用户是否支付")
+            wx.request({
+                url: app.data.server + 'getPayOrder',
+                data: {
+                    uid: wx.getStorageSync("wxData").id
+                },
+                header: {'content-type':'application/json'},
+                method: 'GET',
+                dataType: 'json',
+                responseType: 'text',
+                success: (result)=>{
+                    //已支付跳转到饮食计划页面
+                    if(result.data == true) {
+                        console.log("已支付")
+                        wx.setStorageSync("hasPay", result.data);
+                        // wx.redirectTo({
+                        //     url: '/pages/plandetails/plandetails?username=' + wx.getStorageSync("username"),
+                        //     success: (result)=>{
+                                
+                        //     }
+                        // });
+                        that.setData({
+                            showIndex: true
+                        })
+                    }else{
+                        //未支付进入首页
+                        that.setData({
+                            showIndex: true
+                        })
+                    }
+                },
+                fail: ()=>{},
+                complete: ()=>{}
+            });
+        } else {
+            // wx.redirectTo({
+            //     url: '/pages/plandetails/plandetails?username=' + wx.getStorageSync("username"),
+            //     success: (result)=>{
+                    
+            //     }
+            // });
+            that.setData({
+                showIndex: true
+            })
+        }
+    },
   
     /**
      * 生命周期函数--监听页面初次渲染完成
@@ -185,7 +202,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        
+        this.isPay();
     },
   
     /**

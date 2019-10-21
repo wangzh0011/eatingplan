@@ -10,7 +10,8 @@ Page({
     foodsList: [
                 
               ],
-    lunch: ''            
+    lunch: '',
+    img: []         
   },
 
   /**
@@ -99,6 +100,19 @@ Page({
    */
   onReady: function () {
 
+  },
+
+  /**
+   * 预览图片
+   */
+  previewImageTap: function(e) {
+    console.log(e)
+    var index = e.currentTarget.dataset.index;
+    var img = this.data.img;
+    img[0] = this.data.foodsList[index].imgUrl;
+    wx.previewImage({
+      urls: img,
+    })
   },
 
   /**

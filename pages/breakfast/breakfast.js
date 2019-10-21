@@ -10,7 +10,8 @@ Page({
     foodsList: [
                 
               ],
-    breakfast: ''          
+    breakfast: '',
+    img: []          
   },
 
   /**
@@ -95,6 +96,19 @@ Page({
     })
     //在计划详情里显示
     wx.setStorageSync("breakfastArray",breakfast);
+  },
+
+  /**
+   * 预览图片
+   */
+  previewImageTap: function (e) {
+    console.log(e)
+    var index = e.currentTarget.dataset.index;
+    var img = this.data.img;
+    img[0] = this.data.foodsList[index].imgUrl;
+    wx.previewImage({
+      urls: img,
+    })
   },
 
   /**

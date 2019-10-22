@@ -45,7 +45,7 @@
 			<view class="area_weight_kg">天</view>
         </view>
 
-		<view class="area_desc_text_title">我们将根据大数据为您定制计划</view>
+		<!-- <view class="area_desc_text_title">我们将根据大数据为您定制计划</view>
         <view class="area_desc_text">
             <view class="area_desc_text_input" >
 				<input type="text"  class="input_desc_text_border" value="营养学" disabled="{{true}}"/>
@@ -64,7 +64,33 @@
             <view class="area_desc_text_input" >
 				<input type="text" class="input_desc_text_border" value="100万人数据对比" disabled="{{true}}"/>
             </view>
-        </view>
+		</view> -->
+		<view class="area_desc_text_title"></view>
+		<view class="area_desc_text">
+			<radio-group bindchange="chooseLevel">
+				<view class="area_desc_text_input" >
+					<label>
+						<radio value="level1" checked="{{level1}}" class="input_desc_text_border"> 
+							<text >我不怎么运动 每天坐在办公室 长期面对电脑</text>
+						</radio>
+					</label>
+				</view>
+				<view class="area_desc_text_input" >
+					<label>
+						<radio value="level2" checked="{{level2}}" class="input_desc_text_border"> 
+							<text >我适当运动 逛街购物 打扫卫生 步行2公里以上</text>
+						</radio>
+					</label>
+				</view>
+				<view class="area_desc_text_input" >
+					<label>
+						<radio value="level3" checked="{{level3}}" class="input_desc_text_border"> 
+							<text >我喜欢运动 每日30分钟以上篮球 跑步 游泳等</text>
+						</radio>
+					</label>
+				</view>
+			</radio-group>
+		</view>
 
 	</view>
 

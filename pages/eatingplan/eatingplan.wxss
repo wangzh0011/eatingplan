@@ -59,7 +59,7 @@
 }
 
 .area_desc_text_title{
-    margin-top: 55px;
+    margin-top: 10%;
     display: flex;
     /* align-items: center; */
     justify-content: center
@@ -68,8 +68,8 @@
 .area_desc_text{
     margin-top: 5px;
     margin-left: 20px;
-    margin-right: 10px;
-    display: flex;
+    margin-right: 20px;
+    /* display: flex; */
     /* flex-flow: row wrap;
     justify-content: flex-start;  */
 }
@@ -82,13 +82,70 @@
 }
 
 .area_desc_text_input{
-    padding-right: 10px;
+    padding-bottom: 5%;
 }
 
 .input_desc_text_border{
-    background-color: #F6F2E9;
-    border: 1px solid #FEC55F;
+    /* background-color: #F6F2E9; */
+    background-color: #6EFFBD;
+    /* border: 1px solid #FEC55F; */
     text-align: center;
     color: #676f7c;
-    font-size: 30rpx;
+    font-size: 24rpx;
+    height: 60rpx;
 }
+
+
+/*radio默认样式重置*/
+
+radio {
+    box-sizing: border-box;
+    background: none;
+    position: relative;
+    width: inherit;
+    height: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1
+  }
+
+  radio text{
+    position: relative;
+    z-index: 2
+  }
+  
+  radio .wx-radio-input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: none;
+    border-radius: 6rpx;
+    box-sizing: border-box;
+    z-index: 1
+  }
+  
+  radio .wx-radio-input.wx-radio-input-checked {
+    background-color: transparent;
+    color: #000;
+    border-color: rgb(130, 131, 185);
+    background: rgb(130, 131, 185);
+    overflow: hidden;
+    box-sizing: border-box;
+    z-index: inherit
+  }
+  
+  radio .wx-radio-input.wx-radio-input-checked::before {
+    font-size: 30rpx;
+    top: auto;
+    left: auto;
+    right: -4rpx;
+    bottom: -4rpx;
+    transform: translate(0, 0) scale(1);
+    -webkit-transform: translate(0, 0) scale(1);
+     z-index: inherit
+  }
+  
+  /*radio默认样式重置*/

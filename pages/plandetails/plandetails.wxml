@@ -7,7 +7,7 @@
 
     <view class="plandata" style="width: {{windowWidth-50}}px; left: 25px; top: {{windowHeight/10}}px">
     
-        <view class="move-container">
+        <view class="move-container" style="height: {{windowHeight/8}}px; width: 100%;">
             <!-- <ec-canvas id="mychart-dom-move-bar" canvas-id="mychart-move-bar" ec="{{ ecBar }}"></ec-canvas> -->
         </view>
 
@@ -39,7 +39,7 @@
                                 bindscrolltoupper="" bindscrolltolower="" bindscroll="">
                                 <view wx:for="{{breakfastArray}}" wx:key="*this" wx:for-item="item">
                                     <view class="item">
-                                        <image src="{{item[0]}}" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
+                                        <image bindtap="previewBreakfast" data-index="{{index}}" src="{{item[0]}}" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
                                         <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px">
                                             <view class="desc_title">{{item[1]}}<text space="nbsp">       可食用{{item[4]}}份</text></view>
                                             <view class="desc_subtitle">例图：{{item[3]}}克 含热量{{item[2]}}kcal </view>
@@ -47,6 +47,7 @@
                                     </view>
                                 </view>
                             </scroll-view>
+                            <view class="subtitle">点击图片可放大查看</view>
                         </view>
 
                     </view>
@@ -67,7 +68,7 @@
                                 bindscrolltoupper="" bindscrolltolower="" bindscroll="">
                                 <view wx:for="{{lunchArray}}" wx:key="*this" wx:for-item="item">
                                     <view class="item">
-                                        <image src="{{item[0]}}" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
+                                        <image bindtap="previewLunch" data-index="{{index}}" src="{{item[0]}}" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
                                         <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px">
                                             <view class="desc_title">{{item[1]}}<text space="nbsp">       可食用{{item[4]}}份</text></view>
                                             <view class="desc_subtitle">例图：{{item[3]}}克 含热量{{item[2]}}kcal </view>
@@ -75,6 +76,7 @@
                                     </view>
                                 </view>
                             </scroll-view>
+                            <view class="subtitle">点击图片可放大查看</view>
                         </view>
 
                     </view>
@@ -95,7 +97,7 @@
                                 bindscrolltoupper="" bindscrolltolower="" bindscroll="">
                                 <view wx:for="{{dinnerArray}}" wx:key="*this" wx:for-item="item">
                                     <view class="item">
-                                        <image src="{{item[0]}}" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
+                                        <image bindtap="previewDinner" data-index="{{index}}" src="{{item[0]}}" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
                                         <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px">
                                             <view class="desc_title">{{item[1]}}<text space="nbsp">       可食用{{item[4]}}份</text></view>
                                             <view class="desc_subtitle">例图：{{item[3]}}克 含热量{{item[2]}}kcal </view>
@@ -103,6 +105,7 @@
                                     </view>
                                 </view>
                             </scroll-view>
+                            <view class="subtitle">点击图片可放大查看</view>
                         </view>
 
                     </view>
@@ -115,14 +118,14 @@
     <view class="tabs" style="height: {{windowHeight/12}}px">
         <button class="tabs_item" bindtap="navigateToFanqieTap">
             <image src="../images/ty7.png"  style="height: {{atbs_pic_style}}px; width: {{atbs_pic_style}}px"/>
-            <text class="tabs_text">赚番茄</text>
+            <text class="tabs_text">领现金</text>
         </button>
         <view class="tabs_item">
             <!-- <image src="../images/ty6.png" style="height: {{atbs_pic_style*4}}px; width: {{atbs_pic_style*4}}px;bottom: 0px"/> -->
         </view>
-        <view class="tabs_item">
+        <view class="tabs_item" bindtap="cooperationTap">
             <image src="../images/ty8.png" style="height: {{atbs_pic_style}}px; width: {{atbs_pic_style}}px"/>
-            <text class="tabs_text">合作</text>
+            <text class="tabs_text">商务合作</text>
         </view>
     </view>
 

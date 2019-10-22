@@ -16,7 +16,8 @@ Page({
     sliderLeft: 0,
     weightLoss: '',
     showFanqie: false,
-    isCanDraw: false
+    isCanDraw: false,
+    img: []
   },
 
   /**
@@ -34,6 +35,7 @@ Page({
     var referDay = wx.getStorageSync("referDay");//建议用时
     var sex = wx.getStorageSync("sex");//性别
     var weightLoss = weight - targetWeight;//减重
+    var level = wx.getStorageSync("level")//运动量
     if (weightLoss > 20) {
       weightLoss = 20;//封顶20
     }
@@ -43,8 +45,10 @@ Page({
 
     //日消
     var dayExp = this.dayExp(weight,sex);
-    //基耗
-    var totalExp = this.totalExp(dayExp);
+    //体力活动所需热量
+    var LevelExp = this.LevelExp(level,weight);
+    //标准每日摄入热量
+    var totalExp = this.totalExp(dayExp,LevelExp);
     //每日应摄入总量
     var food = this.food(dayExp,weightLoss,targetDay);
     //早餐摄入热量
@@ -106,7 +110,7 @@ Page({
    * @param {*} targetDay 
    */
   food: function (dayExp,weight,targetDay) {
-    return dayExp - (weight*2/targetDay)*32216.8;
+    return dayExp - (weight/targetDay)*7700;
   },
 
   /**
@@ -116,18 +120,33 @@ Page({
    */
   dayExp: function (weight,sex) {
     if (sex == 'man') {
-      return weight*2*10*4.184;
+      return weight*2*10;
     } else {
-      return weight*2*9*4.184;
+      return weight*2*9;
     }
   },
 
   /**
-   * 基耗
+   * 体力活动所需热量
+   * @param {运动量} level 
+   * @param {体重} weight 
+   */
+  LevelExp: function (level,weight) {
+    if (level == 'level3') {
+      return weight * 20;
+    } else if (level == 'level2') {
+      return weight * 10;
+    } else {
+      return weight * 5;
+    }
+  },
+
+  /**
+   * 标准每日摄入热量
    * @param {日消} dayExp 
    */
-  totalExp: function (dayExp) {
-    return (Math.round(dayExp)+476.976)*1.1;
+  totalExp: function (dayExp,LevelExp) {
+    return (Math.round(dayExp)+LevelExp)*1.1;
   },
 
   /**
@@ -180,6 +199,62 @@ Page({
       isCanDraw: !this.data.isCanDraw,
       showFanqie: false
     })
+  },
+
+  /**
+   * 早餐图片预览
+   */
+  previewBreakfast: function (e) {
+    var index = e.currentTarget.dataset.index;
+    var img = this.data.img
+    img[0] = this.data.breakfastArray[index][0]
+    wx.previewImage({
+      urls: img,
+    })
+  },
+
+  /**
+   * 午餐图片预览
+   */
+  previewLunch: function (e) {
+    var index = e.currentTarget.dataset.index;
+    var img = this.data.img
+    img[0] = this.data.lunchArray[index][0]
+    wx.previewImage({
+      urls: img,
+    })
+  },
+
+  /**
+   * 晚餐图片预览
+   */
+  previewDinner: function (e) {
+    var index = e.currentTarget.dataset.index;
+    var img = this.data.img
+    img[0] = this.data.dinnerArray[index][0]
+    wx.previewImage({
+      urls: img,
+    })
+  },
+
+  /**
+   * 合作
+   */
+  cooperationTap: function () {
+    wx.showModal({
+      title: '商务合作',
+      content: '商务合作请添加商务客服微信帐号：Duang_2c',
+      showCancel: false,
+      confirmText: '知道了',
+      confirmColor: '#3CC51F',
+      success: (result) => {
+        if(result.confirm){
+          
+        }
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
   },
 
   /**

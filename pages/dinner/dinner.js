@@ -19,6 +19,11 @@ Page({
    */
   onLoad: function (options) {
 
+    wx.showLoading({
+      title: "数据加载中",
+      mask: true,
+    });
+
     var that = this;
     wx.request({
       url: app.data.server + '/foods',
@@ -33,6 +38,7 @@ Page({
         that.setData({
           foodsList: result.data
         })
+        wx.hideLoading();
       },
       fail: ()=>{},
       complete: ()=>{}

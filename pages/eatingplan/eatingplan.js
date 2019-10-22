@@ -9,7 +9,8 @@ Page({
     targetWeight: '',
     targetDay: '',
     weightArray: [],
-    dayArray: []
+    dayArray: [],
+    level: ''
   },
 
   /**
@@ -49,8 +50,24 @@ Page({
       defaultWeight: '20',
       defaultDay: '30',
       targetWeight: wx.getStorageSync("targetWeight"),
-      targetDay: wx.getStorageSync("targetDay")
+      targetDay: wx.getStorageSync("targetDay"),
+      level: wx.getStorageSync("level")
     })
+
+    var level = wx.getStorageSync("level")
+    if (level == 'level1') {
+      this.setData({
+        level1: 'checked'
+      })
+    } else if (level == 'level2') {
+      this.setData({
+        level2: 'checked'
+      })
+    } else if (level == 'level3') {
+      this.setData({
+        level3: 'checked'
+      })
+    }
 
     wx.setStorageSync("referDay",referDay);
   },
@@ -151,6 +168,7 @@ Page({
 
     var targetDay = this.data.targetDay;
     var targetWeight = this.data.targetWeight;
+    var level = this.data.level;
 
     if (targetWeight == '') {
       wx.showToast({
@@ -172,6 +190,13 @@ Page({
         targetDay: ''
       })
       return;
+    } else if (level == '') {
+      wx.showToast({
+        title: '请选择您的运动量',
+        icon: 'none',
+        duration: 1500,
+      });
+      return;
     }
 
     wx.navigateTo({
@@ -182,6 +207,17 @@ Page({
       fail: ()=>{},
       complete: ()=>{}
   });
+  },
+
+  /**
+   * 选择运动量
+   */
+  chooseLevel: function (e) {
+    var level = e.detail.value
+    this.setData({
+      level: level
+    })
+    wx.setStorageSync("level",level)
   },
 
   /**

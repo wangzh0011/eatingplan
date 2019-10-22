@@ -169,7 +169,7 @@ App({
       }
   
       wx.request({
-        url: app.data.server + 'getWxacode',
+        url: this.data.server + 'getWxacode',
         data: {
           path: JSON.stringify(qcCode)
         },

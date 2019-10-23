@@ -57,6 +57,11 @@ App({
               console.log(result.data)
               this.userInfo.userInfo = result.data//将openId, sessionKey, unionId赋值给userInfo.userInfo
               wx.setStorageSync("wxData",result.data);//已注册用户返回openID和id，未注册用户返回openID
+              //由于 login 是网络请求，可能会在 Page.onLoad 之后才返回
+              // 此处加入 callback 以防止这种情况
+              if (this.loginCallback) {
+                this.loginCallback(res)
+              }
             },
             fail: ()=>{},
             complete: ()=>{}

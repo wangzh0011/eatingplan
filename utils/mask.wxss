@@ -78,6 +78,7 @@
     left: 35%;
     bottom: 5%;
     width: 30%;
+    text-align: center;
 }
 
 .fanqie .qccode{

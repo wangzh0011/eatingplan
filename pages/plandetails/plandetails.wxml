@@ -172,7 +172,7 @@
 			<view class="text_bottom">
 				<text >健康番茄</text>
 			</view>
-            <image class="qccode" src="{{image}}" />
+            <!-- <image class="qccode" src="{{image}}" /> -->
 		</view>
 		<image class="fanqie_close" bindtap="closeTap" src="../images/xty10.png" />
 

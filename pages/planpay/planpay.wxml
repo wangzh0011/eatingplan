@@ -47,7 +47,7 @@
 		<view class="tabs" style="height: {{windowHeight/12}}px">
 			<button class="tabs_item" bindtap="navigateToFanqieTap">
 				<image src="../images/ty13.png" style="height: {{atbs_pic_style}}px; width: {{atbs_pic_style}}px"/>
-				<text class="tabs_text">赚番茄</text>
+				<text class="tabs_text">领现金</text>
 			</button>
 			<view class="tabs_item">
 				<!-- <image src="../images/ty6.png" style="height: {{atbs_pic_style*4}}px; width: {{atbs_pic_style*4}}px;bottom: 0px"/> -->
@@ -85,7 +85,7 @@
 			<view class="text_bottom">
 				<text >健康番茄</text>
 			</view>
-			<image class="qccode" src="{{image}}" />
+			<!-- <image class="qccode" src="{{image}}" /> -->
 		</view>
 		<image class="fanqie_close" bindtap="closeTap" src="../images/xty10.png" />
 

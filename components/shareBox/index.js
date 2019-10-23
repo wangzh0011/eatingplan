@@ -71,10 +71,10 @@ Component({
               url: app.data.uploadUrl + wx.getStorageSync("image"),
               color: "#9fa1ad",
               css: {
-                top: '760rpx',
+                top: '735rpx',
                 left: '55rpx',
-                width: '160rpx',
-                height: '160rpx'
+                width: '190rpx',
+                height: '190rpx'
               }
             }
           ]
@@ -96,7 +96,7 @@ Component({
               color: "#9fa1ad",
               css: {
                 top: '20rpx',
-                right: '55rpx',
+                right: '40rpx',
                 width: '160rpx',
                 height: '160rpx'
               }
@@ -120,7 +120,7 @@ Component({
               color: "#9fa1ad",
               css: {
                 top: '20rpx',
-                right: '55rpx',
+                right: '40rpx',
                 width: '160rpx',
                 height: '160rpx'
               }

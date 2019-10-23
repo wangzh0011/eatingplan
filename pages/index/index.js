@@ -14,10 +14,8 @@ Page({
      */
     onLoad: function (options) {
         var that = this;
-        console.log("hasPay ==> ")
-        console.log(wx.getStorageSync("hasPay"))
-        //查询用户是否支付
-        this.isPay();
+
+       
 
         var num = Math.floor(Math.random()*4500 + 20000);
         var windowWidth = app.systemInfo.windowWidth;
@@ -51,23 +49,32 @@ Page({
             })
         }, 1000);
 
-        var userInfo = wx.getStorageSync("wxData");
-        var uid = userInfo.id;
-        console.log("缓存uid:" + uid)
-        //注册用户
-        if(uid == null || uid == undefined){
-            console.log("开始注册用户信息")
-            userInfo = this.registerUser(options.shareuid)
-        }
-        console.log(options)
-        //更新用户
-        if (uid != null && uid != undefined) {
-            var fqId = options.fqId;
-            if (fqId == undefined || fqId == '' || fqId == 'null') {
-                fqId = 0;
+        //回调函数
+        app.loginCallback = res =>  {
+
+            console.log("hasPay ==> ")
+            console.log(wx.getStorageSync("hasPay"))
+            //查询用户是否支付
+            this.isPay();
+
+            var userInfo = wx.getStorageSync("wxData");
+            var uid = userInfo.id;
+            console.log("缓存uid:" + uid)
+            //注册用户
+            if(uid == null || uid == undefined){
+                console.log("开始注册用户信息")
+                userInfo = this.registerUser(options.shareuid)
             }
-            this.updateUser(userInfo.id,fqId,userInfo.id)
-        }
+            console.log(options)
+            //更新用户
+            if (uid != null && uid != undefined) {
+                var fqId = options.fqId;
+                if (fqId == undefined || fqId == '' || fqId == 'null') {
+                    fqId = 0;
+                }
+                this.updateUser(userInfo.id,fqId,userInfo.id)
+            }
+        }    
 
     },
     
@@ -155,6 +162,8 @@ Page({
                 dataType: 'json',
                 responseType: 'text',
                 success: (result)=>{
+                    console.log(1234)
+                    console.log(result.data)
                     //已支付跳转到饮食计划页面
                     if(result.data == true) {
                         console.log("已支付")
@@ -202,7 +211,7 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        this.isPay();
+        // this.isPay();
     },
   
     /**

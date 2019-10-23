@@ -50,7 +50,7 @@ Page({
     //标准每日摄入热量
     var totalExp = this.totalExp(dayExp,LevelExp);
     //每日应摄入总量
-    var food = this.food(dayExp,weightLoss,targetDay);
+    var food = this.food(totalExp,weightLoss,targetDay);
     //早餐摄入热量
     var breakfast = food*0.3;
     //午餐摄入热量

@@ -27,28 +27,110 @@ Component({
       })
     },
     drawPic() {
-      if (this.data.sharePath) { //如果已经绘制过了本地保存有图片不需要重新绘制
-        this.setData({
-          visible: true
-        })
-        this.triggerEvent('initData') 
-        return
-      }
+      // if (this.data.sharePath) { //如果已经绘制过了本地保存有图片不需要重新绘制
+      //   this.setData({
+      //     visible: true
+      //   })
+      //   this.triggerEvent('initData') 
+      //   return
+      // }
       wx.showLoading({
         title: '生成中'
       })
 
-      if (wx.getStorageSync("hasPay") != true) {
-        this.createImage_flag()
+      var random = Math.random()*10;
+      if (random >= 0 && random < 3) {
+        this.createImage_share1()
+      } else if (random >= 3 && random < 6) {
+        this.createImage_share2()
       } else {
-        if (wx.getStorageSync("sex") == 'man') {
-          this.createImage_man()
-        } else {
-          this.createImage_woman()
-        }
+        this.createImage_share3()
       }
+      // if (wx.getStorageSync("hasPay") != true) {
+      //   this.createImage_flag()
+      // } else {
+      //   if (wx.getStorageSync("sex") == 'man') {
+      //     this.createImage_man()
+      //   } else {
+      //     this.createImage_woman()
+      //   }
+      // }
       
     },
+
+    createImage_share1() {
+      this.setData({
+        imgDraw: {
+          width: '730rpx',
+          height: '1000rpx',
+          borderRadius: '16rpx',
+          background: app.data.uploadUrl + "share1-1.png",
+          views: [
+            {
+              type: 'image',
+              url: app.data.uploadUrl + wx.getStorageSync("image"),
+              color: "#9fa1ad",
+              css: {
+                top: '760rpx',
+                left: '55rpx',
+                width: '160rpx',
+                height: '160rpx'
+              }
+            }
+          ]
+        }
+      })
+    },
+
+    createImage_share2() {
+      this.setData({
+        imgDraw: {
+          width: '730rpx',
+          height: '1000rpx',
+          borderRadius: '16rpx',
+          background: app.data.uploadUrl + "share1-2.png",
+          views: [
+            {
+              type: 'image',
+              url: app.data.uploadUrl + wx.getStorageSync("image"),
+              color: "#9fa1ad",
+              css: {
+                top: '20rpx',
+                right: '55rpx',
+                width: '160rpx',
+                height: '160rpx'
+              }
+            }
+          ]
+        }
+      })
+    },
+
+    createImage_share3() {
+      this.setData({
+        imgDraw: {
+          width: '730rpx',
+          height: '1000rpx',
+          borderRadius: '16rpx',
+          background: app.data.uploadUrl + "share1-3.png",
+          views: [
+            {
+              type: 'image',
+              url: app.data.uploadUrl + wx.getStorageSync("image"),
+              color: "#9fa1ad",
+              css: {
+                top: '20rpx',
+                right: '55rpx',
+                width: '160rpx',
+                height: '160rpx'
+              }
+            }
+          ]
+        }
+      })
+    },
+
+
     /**男性 已支付 */
     createImage_man() {
       this.setData({

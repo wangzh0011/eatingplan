@@ -171,7 +171,7 @@ Page({
    */
   createShareImage() {
     this.setData({
-      isCanDraw: true,
+      isCanDraw: !this.data.isCanDraw,
       showFanqie: false
     })
   },

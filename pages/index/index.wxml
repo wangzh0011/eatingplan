@@ -1,4 +1,4 @@
-<view wx:if="{{showIndex}}">
+<view >
 	<image src="../images/ty11.png" class="background-img">
 		<view class="background-block" />
 	</image>

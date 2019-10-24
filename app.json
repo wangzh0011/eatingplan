@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/lucky/lucky",
     "pages/plandetails/plandetails",
     "pages/planpay/planpay",
     "pages/breakfast/breakfast",
@@ -9,7 +10,8 @@
     "pages/parameter/parameter",
     "pages/lunch/lunch",
     "pages/dinner/dinner",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/agent/agent"
   ],
   "permission": {
     "scope.userLocation": {

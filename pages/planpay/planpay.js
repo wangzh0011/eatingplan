@@ -154,16 +154,24 @@ Page({
    * 跳转到赚番茄小程序
    */
   navigateToFanqieTap: function () {
-    wx.navigateToMiniProgram({
-      appId: app.fanqieInfo.appid,
-      path: 'pages/index/index?shareuid=' + wx.getStorageSync("wxData").id,
-      extraData: {
+    // wx.navigateToMiniProgram({
+    //   appId: app.fanqieInfo.appid,
+    //   path: 'pages/index/index?shareuid=' + wx.getStorageSync("wxData").id,
+    //   extraData: {
+    //   },
+    //   envVersion: 'trial',/*develop	开发版	trial	体验版	release 正式版*/
+    //   success(res) {
+    //     // 打开成功
+    //   }
+    // })
+    wx.navigateTo({
+      url: '/pages/lucky/lucky',
+      success: (result)=>{
+        
       },
-      envVersion: 'trial',/*develop	开发版	trial	体验版	release 正式版*/
-      success(res) {
-        // 打开成功
-      }
-    })
+      fail: ()=>{},
+      complete: ()=>{}
+    });
   },
 
   /**

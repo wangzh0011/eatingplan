@@ -1,0 +1,115 @@
+/* pages/agent/agent.wxss */
+.background_img{
+    width:100%;
+    height:100%;
+    position: absolute;
+}
+
+.money{
+    position: absolute;
+    top: 72%;
+    left: 13%;
+    height: 3.8%;
+    width: 45%;
+}
+
+.myMoney{
+    position: absolute;
+    top: 72%;
+    left: 42%;
+}
+
+.getmoney{
+    position: absolute;
+    top: 72%;
+    right: 13%;
+    height: 3.8%;
+    width: 25%;
+}
+
+.toJK{
+    position: absolute;
+    width: 20%;
+    height: 4%;
+    background-color: #FFDD7C;
+    top: 81%; 
+    right: 0; 
+    font-size: 24rpx;
+    border-radius: 12rpx 0rpx 0rpx 12rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .toShare{
+    position: absolute;
+    width: 40.6%;
+    height: 6%;
+    top: 85%; 
+    left: 29.7%
+  }
+
+  .text_bottom{
+    position: absolute;
+    bottom: 4%;
+    width: 100%;
+    text-align: center;
+    font-size: 24rpx;
+  }
+
+  .notpay{
+    background-color: yellow;
+    width: 45%;
+    bottom: 0;
+    border-radius: 12rpx;
+    text-align: center;
+  }
+
+  .haspay{
+    background-color: green;
+    width: 45%;
+    left: 55%;
+    bottom: 0;
+    border-radius: 12rpx;
+    text-align: center;
+  }
+
+  .beforeyesterday{
+    position: absolute;
+    bottom: 36.3%;
+    left: 21.5%;
+    width: 8.5%;
+    height: 20%;
+  }
+
+  .date{
+    position: absolute;
+    font-size: 26rpx;
+    bottom: -17%;
+    width: 100%;
+    text-align: center;
+  }
+
+  .yesterday{
+    position: absolute;
+    bottom: 36.3%;
+    left: 46.5%;
+    width: 8.5%;
+    height: 20%;
+  }
+
+  .today{
+    position: absolute;
+    bottom: 36.3%;
+    left: 71.5%;
+    width: 8.5%;
+    height: 20%;
+  }
+
+  text{
+    font-size: 26rpx;
+  }
+
+  .data{
+    color: gray;
+  }

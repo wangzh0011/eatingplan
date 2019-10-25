@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/agent/agent",
     "pages/index/index",
     "pages/lucky/lucky",
     "pages/plandetails/plandetails",
@@ -10,8 +11,7 @@
     "pages/parameter/parameter",
     "pages/lunch/lunch",
     "pages/dinner/dinner",
-    "pages/logs/logs",
-    "pages/agent/agent"
+    "pages/logs/logs"
   ],
   "permission": {
     "scope.userLocation": {

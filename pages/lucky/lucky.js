@@ -55,7 +55,9 @@ Page({
     showIntegral: false,
     showGetintegral: false,
     showAgent: false,
-    showAgentMask: false
+    showAgentMask: false,
+    showFanqie: false,
+    isCanDraw: false
   },
 
 
@@ -284,6 +286,35 @@ updateUser: function (id,fqId,jkId) {
   closeGetintegral: function () {
     this.setData({
       showGetintegral: false,
+    })
+  },
+
+   /**
+   * 去分享
+   */
+  navigateToFoodsTap: function () {
+    this.setData({
+      showFanqie: true,
+      showGetintegral: false
+    })
+  },
+
+  /**
+   * 关闭 去分享
+   */
+  closeTap: function () {
+    this.setData({
+      showFanqie: false
+    })
+  },
+
+  /**
+   * 朋友圈分享
+   */
+  createShareImage() {
+    this.setData({
+      isCanDraw: !this.data.isCanDraw,
+      showFanqie: false
     })
   },
 
@@ -606,39 +637,27 @@ updateUser: function (id,fqId,jkId) {
   // }  
 },
 
-  onShareAppMessage: function () {
-    return {
-      title: "您的好友向您推荐健康番茄瘦小程序",
-      path: '/pages/index/index?shareuid=' + wx.getStorageSync("wxData").id,
-      success: function (res) {
-        // console.log
-        wx.getShareInfo({
-          shareTicket: res.shareTickets[0],
-          success: function (res) { console.log("分享成功") },
-          fail: function (res) { console.log(res) },
-          complete: function (res) { console.log(res) }
-        })
-      },
-      fail: function (res) {
-        // 分享失败
-        console.log(res)
-      }
+onShareAppMessage: function () {
+  return {
+    title: "您的好友向您推荐健康番茄瘦小程序",
+    path: '/pages/index/index?shareuid=' + wx.getStorageSync("wxData").id,
+    success: function (res) {
+      // console.log
+      wx.getShareInfo({
+        shareTicket: res.shareTickets[0],
+        success: function (res) { console.log("分享成功") },
+        fail: function (res) { console.log(res) },
+        complete: function (res) { console.log(res) }
+      })
+    },
+    fail: function (res) {
+      // 分享失败
+      console.log(res)
     }
-  },
+  }
+},
 
-  /**
-   * 跳转到分享页面
-   */
-  navigateToFoodsTap: function () {
-    wx.navigateTo({
-      url: '/pages/planpay/planpay',
-      success: (result)=>{
-        
-      },
-      fail: ()=>{},
-      complete: ()=>{}
-    });
-  },
+ 
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作

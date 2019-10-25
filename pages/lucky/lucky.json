@@ -1,5 +1,7 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "share-box": "/components/shareBox/index"
+  },
   "enablePullDownRefresh": true,
   "navigationBarTitleText": "幸运大抽奖"
 }

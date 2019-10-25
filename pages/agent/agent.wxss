@@ -1,4 +1,6 @@
 /* pages/agent/agent.wxss */
+@import "/utils/mask.wxss";
+@import "/utils/mask_integral.wxss";
 .background_img{
     width:100%;
     height:100%;

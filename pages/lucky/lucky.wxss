@@ -1,5 +1,5 @@
 /**index.wxss**/
-@import "/utils/mask_lucky.wxss";
+@import "/utils/mask.wxss";
 @import "/utils/mask_mygoods.wxss";
 @import "/utils/mask_integral.wxss";
 .background_img{
@@ -17,7 +17,7 @@
   font-size: 30rpx;
 }
 
-.text{
+.lucky_text{
   position: absolute;
   top: 35.5%;
   width: 100%;

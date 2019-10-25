@@ -16,7 +16,7 @@
   <view wx:if="{{showChecked[5] == true}}" style="position: absolute;top:{{top_three}};left: {{left_two}};height:{{height}};width:{{width}};background-color:{{color}};opacity:{{opacity}};border-radius:{{border}}"></view>
   <view wx:if="{{showChecked[4] == true}}" style="position: absolute;top:{{top_three}};left: {{left_three}};height:{{height}};width:{{width}};background-color:{{color}};opacity:{{opacity}};border-radius:{{border}}"></view>
   <view class="adver">{{adver}}</view>
-  <view wx:if="{{showText == true}}" class="text">{{luckyTimes}}次抽奖后必得<text style="color: red">50元红包</text></view>
+  <view wx:if="{{showText == true}}" class="lucky_text">{{luckyTimes}}次抽奖后必得<text style="color: red">50元红包</text></view>
   <view class="integral" bindtap="integralTap"><text>我的积分：{{integral}}</text></view>
   <view class="getintegral" bindtap="getintegralTap"><text >获得积分</text></view>
   <view class="mygoods" bindtap="mygoodsTap">
@@ -92,5 +92,44 @@
         
     </view>
   <!-- end   -->
+
+
+  <!--健康番茄遮罩层-->
+	<view wx:if="{{showFanqie}}" class="mask">
+		<view class="fanqie">
+			<view class="image">
+				<image class="style1" src="../images/xty14.png" />
+				<image class="style2" src="../images/xty9.png" />
+				<!-- <view >要么瘦</view>
+				<view >要么死</view> -->
+				<image class="text" src="../images/xty15.png"/>
+			</view>
+			<view class="text">
+				<view style="font-size: 30rpx">众人皆胖 我独瘦</view>
+				<view >我将参与健康番茄</view>
+				<view >全民减脂计划</view>
+				<view >用我的科学减脂甩掉肉肉</view>
+				<view >再见了胖友们</view>
+			</view>
+			<view class="text_bottom">
+				<text >健康番茄</text>
+			</view>
+			<!-- <image class="qccode" src="{{image}}" /> -->
+		</view>
+		<image class="fanqie_close" bindtap="closeTap" src="../images/xty10.png" />
+
+		<view class="fanqie_share">
+			<button class="share_area" open-type="share">
+				<image class="share_img" src="../images/xty12.png"/><!--好友分享-->
+				<text class="share_text">好友分享</text>
+			</button>
+			<view class="share_area" bindtap="createShareImage">
+				<image class="share_img" src="../images/xty13.png" /><!--朋友圈-->
+				<text class="share_text">朋友圈</text>
+			</view>
+		</view>
+	</view>
+
+	<share-box isCanDraw="{{isCanDraw}}" bind:initData="createShareImage" />
 
 </view>

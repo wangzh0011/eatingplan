@@ -7,7 +7,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    showFanqie: false,
+    isCanDraw: false,
+    showGetmoney: false
   },
 
   /**
@@ -77,31 +79,57 @@ Page({
   },
 
   /**
-   * 跳转到首页
+   * 提现
+   */
+  getmoneyTap: function() {
+    this.setData({
+      showGetmoney: true,
+      getmoneyText: '由于微信资金交易限制 暂时只提供人工结现 请添加人工客服：duang_2c(林雨)备注提现及提供微信账号 我们会在1个工作日内核实并将佣金返现给您。'
+    })
+  },
+
+  /**
+   * 关闭提现
+   */
+  closeGetmoney: function () {
+    this.setData({
+      showGetmoney: false,
+    })
+  },
+
+  /**
+   * 返回计划
    */
   toJKTap: function () {
-    wx.reLaunch({
-      url: '/pages/index/index',
-      success: (result)=>{
-        
-      },
-      fail: ()=>{},
-      complete: ()=>{}
-    });
+    
   },
 
   /**
    * 去推广
    */
   toShare: function () {
-    wx.navigateTo({
-      url: '/pages/planpay/planpay',
-      success: (result)=>{
-        
-      },
-      fail: ()=>{},
-      complete: ()=>{}
-    });
+    this.setData({
+      showFanqie: true,
+    })
+  },
+
+  /**
+   * 关闭 去推广
+   */
+  closeTap: function () {
+    this.setData({
+      showFanqie: false
+    })
+  },
+
+  /**
+   * 朋友圈分享
+   */
+  createShareImage() {
+    this.setData({
+      isCanDraw: !this.data.isCanDraw,
+      showFanqie: false
+    })
   },
 
   /**
@@ -136,6 +164,22 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: "您的好友向您推荐健康番茄瘦小程序",
+      path: '/pages/index/index?shareuid=' + wx.getStorageSync("wxData").id,
+      success: function (res) {
+        // console.log
+        wx.getShareInfo({
+          shareTicket: res.shareTickets[0],
+          success: function (res) { console.log("分享成功") },
+          fail: function (res) { console.log(res) },
+          complete: function (res) { console.log(res) }
+        })
+      },
+      fail: function (res) {
+        // 分享失败
+        console.log(res)
+      }
+    }
   }
 })

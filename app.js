@@ -105,6 +105,8 @@ App({
       fail: ()=>{},
       complete: ()=>{}
     });
+
+    this.getQcCode()
   },
 
   /**
@@ -137,6 +139,29 @@ App({
     });
   },
 
+  /**
+     * 更新用户
+     * @param {*} id 
+     * @param {*} nickName 
+     */
+    updateUser: function (id,nickName) {
+      wx.request({
+          url: this.data.server + 'updateUser',
+          data: {
+              id: id,
+              nickName: nickName,
+          },
+          header: {'content-type':'application/json'},
+          method: 'GET',
+          dataType: 'json',
+          responseType: 'text',
+          success: (result)=>{
+              
+          },
+          fail: ()=>{},
+          complete: ()=>{}
+      });
+  },
 
   globalData: {
     userInfo: null

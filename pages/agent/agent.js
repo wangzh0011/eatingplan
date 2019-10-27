@@ -20,7 +20,7 @@ Page({
     wx.request({
       url: app.data.server + 'getAgentData',
       data: {
-        uid: wx.getStorageSync("wxData").jkId
+        uid: wx.getStorageSync("wxData").id
       },
       header: {'content-type':'application/json'},
       method: 'GET',
@@ -30,12 +30,12 @@ Page({
         console.log(result.data)
         var agentData = result.data;
 
-        var yesterdayHasPay = agentData.yesterdayHasPay;
-        var yesterdayNotPay = agentData.yesterdayNotPay;
-        var beforeYesterdayHasPay = agentData.beforeYesterdayHasPay;
-        var beforeYesterdayNotPay = agentData.beforeYesterdayNotPay;
-        var todayHasPay = agentData.todayHasPay;
-        var todayNotPay = agentData.todayNotPay;
+        var yesterdayHasPay = agentData.agentData.yesterdayHasPay;
+        var yesterdayNotPay = agentData.agentData.yesterdayNotPay;
+        var beforeYesterdayHasPay = agentData.agentData.beforeYesterdayHasPay;
+        var beforeYesterdayNotPay = agentData.agentData.beforeYesterdayNotPay;
+        var todayHasPay = agentData.agentData.todayHasPay;
+        var todayNotPay = agentData.agentData.todayNotPay;
         //找出最大值
         var max = Math.max(yesterdayHasPay,yesterdayNotPay,beforeYesterdayHasPay,beforeYesterdayNotPay,todayHasPay,todayNotPay)
         
@@ -49,12 +49,16 @@ Page({
           todayHasPayPercentage: Math.round(todayHasPay/max*100) + "%",
           todayNotPayPercentage: Math.round(todayNotPay/max*100) + "%",
           //各个数据
-          yesterdayHasPay: yesterdayHasPay,
-          yesterdayNotPay: yesterdayNotPay,
-          beforeYesterdayHasPay: beforeYesterdayHasPay,
-          beforeYesterdayNotPay: beforeYesterdayNotPay,
-          todayHasPay: todayHasPay,
-          todayNotPay: todayNotPay,
+          yesterdayHasPay: yesterdayHasPay == 0 ? "" : yesterdayHasPay,
+          yesterdayNotPay: yesterdayNotPay == 0 ? "" : yesterdayNotPay,
+          beforeYesterdayHasPay: beforeYesterdayHasPay == 0 ? "" : beforeYesterdayHasPay,
+          beforeYesterdayNotPay: beforeYesterdayNotPay == 0 ? "" : beforeYesterdayNotPay,
+          todayHasPay: todayHasPay == 0 ? "" : todayHasPay,
+          todayNotPay: todayNotPay == 0 ? "" : todayNotPay,
+
+          sex: wx.getStorageSync("sex"),
+          hover_stay_time: 200,
+          id: wx.getStorageSync("wxData").id
         })
       },
       fail: ()=>{},
@@ -82,10 +86,25 @@ Page({
    * 提现
    */
   getmoneyTap: function() {
-    this.setData({
-      showGetmoney: true,
-      getmoneyText: '由于微信资金交易限制 暂时只提供人工结现 请添加人工客服：duang_2c(林雨)备注提现及提供微信账号 我们会在1个工作日内核实并将佣金返现给您。'
-    })
+
+    var money = this.data.money;
+    setTimeout(() => {
+      if (money <= 0) {
+        wx.showToast({
+          title: '还没有可提现现金！',
+          icon: 'none',
+          image: '',
+          duration: 1500,
+          mask: false,
+        });
+      } else {
+        this.setData({
+          showGetmoney: true,
+          getmoneyText: '由于微信资金交易限制 暂时只提供人工结现 请添加人工客服：duang_2c(林雨)备注提现及提供微信账号 我们会在1个工作日内核实并将佣金返现给您。'
+        })
+      }
+    }, 300);
+
   },
 
   /**
@@ -101,16 +120,32 @@ Page({
    * 返回计划
    */
   toJKTap: function () {
-    
+    var hasPay = wx.getStorageSync("hasPay")
+
+    setTimeout(() => {
+      if (hasPay == true) {
+        wx.reLaunch({
+          url: '/pages/plandetails/plandetails',
+        });
+      } else {
+        wx.reLaunch({
+          url: '/pages/planpay/planpay',
+        });
+      }
+    }, 300);
   },
 
   /**
    * 去推广
    */
   toShare: function () {
-    this.setData({
-      showFanqie: true,
-    })
+    app.getQcCode();
+    setTimeout(() => {
+      this.setData({
+        image: app.data.uploadUrl + wx.getStorageSync("image"),//二维码图片
+        showFanqie: true,
+      })
+    }, 300);
   },
 
   /**

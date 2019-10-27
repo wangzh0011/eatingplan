@@ -27,6 +27,23 @@
     color: #ceffe2;
 }
 
+.bottom_title{
+    position: absolute;
+    bottom: 9%;
+    text-align: center;
+    font-size: 26rpx;
+    color: #ceffe2;
+    right: 8%;
+}
+.bottom_title1{
+    position: absolute;
+    bottom: 12.3%;
+    text-align: center;
+    font-size: 26rpx;
+    color: #ceffe2;
+    width: 100%;
+}
+
 .details{
     position: relative;
     display: flex;

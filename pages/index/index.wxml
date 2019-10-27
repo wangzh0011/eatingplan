@@ -11,7 +11,7 @@
 	 class="area"
 	 hover-class="none"
 	 hover-stop-propagation="false"
-	 style="left: {{50/2}}px; height: {{windowHeight/1.8}}px; width: {{windowWidth-50}}px; top:{{windowHeight/4}}px"
+	 style="left: {{50/2}}px; height: {{windowHeight/1.65}}px; width: {{windowWidth-50}}px; top:{{windowHeight/4}}px"
 	>
 
 		<view class="area_title">科学减肥 系统高效</view>

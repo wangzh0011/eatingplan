@@ -6,7 +6,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        showIndex: false
+        showIndex: false,
+        canIUse: wx.canIUse('button.open-type.getUserInfo')
     },
   
     /**
@@ -24,19 +25,19 @@ Page({
             windowWidth: app.systemInfo.windowWidth,
             windowHeight: app.systemInfo.windowHeight,
             num: num,
-            area_pic_width: windowWidth/5,
+            area_pic_width: windowWidth/6,
             area_pic_padding: (windowWidth-50-40-windowWidth*3/5)/6,
             btn_width: app.btn.btn_width,
             btn_height: app.btn.btn_height,
-            textDesc: '健康饮食计划基于国内3位从业十余年的资深营养大师整理的营养理论，和13位人工智能工程师设计的智能运算方式，结合当代云技术采集近10万人群数据比对，从而完善的真正科学有效的饮食计划。',
+            textDesc: '随着当代物质条件的提高，肥胖成为一个困扰着众多年轻人的问题，据最新的人体重调查报告指出，成年人超重率在2019年达到占总人口比12%，男性占5.28%，女性占6.72%。为解决肥胖的难题，我们特别设计出结合科学的《AI减肥计划》，为保证该计划的有效性，特邀国内三位副教授级别的营养、健康学家参与设计过程，最终经我司AI工程团队历经半年调试完成，至此终于可以提交一份真正科学有效的答卷。',
         })
 
         //按钮抖动
         var flag = true;
         setInterval(() => {
             this.setData({
-                btn_height: flag ? app.btn.btn_height : app.btn.btn_height*1.1,
-                btn_width: flag ? app.btn.btn_width : app.btn.btn_width*1.1
+                btn_height: flag ? app.btn.btn_height : app.btn.btn_height*1.07,
+                btn_width: flag ? app.btn.btn_width : app.btn.btn_width*1.07
             })
             flag = !flag
         }, 300);
@@ -67,41 +68,18 @@ Page({
             }
             console.log(options)
             //更新用户
-            if (uid != null && uid != undefined) {
-                var fqId = options.fqId;
-                if (fqId == undefined || fqId == '' || fqId == 'null') {
-                    fqId = 0;
-                }
-                this.updateUser(userInfo.id,fqId,userInfo.id)
-            }
+            // if (uid != null && uid != undefined) {
+            //     var fqId = options.fqId;
+            //     if (fqId == undefined || fqId == '' || fqId == 'null') {
+            //         fqId = 0;
+            //     }
+            //     this.updateUser(userInfo.id,fqId,userInfo.id)
+            // }
         }    
 
     },
     
-    /**
-     * 更新用户
-     * @param {*} id 
-     * @param {*} fqId 
-     */
-    updateUser: function (id,fqId,jkId) {
-        wx.request({
-            url: app.data.server + 'updateUser',
-            data: {
-                id: id,
-                fqId: fqId,
-                jkId: jkId
-            },
-            header: {'content-type':'application/json'},
-            method: 'GET',
-            dataType: 'json',
-            responseType: 'text',
-            success: (result)=>{
-                
-            },
-            fail: ()=>{},
-            complete: ()=>{}
-        });
-    },
+    
 
     /**
      * 注册用户
@@ -137,14 +115,11 @@ Page({
      * 设置检测参数界面
      */
     onTap: function () {
+        
         wx.navigateTo({
             url: '/pages/parameter/parameter',
-            success: (result)=>{
-                
-            },
-            fail: ()=>{},
-            complete: ()=>{}
         });
+        
     },
 
     isPay: function () {

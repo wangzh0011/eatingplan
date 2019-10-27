@@ -24,20 +24,26 @@
 <image class="money" src="../images/xty23.png" />
 <view class="myMoney">{{money}}</view>
 <!-- 提现 -->
-<image class="getmoney" bindtap="getmoneyTap" src="../images/xty22.png" />
+<view hover-class="detail-hover" hover-stay-time="{{hover_stay_time}}" class="getmoney">
+	<image class="getmoney_image" bindtap="getmoneyTap" src="../images/xty22.png" />
+</view>
 
-<view class="toJK" bindtap="toJKTap"><text >返回计划</text></view>
+<view class="toJK" bindtap="toJKTap" hover-class="detail-hover" hover-stay-time="{{hover_stay_time}}"><text >返回计划</text></view>
 
-<image class="toShare" bindtap="toShare" src="../images/xty21.png"/>
+<!-- 去推广 -->
+<view hover-class="detail-hover" hover-stay-time="{{hover_stay_time}}" class="toShare">
+	<image class="toShare_image" bindtap="toShare" src="../images/xty21.png"/>
+</view>
 <view class="text_bottom"><text >每笔订单成交可获得佣金5元</text></view>
 
-<!-- 我的积分弹出层  -->
+<!-- 提现说明弹出层  -->
     <view wx:if="{{showGetmoney}}" class="mask" bindtap="closeGetmoney">
     </view>
     <!-- 弹出层内容 -->
     <view wx:if="{{showGetmoney}}" class="details_integral">
       <view class="mask_title">提现说明</view>
       <view class="content_integral"><text >{{getmoneyText}}</text></view>
+      <view class="uid">您的用户id是：<text style="color:red;font-size: 20rpx">{{id}}</text>，此id用于提现验证，请妥善保存</view>
       <view class="line"></view>
       <view bindtap="closeGetmoney" class="confrim_text">知道了</view>
     </view>
@@ -46,26 +52,18 @@
 <!--健康番茄遮罩层-->
 	<view wx:if="{{showFanqie}}" class="mask">
 		<view class="fanqie">
-			<view class="image">
-				<image class="style1" src="../images/xty14.png" />
-				<image class="style2" src="../images/xty9.png" />
-				<!-- <view >要么瘦</view>
-				<view >要么死</view> -->
-				<image class="text" src="../images/xty15.png"/>
-			</view>
-			<view class="text">
-				<view style="font-size: 30rpx">众人皆胖 我独瘦</view>
-				<view >我将参与健康番茄</view>
-				<view >全民减脂计划</view>
-				<view >用我的科学减脂甩掉肉肉</view>
-				<view >再见了胖友们</view>
-			</view>
-			<view class="text_bottom">
-				<text >健康番茄</text>
-			</view>
-			<!-- <image class="qccode" src="{{image}}" /> -->
+      <block wx:if="{{sex == 'man'}}">
+          <image class="image" src="../images/share1-2.png" />
+          <image class="qccode" src="{{image}}" />
+      </block>
+      <block wx:else>
+          <image class="image" src="../images/share1-3.png" />
+          <image class="qccode" src="{{image}}" />
+      </block>    
 		</view>
-		<image class="fanqie_close" bindtap="closeTap" src="../images/xty10.png" />
+    <view class="fanqie_close" >
+      <image class="fanqie_close_image" bindtap="closeTap" src="../images/xty10.png" />
+    </view>
 
 		<view class="fanqie_share">
 			<button class="share_area" open-type="share">
@@ -73,10 +71,10 @@
 				<text class="share_text">好友分享</text>
 			</button>
 			<view class="share_area" bindtap="createShareImage">
-				<image class="share_img" src="../images/xty13.png" /><!--朋友圈-->
+				<image class="share_img" src="../images/xty13.png"/><!--朋友圈-->
 				<text class="share_text">朋友圈</text>
 			</view>
 		</view>
 	</view>
-
-	<share-box isCanDraw="{{isCanDraw}}" bind:initData="createShareImage" />
+    
+  <share-box isCanDraw="{{isCanDraw}}" bind:initData="createShareImage" />

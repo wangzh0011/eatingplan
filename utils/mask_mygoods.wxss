@@ -10,14 +10,38 @@
 }
 
 .goodslist{
-    margin: 8%;
+    margin: 1% 8% 4% 8%;
     width: 84%;
-    height: 60%;
+    height: 70%;
+}
+
+.goodsItems{
+    width: 100%;
+    height: 20%;
+    background-color: #F9D690;
+    margin-bottom: 5%;
+    font-size: 32rpx;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 4px;
+}
+
+.goodsItem{
+    margin: 3% 0 3% 0;
+}
+
+.goods_use_button{
+    height: 10%;
+    width: 20%;
+    background-color: #FFF1C9;
+    margin: 3% 0 3% 0;
+    display: flex;
+    justify-content: center;
 }
 
 .line_goods{
     position: absolute;
-    bottom: 10%;
+    bottom: 12%;
     height: 1px;
     width: 100%;
     background-color: #EAEAEB;

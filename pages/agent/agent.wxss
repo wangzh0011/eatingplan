@@ -13,12 +13,15 @@
     left: 13%;
     height: 3.8%;
     width: 45%;
+    display: flex;
+    align-items: center;
 }
 
 .myMoney{
     position: absolute;
-    top: 72%;
+    top: 71.5%;
     left: 42%;
+    color: #DB1726;
 }
 
 .getmoney{
@@ -27,6 +30,11 @@
     right: 13%;
     height: 3.8%;
     width: 25%;
+}
+
+.getmoney_image{
+  width: 100%;
+  height: 100%;
 }
 
 .toJK{
@@ -49,6 +57,11 @@
     height: 6%;
     top: 85%; 
     left: 29.7%
+  }
+
+  .toShare_image{
+    width: 100%;
+    height: 100%;
   }
 
   .text_bottom{

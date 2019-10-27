@@ -197,7 +197,7 @@ Page({
       return;
     }
 
-    var BMI = Math.round(weight/((height/100)*(height/100)));
+    var BMI = (weight/((height/100)*(height/100))).toFixed(1);
     var sleepStatus = this.calculSleep(age,sleep);
     wx.setStorageSync("BMI",BMI);
     wx.setStorageSync("sleepStatus",sleepStatus);

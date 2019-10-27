@@ -57,7 +57,8 @@ Page({
     showAgent: false,
     showAgentMask: false,
     showFanqie: false,
-    isCanDraw: false
+    isCanDraw: false,
+    showGetmoney: false
   },
 
 
@@ -79,7 +80,9 @@ Page({
       color: '#F8CF80',
       opacity: '0.4',
       border: '12rpx',
-      adver: this.data.advers[index]//广告初始化
+      adver: this.data.advers[index],//广告初始化,
+      hover_stay_time: 200, //按钮手指松开后点击保留时间
+      id: wx.getStorageSync("wxData").id
     })
     //广告轮播
     var i = 0;
@@ -240,7 +243,8 @@ updateUser: function (id,fqId,jkId) {
           showText: 10 - times < 1 ? false : true,
           luckyTimes: 10 - times,
           integral: integral,
-          showAgent: canAgent == 'Y' ? true : false
+          showAgent: canAgent == 'Y' ? true : false,
+          sex: wx.getStorageSync("sex")
         })
         
       },
@@ -255,10 +259,12 @@ updateUser: function (id,fqId,jkId) {
   integralTap: function() {
     var hasPayNum = wx.getStorageSync("hasPayNum")
     var notPayNum = wx.getStorageSync("notPayNum")
-    this.setData({
-      showIntegral: true,
-      integralText: '当前有' + (hasPayNum + notPayNum) + '个微信好友看了我的推广获得' + (hasPayNum + notPayNum) * 1 + '积分\n其中有' + hasPayNum + '个微信好友通过链接参与计划获得' + hasPayNum * 5 + '积分'
-    })
+    setTimeout(() => {
+      this.setData({
+        showIntegral: true,
+        integralText: '1.当前有' + (hasPayNum + notPayNum) + '个微信好友看了我的推广获得' + (hasPayNum + notPayNum) * 1 + '积分\n2.其中有' + hasPayNum + '个微信好友通过链接参与计划获得' + hasPayNum * 5 + '积分'
+      })
+    }, 300);
   },
 
   /**
@@ -274,10 +280,12 @@ updateUser: function (id,fqId,jkId) {
    * 获取积分
    */
   getintegralTap: function() {
-    this.setData({
-      showGetintegral: true,
-      getintegralText: '1.分享朋友/朋友圈后 好友点击链接即可获得1积分（上限50）\n2.微信好友认可计划 通过您的链接参与计划即可获得5积分。'
-    })
+    setTimeout(() => {
+      this.setData({
+        showGetintegral: true,
+        getintegralText: '1.分享朋友/朋友圈后 好友点击链接即可获得1积分（上限50）\n2.微信好友认可计划 通过您的链接参与计划即可获得5积分。'
+      })
+    }, 300);
   },
 
   /**
@@ -293,9 +301,13 @@ updateUser: function (id,fqId,jkId) {
    * 去分享
    */
   navigateToFoodsTap: function () {
+    //获取二维码
+    app.getQcCode();
     this.setData({
+      image: app.data.uploadUrl + wx.getStorageSync("image"),//二维码图片
       showFanqie: true,
-      showGetintegral: false
+      showGetintegral: false,
+      showMygoods:false
     })
   },
 
@@ -322,27 +334,29 @@ updateUser: function (id,fqId,jkId) {
    * 我的奖品
    */
   mygoodsTap: function () {
-    wx.request({
-      url: app.data.server + 'getMyGoods',
-      data: {
-        uid: wx.getStorageSync("wxData").jkId
-      },
-      header: {'content-type':'application/json'},
-      method: 'GET',
-      dataType: 'json',
-      responseType: 'text',
-      success: (result)=>{
-        this.setData({
-          goodsList: result.data,
-          showBagde: false
-        })
-      },
-      fail: ()=>{},
-      complete: ()=>{}
-    });
-    this.setData({
-      showMygoods: true
-    })
+    setTimeout(() => {
+      wx.request({
+        url: app.data.server + 'getMyGoods',
+        data: {
+          uid: wx.getStorageSync("wxData").id
+        },
+        header: {'content-type':'application/json'},
+        method: 'GET',
+        dataType: 'json',
+        responseType: 'text',
+        success: (result)=>{
+          this.setData({
+            goodsList: result.data,
+            showBagde: false
+          })
+        },
+        fail: ()=>{},
+        complete: ()=>{}
+      });
+      this.setData({
+        showMygoods: true
+      })
+    }, 300);
   },
 
   /**
@@ -358,19 +372,23 @@ updateUser: function (id,fqId,jkId) {
    * 返回计划
    */
   toJKTap: function () {
-    wx.navigateBack({
-      delta: 1
-    });
+    setTimeout(() => {
+      wx.navigateBack({
+        delta: 1
+      });
+    }, 300);
   },
 
   /**
    * 申请代理
    */
   agentTap: function() {
-    this.setData({
-      showAgentMask: true,
-      agentText: '恭喜您获得代理资格！\n为反馈做出贡献的用户 我们特推出代理机制 用户在获得100积分时即可申请成为代理。\n以下我们为您说明代理的福利：\n1.推广佣金：当成为代理时 用户通过您的链接每产生1笔购买 即可为你带来5元的推广佣金。\n2. 佣金体现：赚取的佣金可体现 我们将以现金的方式返现给您\n3.数据支持：成为代理之后 可实时监控每日产品情况 一目了然\n'
-    })
+    setTimeout(() => {
+      this.setData({
+        showAgentMask: true,
+        agentText: '恭喜您获得代理资格！\n为反馈做出贡献的用户 我们特推出代理机制 用户在获得100积分时即可申请成为代理。\n以下我们为您说明代理的福利：\n1.推广佣金：当成为代理时 用户通过您的链接每产生1笔购买 即可为你带来5元的推广佣金。\n2. 佣金体现：赚取的佣金可体现 我们将以现金的方式返现给您\n3.数据支持：成为代理之后 可实时监控每日产品情况 一目了然\n'
+      })
+    }, 300);
   },
 
   /**
@@ -423,6 +441,30 @@ updateUser: function (id,fqId,jkId) {
   },
 
 
+  /**
+   * 提现
+   */
+  getmoneyTap: function() {
+
+      this.setData({
+        showGetmoney: true,
+        showMygoods: false,
+        getmoneyText: '由于微信资金交易限制 暂时只提供人工结现 请添加人工客服：duang_2c(林雨)备注提现及提供微信账号 我们会在1个工作日内核实并将佣金返现给您。'
+      })
+
+  },
+
+  /**
+   * 关闭提现
+   */
+  closeGetmoney: function () {
+    this.setData({
+      showMygoods: true,
+      showGetmoney: false,
+    })
+  },
+
+
   //点击抽奖按钮
   clickLuck:function(){
 
@@ -452,17 +494,21 @@ updateUser: function (id,fqId,jkId) {
         console.log("抽奖次数 " + result.data.luckyInfo.times)
         
         if (result.data.luckyInfo.luckyType == '-1') {
-          wx.showModal({
-            title: '提示',
-            content: result.data.luckyInfo.luckyMessage,
-            showCancel: false,
-            confirmText: '确定',
-            confirmColor: '#3CC51F',
-            success: ()=>{
+          wx.showToast({
+            title: result.data.luckyInfo.luckyMessage,
+            icon: 'none',
+            image: '',
+            duration: 1500,
+            mask: false,
+            success: (result)=>{
               e.setData({
+                showGetintegral: true,
                 clickLuck: 'clickLuck',
+                getintegralText: '1.分享朋友/朋友圈后 好友点击链接即可获得1积分（上限50）\n2.微信好友认可计划 通过您的链接参与计划即可获得5积分。'
               })
-            }
+            },
+            fail: ()=>{},
+            complete: ()=>{}
           });
           return;
         }
@@ -488,7 +534,7 @@ updateUser: function (id,fqId,jkId) {
           index++;
         }, intime);
         //设置停止跑马灯效果
-        var stoptime = 2000;
+        var stoptime = 1200;
         setTimeout(function () {
           e.stop(result.data.luckyInfo.luckyType);
         }, stoptime)
@@ -562,7 +608,7 @@ updateUser: function (id,fqId,jkId) {
       })
           //如果旋转时间过短或者当前位置不等于中奖位置则递归执行
           //直到旋转至中奖位置
-        if (time < 400 || index != which){
+        if (time < 365 || index != which){
           //越来越慢
           splittime++;
           time += splittime;
@@ -573,28 +619,67 @@ updateUser: function (id,fqId,jkId) {
         //1秒后显示弹窗
           setTimeout(function () {
         if (which != 5 ) {
-            //中奖
-            wx.showModal({
-              title: '提示',
-              content: '恭喜中奖',
-              showCancel: false,
-              success: function (res) {
-                if (res.confirm) {
-                  //设置按钮可以点击
-                  e.setData({
-                    integral: e.data.integral_temp,
-                    clickLuck: 'clickLuck',
-                  })
-                  //积分类奖品不提醒
-                  if (which != 1 || which != 6) {
+            var content = '';
+            if (which == 0) {
+              content = '50元红包'
+            } else if (which == 2) {
+              content = '100元京东卡'
+            } else if (which == 3) {
+              content = '2元红包'
+            } else if (which == 4) {
+              content = '1000元红包'
+            } else if (which == 7) {
+              content = '20元红包'
+            } 
+
+            //积分类奖品不弹窗
+            if (which != 1 && which != 6) {
+              //中奖
+              wx.showModal({
+                title: '提示',
+                content: '恭喜获得' + content,
+                showCancel: false,
+                success: function (res) {
+                  if (res.confirm) {
+                    //设置按钮可以点击
                     e.setData({
-                      showBagde: true
+                      integral: e.data.integral_temp,
+                      clickLuck: 'clickLuck',
                     })
+                    
+                      e.setData({
+                        showBagde: true
+                      })
+                    
                   }
-                  // e.loadAnimation();
                 }
-              }
-            })
+              })
+            } else if (which == 1) {
+              wx.showToast({
+                title: '恭喜获得15积分',
+                icon: 'none',
+                image: '',
+                duration: 1500,
+                mask: false,
+              });
+              e.setData({
+                integral: e.data.integral_temp,
+                clickLuck: 'clickLuck',
+              })
+            } else {
+              wx.showToast({
+                title: '恭喜获得100积分',
+                icon: 'none',
+                image: '',
+                duration: 1500,
+                mask: false,
+              });
+              e.setData({
+                integral: e.data.integral_temp,
+                clickLuck: 'clickLuck',
+              })
+            }
+
           } else {
             wx.showModal({
              title: '提示',

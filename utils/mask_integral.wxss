@@ -10,6 +10,12 @@
 }
 
 .content_integral{
-    margin: 4% 8% 4% 8%;
+    margin: 1% 8% 1% 8%;
     font-size: 28rpx;
+}
+
+.uid{
+  margin: 1% 6% 1% 6%;
+  color: gray;
+  font-size: 20rpx
 }

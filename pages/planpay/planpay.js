@@ -9,7 +9,8 @@ Page({
     username: '',
     showFanqie: false,
     showTabs: false,
-    isCanDraw: false
+    isCanDraw: false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
   /**
@@ -134,11 +135,13 @@ Page({
   fanqieTap: function () {
     //获取二维码
     app.getQcCode();
-    this.setData({
-      image: app.data.uploadUrl + wx.getStorageSync("image"),//二维码图片
-      showFanqie: true,
-      showTabs: true
-    })
+    setTimeout(() => {
+      this.setData({
+        image: app.data.uploadUrl + wx.getStorageSync("image"),//二维码图片
+        showFanqie: true,
+        showTabs: true
+      })
+    }, 300);
   },
 
   /**
@@ -154,24 +157,32 @@ Page({
    * 跳转到赚番茄小程序
    */
   navigateToFanqieTap: function () {
-    // wx.navigateToMiniProgram({
-    //   appId: app.fanqieInfo.appid,
-    //   path: 'pages/index/index?shareuid=' + wx.getStorageSync("wxData").id,
-    //   extraData: {
-    //   },
-    //   envVersion: 'trial',/*develop	开发版	trial	体验版	release 正式版*/
-    //   success(res) {
-    //     // 打开成功
-    //   }
-    // })
-    wx.navigateTo({
-      url: '/pages/lucky/lucky',
-      success: (result)=>{
-        
-      },
-      fail: ()=>{},
-      complete: ()=>{}
-    });
+    
+    var id = wx.getStorageSync("wxData").id
+    var that = this
+    // 查看是否授权
+    wx.getSetting({
+        success (res){
+            if (res.authSetting['scope.userInfo']) {
+                // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+                wx.getUserInfo({
+                    success: function(res) {
+                        console.log(res.userInfo)
+                        app.updateUser(id,res.userInfo.nickName)
+                    }
+                })
+                wx.navigateTo({
+                  url: '/pages/lucky/lucky',
+                  success: (result)=>{
+                    
+                  },
+                  fail: ()=>{},
+                  complete: ()=>{}
+                });
+            }
+        }
+    })
+
   },
 
   /**

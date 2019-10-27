@@ -72,11 +72,13 @@
 			scroll-top="0" scroll-left="0" scroll-into-view="" scroll-with-animation="false" enable-back-to-top="false" 
 			bindscrolltoupper="" bindscrolltolower="" bindscroll="">
 			
-			<view class="area_title">健康建议</view>
 
-			<view class="area_text">{{textDesc}}</view>
-			<view class="area_title" style="font-size: 30rpx">{{BMI}}</view>
+			<view class="area_title" >{{BMI}}</view>
 			<view class="area_text">{{textDesc2}}</view>
+
+			<view class="area_title" style="font-size: 30rpx">健康建议</view>
+			<view class="area_text">{{textDesc}}</view>
+			
 
 		</scroll-view>
 
@@ -85,7 +87,7 @@
 	<view  class="btn_style" >
 		<image src="../images/ty2.png" style="position: absolute; left:{{(windowWidth-btn_width)/2}}px; width:{{btn_width}}px; height:{{btn_height}}px;">
 		</image>
-		<view class="btn" bindtap="onTap" style="width:{{btn_width}}px; left:{{(windowWidth-btn_width)/2}}px; height:{{btn_height/2}}px;">
+		<view hover-class="detail-hover" hover-stay-time="200" class="btn" bindtap="onTap" style="width:{{btn_width}}px; left:{{(windowWidth-btn_width)/2}}px; height:{{btn_height/2}}px;">
 			制定健康饮食计划
 		</view>
 	</view>

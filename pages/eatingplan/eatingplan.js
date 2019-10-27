@@ -20,9 +20,10 @@ Page({
 
     var BMI = wx.getStorageSync("BMI");
     var height = wx.getStorageSync("height");
+    var weight = wx.getStorageSync("weight");
     var sex = wx.getStorageSync("sex");
     var referWeight = this.referWeight(height,sex);
-    var referDay = this.referDay(BMI);
+    var referDay = this.referDay(weight,referWeight);
     var weightArray = this.data.weightArray;
     var dayArray = this.data.dayArray;
 
@@ -119,11 +120,16 @@ Page({
     //   })
     //   return;
     // } 
+    var targetDay = dayArray[index];
+    var referDay = this.data.referDay;
+    if (targetDay < referDay * 0.6) {
+      targetDay = referDay * 0.6
+    }
     this.setData({
-      targetDay: dayArray[index],
+      targetDay: targetDay,
       index_day: index
     })
-    wx.setStorageSync("targetDay",dayArray[index]);
+    wx.setStorageSync("targetDay",targetDay);
   },
 
   /**
@@ -148,20 +154,25 @@ Page({
    * 建议天数
    * @param {BMI指数} BMI 
    */
-  referDay: function (BMI) {
-    if (BMI < 18.5) {
-      return '60'
-    } else if (BMI >= 18.5 && BMI < 24) {
-      return '30'
-    } else if (BMI >= 24 && BMI < 28) {
-      return '45'
-    } else if (BMI >= 28 && BMI < 35) {
-      return '60'
-    } else if (BMI >= 35 && BMI < 40) {
-      return '90'
-    } else if (BMI >= 40) {
-      return '180'
+  referDay: function (weight,referWeight) {
+    // if (BMI < 18.5) {
+    //   return '60'
+    // } else if (BMI >= 18.5 && BMI < 24) {
+    //   return '30'
+    // } else if (BMI >= 24 && BMI < 28) {
+    //   return '45'
+    // } else if (BMI >= 28 && BMI < 35) {
+    //   return '60'
+    // } else if (BMI >= 35 && BMI < 40) {
+    //   return '90'
+    // } else if (BMI >= 40) {
+    //   return '180'
+    // }
+    var referDay = (weight - referWeight) * 10 ;
+    if (referDay < 0) {
+      referDay = referDay * -1
     }
+    return referDay;
   },
 
   onTap: function () {

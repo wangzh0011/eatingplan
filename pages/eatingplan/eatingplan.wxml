@@ -97,7 +97,7 @@
 	<view  class="btn_style" >
 		<image src="../images/ty2.png" style="position: absolute; left:{{(windowWidth-btn_width)/2}}px; width:{{btn_width}}px; height:{{btn_height}}px;">
 		</image>
-		<view class="btn" bindtap="onTap" style="width:{{btn_width}}px; left:{{(windowWidth-btn_width)/2}}px; height:{{btn_height/2}}px;">
+		<view hover-class="detail-hover" hover-stay-time="200" class="btn" bindtap="onTap" style="width:{{btn_width}}px; left:{{(windowWidth-btn_width)/2}}px; height:{{btn_height/2}}px;">
 			选择饮食习惯
 		</view>
 	</view>

@@ -1,10 +1,10 @@
 {
   "pages": [
-    "pages/agent/agent",
     "pages/index/index",
-    "pages/lucky/lucky",
-    "pages/plandetails/plandetails",
     "pages/planpay/planpay",
+    "pages/plandetails/plandetails",
+    "pages/lucky/lucky",
+    "pages/agent/agent",
     "pages/breakfast/breakfast",
     "pages/eatingplan/eatingplan",
     "pages/calculate/calculate",
@@ -21,7 +21,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "番茄健康瘦",
+    "navigationBarTitleText": "AI减肥计划",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",

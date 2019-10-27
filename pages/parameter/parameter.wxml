@@ -12,7 +12,7 @@
 	hover-stop-propagation="false"
 	style="left: {{50/2}}px; height: {{windowHeight/1.5}}px; width: {{windowWidth-50}}px; top:{{windowHeight/7.7}}px">
 
-        <view class="area_title">请填写真实参数以获取真情报告</view>
+        <view class="area_title">请填写真实参数以获取准确报告</view>
 
         <view class="area_sex_text">选择您的性别：</view>
         <view class="area_sex">

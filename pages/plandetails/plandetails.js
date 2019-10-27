@@ -26,6 +26,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
+
+    wx.setStorageSync("showIndex","true")
 
     var that = this;
     var username = options.username;
@@ -76,14 +79,14 @@ Page({
       dinnerArray[key][4] = (dinner/dinnerArray[key][2]).toFixed(1)
     }
 
-
+console.log(username)
     this.setData({
       windowWidth: app.systemInfo.windowWidth,
       windowHeight: app.systemInfo.windowHeight,
       title_area_width: app.position.title_area_width,
       title_area_top: app.position.title_area_top,
       title_area_left: app.position.title_area_left,
-      username: username,
+      username: username == (undefined || "") ? this.data.username : username,
       btn_width: app.btn.btn_width,
       btn_height: app.btn.btn_height,
       atbs_pic_style: app.systemInfo.windowHeight/24,
@@ -103,6 +106,17 @@ Page({
     wx.setStorageSync("targetDay", targetDay);
     wx.setStorageSync("totalExp", totalExp);
     wx.setStorageSync("dayExp", dayExp);
+
+    //没有缓存 跳转到首页
+    if(dinnerArray.length == 0){
+      wx.redirectTo({
+        url: '/pages/index/index?showIndex=' + true + '&storage=' + dinnerArray.length,
+        success: (result)=>{
+            
+        }
+    });
+    }
+
   },
 
   /**

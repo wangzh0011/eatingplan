@@ -16,7 +16,7 @@ Page({
     onLoad: function (options) {
         var that = this;
 
-       
+       var showIndex = options.showIndex;
 
         var num = Math.floor(Math.random()*4500 + 20000);
         var windowWidth = app.systemInfo.windowWidth;
@@ -50,32 +50,47 @@ Page({
             })
         }, 1000);
 
-        //回调函数
-        app.loginCallback = res =>  {
+        if (showIndex == 'true') {
+            console.log(123)
+            this.setData({
+                showIndex: true
+            })
+            
+        } else {
+            //回调函数
+            app.loginCallback = res =>  {
+    
+                console.log("hasPay ==> ")
+                console.log(wx.getStorageSync("hasPay"))
+                //查询用户是否支付
+                this.isPay();
+    
+                var userInfo = wx.getStorageSync("wxData");
+                var uid = userInfo.id;
+                console.log("缓存uid:" + uid)
+                //注册用户
+                if(uid == null || uid == undefined){
+                    console.log("开始注册用户信息")
+                    userInfo = this.registerUser(options.shareuid)
+                }
+                console.log(options)
+                //更新用户
+                // if (uid != null && uid != undefined) {
+                //     var fqId = options.fqId;
+                //     if (fqId == undefined || fqId == '' || fqId == 'null') {
+                //         fqId = 0;
+                //     }
+                //     this.updateUser(userInfo.id,fqId,userInfo.id)
+                // }
+            }    
+            setTimeout(() => {
+                this.setData({
+                    showIndex: true
+                })
+            }, 2000);
+        }
 
-            console.log("hasPay ==> ")
-            console.log(wx.getStorageSync("hasPay"))
-            //查询用户是否支付
-            this.isPay();
 
-            var userInfo = wx.getStorageSync("wxData");
-            var uid = userInfo.id;
-            console.log("缓存uid:" + uid)
-            //注册用户
-            if(uid == null || uid == undefined){
-                console.log("开始注册用户信息")
-                userInfo = this.registerUser(options.shareuid)
-            }
-            console.log(options)
-            //更新用户
-            // if (uid != null && uid != undefined) {
-            //     var fqId = options.fqId;
-            //     if (fqId == undefined || fqId == '' || fqId == 'null') {
-            //         fqId = 0;
-            //     }
-            //     this.updateUser(userInfo.id,fqId,userInfo.id)
-            // }
-        }    
 
     },
     
@@ -137,21 +152,20 @@ Page({
                 dataType: 'json',
                 responseType: 'text',
                 success: (result)=>{
-                    console.log(1234)
                     console.log(result.data)
                     //已支付跳转到饮食计划页面
                     if(result.data == true) {
                         console.log("已支付")
                         wx.setStorageSync("hasPay", result.data);
-                        // wx.redirectTo({
-                        //     url: '/pages/plandetails/plandetails?username=' + wx.getStorageSync("username"),
-                        //     success: (result)=>{
+                        wx.reLaunch({
+                            url: '/pages/plandetails/plandetails?username=' + wx.getStorageSync("username"),
+                            success: (result)=>{
                                 
-                        //     }
-                        // });
-                        that.setData({
-                            showIndex: true
-                        })
+                            }
+                        });
+                        // that.setData({
+                        //     showIndex: true
+                        // })
                     }else{
                         //未支付进入首页
                         that.setData({
@@ -163,15 +177,18 @@ Page({
                 complete: ()=>{}
             });
         } else {
-            // wx.redirectTo({
-            //     url: '/pages/plandetails/plandetails?username=' + wx.getStorageSync("username"),
-            //     success: (result)=>{
-                    
-            //     }
-            // });
-            that.setData({
-                showIndex: true
-            })
+            wx.reLaunch({
+                url: '/pages/plandetails/plandetails?username=' + wx.getStorageSync("username"),
+                
+            });
+
+            setTimeout(() => {
+                success: (result)=>{
+                    that.setData({
+                        showIndex: true
+                    })
+                }
+            }, 3000);
         }
     },
   
@@ -207,7 +224,7 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
-    
+        this.isPay()
     },
   
     /**

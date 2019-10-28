@@ -1,6 +1,5 @@
 {
   "usingComponents": {
     "share-box": "/components/shareBox/index"
-  },
-  "navigationStyle": "custom"
+  }
 }

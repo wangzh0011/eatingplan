@@ -79,6 +79,38 @@ Page({
           success (res) {
             console.log("支付成功")
             console.log(res)
+
+
+            //早餐数组
+            var breakfastArray = wx.getStorageSync("breakfastArray");
+            
+            //午餐数组
+            var lunchArray = wx.getStorageSync("lunchArray");
+            
+            //晚餐数组
+            var dinnerArray = wx.getStorageSync("dinnerArray");
+          
+            //用户食谱
+            wx.request({
+              url: app.data.server + 'saveUserFoods',
+              data: {
+                breakfastArray: breakfastArray,
+                lunchArray: lunchArray,
+                dinnerArray: dinnerArray
+              },
+              header: {'content-type':'application/json'},
+              method: 'GET',
+              dataType: 'json',
+              responseType: 'text',
+              success: (result)=>{
+                
+              },
+              fail: ()=>{},
+              complete: ()=>{}
+            });
+
+
+
             //保存支付记录
             wx.request({
               url: app.data.server + 'savePayOrder',

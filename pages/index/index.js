@@ -87,7 +87,7 @@ Page({
                 this.setData({
                     showIndex: true
                 })
-            }, 2000);
+            }, 1000);
         }
 
 
@@ -130,10 +130,18 @@ Page({
      * 设置检测参数界面
      */
     onTap: function () {
+
+        if (wx.getStorageSync("hasPay") != true) {
+            wx.navigateTo({
+                url: '/pages/parameter/parameter',
+            });
+        } else {
+            wx.reLaunch({
+                url: '/pages/plandetails/plandetails?username=' + wx.getStorageSync("username"),
+                
+            });
+        }
         
-        wx.navigateTo({
-            url: '/pages/parameter/parameter',
-        });
         
     },
 

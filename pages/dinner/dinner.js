@@ -76,6 +76,36 @@ Page({
       return;
     }
 
+    // //早餐数组
+    // var breakfastArray = wx.getStorageSync("breakfastArray");
+            
+    // //午餐数组
+    // var lunchArray = wx.getStorageSync("lunchArray");
+    
+    // //晚餐数组
+    // var dinnerArray = wx.getStorageSync("dinnerArray");
+  
+    // console.log(breakfastArray)
+    // //用户食谱
+    // wx.request({
+    //   url: app.data.server + 'saveUserFoods',
+    //   data: {
+    //     breakfastArray: breakfastArray,
+    //     lunchArray: lunchArray,
+    //     dinnerArray: dinnerArray,
+    //     uid: wx.getStorageSync("wxData").id
+    //   },
+    //   header: {'content-type':'application/json'},
+    //   method: 'GET',
+    //   dataType: 'json',
+    //   responseType: 'text',
+    //   success: (result)=>{
+        
+    //   },
+    //   fail: ()=>{},
+    //   complete: ()=>{}
+    // });
+
     if (wx.getStorageSync("hasPay") != true) {
       wx.navigateTo({
         url: '/pages/planpay/planpay',

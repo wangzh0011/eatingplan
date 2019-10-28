@@ -278,7 +278,7 @@ Page({
                 wx.getUserInfo({
                     success: function(res) {
                         console.log(res.userInfo)
-                        app.updateUser(id,res.userInfo.nickName)
+                        app.updateUser(id,res.userInfo)
                     }
                 })
                 wx.navigateTo({

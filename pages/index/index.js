@@ -50,45 +50,33 @@ Page({
             })
         }, 1000);
 
-        if (showIndex == 'true') {
-            console.log(123)
+        
+        //回调函数
+        app.loginCallback = res =>  {
+
+            var userInfo = wx.getStorageSync("wxData");
+            var uid = userInfo.id;
+            console.log("缓存uid:" + uid)
+            //注册用户
+            if(uid == null || uid == undefined){
+                console.log("开始注册用户信息")
+                userInfo = this.registerUser(options.shareuid)
+            }
+            console.log(options)
+            //更新用户
+            // if (uid != null && uid != undefined) {
+            //     var fqId = options.fqId;
+            //     if (fqId == undefined || fqId == '' || fqId == 'null') {
+            //         fqId = 0;
+            //     }
+            //     this.updateUser(userInfo.id,fqId,userInfo.id)
+            // }
+        }    
+        setTimeout(() => {
             this.setData({
                 showIndex: true
             })
-            
-        } else {
-            //回调函数
-            app.loginCallback = res =>  {
-    
-                console.log("hasPay ==> ")
-                console.log(wx.getStorageSync("hasPay"))
-                //查询用户是否支付
-                this.isPay();
-    
-                var userInfo = wx.getStorageSync("wxData");
-                var uid = userInfo.id;
-                console.log("缓存uid:" + uid)
-                //注册用户
-                if(uid == null || uid == undefined){
-                    console.log("开始注册用户信息")
-                    userInfo = this.registerUser(options.shareuid)
-                }
-                console.log(options)
-                //更新用户
-                // if (uid != null && uid != undefined) {
-                //     var fqId = options.fqId;
-                //     if (fqId == undefined || fqId == '' || fqId == 'null') {
-                //         fqId = 0;
-                //     }
-                //     this.updateUser(userInfo.id,fqId,userInfo.id)
-                // }
-            }    
-            setTimeout(() => {
-                this.setData({
-                    showIndex: true
-                })
-            }, 1000);
-        }
+        }, 1000);
 
 
 
@@ -113,7 +101,9 @@ Page({
             success: (result)=>{
                 //判断是否带有分享信息
                 var shareuid = id; //别人的id
-                console.log("shareuid:" + shareuid)
+                wx.setStorageSync("wxData",result.data)
+                console.log("完成注册,注册信息如下 ==> ")
+                console.log(result.data)
                 //未注册用户通过分享链接进入 
                 if (shareuid != undefined && shareuid != '' && result.data.id != shareuid) {
                     console.log("设置分享信息")
@@ -150,40 +140,42 @@ Page({
         //查询用户是否支付
         if(wx.getStorageSync("hasPay") != true) {
             console.log("判断用户是否支付")
-            wx.request({
-                url: app.data.server + 'getPayOrder',
-                data: {
-                    uid: wx.getStorageSync("wxData").id
-                },
-                header: {'content-type':'application/json'},
-                method: 'GET',
-                dataType: 'json',
-                responseType: 'text',
-                success: (result)=>{
-                    console.log(result.data)
-                    //已支付跳转到饮食计划页面
-                    if(result.data == true) {
-                        console.log("已支付")
-                        wx.setStorageSync("hasPay", result.data);
-                        wx.reLaunch({
-                            url: '/pages/plandetails/plandetails?username=' + wx.getStorageSync("username"),
-                            success: (result)=>{
-                                
-                            }
-                        });
-                        // that.setData({
-                        //     showIndex: true
-                        // })
-                    }else{
-                        //未支付进入首页
-                        that.setData({
-                            showIndex: true
-                        })
-                    }
-                },
-                fail: ()=>{},
-                complete: ()=>{}
-            });
+            if (wx.getStorageSync("wxData").id != undefined) {
+                wx.request({
+                    url: app.data.server + 'getPayOrder',
+                    data: {
+                        uid: wx.getStorageSync("wxData").id
+                    },
+                    header: {'content-type':'application/json'},
+                    method: 'GET',
+                    dataType: 'json',
+                    responseType: 'text',
+                    success: (result)=>{
+                        console.log(result.data)
+                        //已支付跳转到饮食计划页面
+                        if(result.data == true) {
+                            console.log("已支付")
+                            wx.setStorageSync("hasPay", result.data);
+                            wx.reLaunch({
+                                url: '/pages/plandetails/plandetails?username=' + wx.getStorageSync("username"),
+                                success: (result)=>{
+                                    
+                                }
+                            });
+                            // that.setData({
+                            //     showIndex: true
+                            // })
+                        }else{
+                            //未支付进入首页
+                            that.setData({
+                                showIndex: true
+                            })
+                        }
+                    },
+                    fail: ()=>{},
+                    complete: ()=>{}
+                });
+            }
         } else {
             wx.reLaunch({
                 url: '/pages/plandetails/plandetails?username=' + wx.getStorageSync("username"),
@@ -211,7 +203,15 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        // this.isPay();
+         //回调函数
+        //  app.loginCallback = res =>  {
+
+            console.log("onShow()  hasPay ==> ")
+            console.log(wx.getStorageSync("hasPay"))
+            //查询用户是否支付
+            this.isPay();
+
+        //  }    
     },
   
     /**

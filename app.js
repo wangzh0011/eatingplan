@@ -59,8 +59,8 @@ App({
               wx.setStorageSync("wxData",result.data);//已注册用户返回openID和id，未注册用户返回openID
                 
                 //查询用户是否支付
-                if(wx.getStorageSync("hasPay") != true) {
-                    console.log("判断用户是否支付")
+                if(wx.getStorageSync("hasPay") != true && result.data.id != undefined) {
+                    console.log("判断用户是否支付 uid: " + result.data.id)
                     wx.request({
                         url: that.data.server + 'getPayOrder',
                         data: {
@@ -130,7 +130,9 @@ App({
       complete: ()=>{}
     });
 
-    this.getQcCode()
+    if(wx.getStorageSync("wxData").id != undefined){
+      this.getQcCode()
+    }
   },
 
   /**
@@ -166,14 +168,19 @@ App({
   /**
      * 更新用户
      * @param {*} id 
-     * @param {*} nickName 
+     * @param {*} userInfo 
      */
-    updateUser: function (id,nickName) {
+    updateUser: function (id,userInfo) {
       wx.request({
           url: this.data.server + 'updateUser',
           data: {
               id: id,
-              nickName: nickName,
+              nickName: userInfo.nickName,
+              avatarUrl: userInfo.avatarUrl,
+              gender: userInfo.gender,
+              province: userInfo.province,
+              city: userInfo.city,
+              country: userInfo.country
           },
           header: {'content-type':'application/json'},
           method: 'GET',

@@ -23,8 +23,9 @@ Page({
       atbs_pic_style: app.systemInfo.windowHeight/24,
       btn_width: app.btn.btn_width,
       btn_height: app.btn.btn_height,
-      textDesc: '中国人现状每100人中就有10个不同程度的肥胖症，而肥胖是各种慢性疾病的主要高危元素国际和国家专家报告，为预防慢性病呼吁群众采取健康饮食计划。',
-      rmb: wx.getStorageSync("systemConf").rmb
+      textDesc: '如今，成年人的现状，每10个人中就有1个胖子，这1个人会受到社会的区别对待，同事的眼光，异性的审视，心里的健康，和身体的负担。在一场面试中也许你自诩认真热情，但少不了别人一个自制力差的疑问，在异性眼中也许你觉得自身活泼可爱，但其实你自己也明白，如果可以，你更希望惊艳到别人，而不是只能对别人说自己可爱，过去减肥是一个难以逾越的坎，但现在我希望你相信《AI减肥计划》能帮到你。',
+      rmb: wx.getStorageSync("systemConf").rmb,
+      sex: wx.getStorageSync("sex")
     })
 
     wx.showShareMenu({
@@ -96,7 +97,8 @@ Page({
               data: {
                 breakfastArray: breakfastArray,
                 lunchArray: lunchArray,
-                dinnerArray: dinnerArray
+                dinnerArray: dinnerArray,
+                uid: wx.getStorageSync("wxData").id
               },
               header: {'content-type':'application/json'},
               method: 'GET',
@@ -126,7 +128,7 @@ Page({
               responseType: 'text',
               success: (result)=>{
                 //跳转到支付之后的页面
-                wx.navigateTo({
+                wx.reLaunch({
                   url: '/pages/plandetails/plandetails?username=' + username,
                   success: (result)=>{
                       // wx.setStorageSync("payFlag","Y")//已支付标识
@@ -200,7 +202,7 @@ Page({
                 wx.getUserInfo({
                     success: function(res) {
                         console.log(res.userInfo)
-                        app.updateUser(id,res.userInfo.nickName)
+                        app.updateUser(id,res.userInfo)
                     }
                 })
                 wx.navigateTo({

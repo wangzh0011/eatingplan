@@ -96,15 +96,6 @@ Page({
       }
     }, 2000);
 
-
-
-    // var id = options.shareuid ; //id 和 jkId 是同一个
-    // console.log("index.js 小程序跳转uid " + id)
-    // if (id == undefined || id == '' || id == "null") {
-    //   wx.setStorageSync("id",0)
-    // } else {
-    //   wx.setStorageSync("id",id)
-    // }
       
    
             
@@ -114,104 +105,20 @@ Page({
       var userInfo = wx.getStorageSync("wxData");
       var uid = userInfo.id;
       console.log("抽奖小程序uid:" + uid)
-      //注册用户
-      // if(uid == 'null' || uid == undefined){
-      //     console.log("开始注册用户信息 , id = " + id)
-      //     if (id == undefined || id == '' || id == "null") {
-      //       this.registerUser(0); //jkId
-      //     }else {
-      //       this.registerUser(id); //jkId
-      //     }
-      // } else {
-        // if (id == undefined || id == '' || id == "null") {//直接从小程序进入
-        //   console.log("抽奖小程序进入 jkid = " + userInfo.jkId)
-          this.getShareInfo(uid)
-        // } else { //从健康计划小程序跳转进入
-          // console.log("健康计划小程序进入 jkid = " + id)
-          // this.getShareInfo(id)
-          //更新用户
-          // if (userInfo.id != null && userInfo.id != undefined) {
-          //   console.log("更新用户")
-          //   this.updateUser(userInfo.id,userInfo.id,id)
-          // }
-        // } 
-      // }
-      
-    // }
-            
-         
+
+      this.getShareInfo(uid)
+        
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // var id = wx.getStorageSync("wxData").jkId
-    // console.log("onShow ==> Jkid " + id)
-    // var userInfo = wx.getStorageSync("wxData")
-    // if(id != '0') {
-    //   if (id == undefined || id == '' || id == "null") {//直接从小程序进入
-    //     console.log("onShow jkid = " + userInfo.jkId)
-    //     this.getShareInfo(userInfo.jkId)
-    //   } else { //从健康计划小程序跳转进入
-    //     this.getShareInfo(id)
-    //   } 
-    // }
+    
 
   },
 
-/**
- * 更新用户
- * @param {*} id 
- * @param {*} fqId 
- */
-updateUser: function (id,fqId,jkId) {
-    wx.request({
-      url: app.data.server + 'updateUser',
-      data: {
-          id: id,
-          fqId: fqId,
-          jkId: jkId
-      },
-      header: {'content-type':'application/json'},
-      method: 'GET',
-      dataType: 'json',
-      responseType: 'text',
-      success: (result)=>{
-          
-      },
-      fail: ()=>{},
-      complete: ()=>{}
-    });
-  },
 
-  /** 
-   * 注册用户
-  */
-  registerUser: function (id) {
-    wx.request({
-      url: app.data.server + 'register',
-      data: {
-          openid: wx.getStorageSync("wxData").openid,
-          type: 'FQ',
-          jkId: id == undefined ? 0 : id //从健康计划传入的useID
-      },
-      header: {'content-type':'application/json'},
-      method: 'GET',
-      dataType: 'json',
-      responseType: 'text',
-      success: (result)=>{
-        if (id == 0) {//直接从小程序进入
-          console.log("注册用户jkid = " + result.data.jkId)
-          this.getShareInfo(result.data.jkId)
-        } else { //从健康计划小程序跳转进入
-          this.getShareInfo(id)
-        } 
-      },
-      fail: ()=>{},
-      complete: ()=>{}
-  });
-  },
 
   /**
    * 获取分享信息

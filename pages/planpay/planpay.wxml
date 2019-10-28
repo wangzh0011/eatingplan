@@ -5,8 +5,8 @@
 	</image>
 	<view class="title_area_override" style="width: {{windowWidth-140}}px; left: 70px">
 		<view class="userinfo">
-            <open-data class="userinfo-avatar" background-size="cover" type="userAvatarUrl" style="width:{{windowHeight/3.6}}px; height:{{windowHeight/3.6}}px"></open-data>
-            <!-- <open-data class="userinfo-nickname" type="userNickName" data-ooo="userinfo-nickname"></open-data> -->
+            <!-- <open-data class="userinfo-avatar" background-size="cover" type="userAvatarUrl" style="width:{{windowHeight/3.6}}px; height:{{windowHeight/3.6}}px"></open-data> -->
+			<image style="width:{{windowHeight/3.6}}px; height:{{windowHeight/3.6}}px" src="../images/planDetails.png" />
         </view>
 	</view>
 
@@ -15,7 +15,7 @@
 	hover-class="none"
 	hover-stop-propagation="false"
     
-	style="left: {{50/2}}px; height: {{windowHeight/3.4}}px; width: {{windowWidth-50}}px; top: {{windowHeight/2.7}}px">
+	style="left: {{50/2}}px; height: 36%; width: {{windowWidth-50}}px; top: 33%">
 
         <view class="area_text" style="margin-top: 20px;">{{textDesc}}</view>
 
@@ -38,7 +38,7 @@
 			支付{{rmb}}元领取计划
 		</view>
 		<view class="fanqie_link" bindtap="fanqieTap" wx:if="{{!showTabs}}">
-			参与健康番茄全民减脂值
+			参与AI全民减肥计划
 		</view>
 	</view>
 
@@ -68,38 +68,6 @@
 	<!--健康番茄遮罩层-->
 	<view wx:if="{{showFanqie}}" class="mask">
 		<view class="fanqie">
-			<!-- <view class="image">
-                <block wx:if="{{sex == 'man'}}">
-                    <image class="style1" src="../images/xty14.png" />
-                    <image class="style2" src="../images/xty9.png" />
-                    <image class="text" src="../images/xty15.png"/>
-                </block>
-                <block wx:else>
-                    <image class="style1" src="../images/xty8.png" />
-                    <image class="style2" src="../images/xty9.png" />
-                    <image class="text" src="../images/xty11.png"/>
-                </block>    
-			</view>
-			<view class="text">
-                <block wx:if="{{sex == 'man'}}">
-                    <view style="font-size: 30rpx">我以兄弟单身一辈子发誓</view>
-                    <view >从今天起</view>
-                    <view >我要用{{targetDay}}天</view>
-                    <view >减掉{{weightLoss*2}}斤</view>
-                    <view >请兄弟们监督</view>
-                </block>
-                <block wx:else>
-                    <view >从今天起</view>
-                    <view >我要用{{targetDay}}天</view>
-                    <view >减掉{{weightLoss*2}}斤</view>
-                    <view >如果我做不到</view>
-                    <view style="font-size: 30rpx">就让我接受我最好的朋友</view>
-                    <view style="font-size: 30rpx">长10斤肉肉的惩罚吧</view>
-                </block>
-			</view>
-			<view class="text_bottom">
-				<text >健康番茄</text>
-			</view> -->
             <block wx:if="{{sex == 'man'}}">
                 <image class="image" src="../images/share1-2.png" />
                 <image class="qccode" src="{{image}}" />

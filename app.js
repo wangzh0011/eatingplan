@@ -4,11 +4,11 @@ App({
   /**请求后台url */
   data: {
     uploadUrl:
-      "http://127.0.0.1:8080/upload/",
-      // "https://fangqie.top/upload/",
+      // "http://127.0.0.1:8080/upload/",
+      "https://fangqie.top/upload/",
     server:
-      "http://127.0.0.1:8080/eatingplan/"  
-      // "https://fangqie.top/eatingplan/"  
+      // "http://127.0.0.1:8080/eatingplan/"  
+      "https://fangqie.top/eatingplan/"  
   },
 
   onLaunch: function (e) {
@@ -57,6 +57,30 @@ App({
               console.log(result.data)
               this.userInfo.userInfo = result.data//将openId, sessionKey, unionId赋值给userInfo.userInfo
               wx.setStorageSync("wxData",result.data);//已注册用户返回openID和id，未注册用户返回openID
+                
+                //查询用户是否支付
+                if(wx.getStorageSync("hasPay") != true) {
+                    console.log("判断用户是否支付")
+                    wx.request({
+                        url: that.data.server + 'getPayOrder',
+                        data: {
+                            uid: wx.getStorageSync("wxData").id
+                        },
+                        header: {'content-type':'application/json'},
+                        method: 'GET',
+                        dataType: 'json',
+                        responseType: 'text',
+                        success: (result)=>{
+                            if(result.data == true) {
+                                console.log("app,js 已支付")
+                                wx.setStorageSync("hasPay", result.data);
+                            }
+                        },
+                        fail: ()=>{},
+                        complete: ()=>{}
+                    });
+                }
+
               //由于 login 是网络请求，可能会在 Page.onLoad 之后才返回
               // 此处加入 callback 以防止这种情况
               if (this.loginCallback) {

@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/plandetails/plandetails",
     "pages/breakfast/breakfast",
     "pages/dinner/dinner",
-    "pages/index/index",
     "pages/planpay/planpay",
-    "pages/plandetails/plandetails",
     "pages/lucky/lucky",
     "pages/agent/agent",
     "pages/eatingplan/eatingplan",

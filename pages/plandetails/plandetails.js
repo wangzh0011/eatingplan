@@ -56,6 +56,9 @@ Page({
     var totalExp = this.totalExp(dayExp,LevelExp);
     //每日应摄入总量
     var food = this.food(totalExp,weightLoss,targetDay);
+    if (isNaN(food)) {
+      food = wx.getStorageSync("wxData").food
+    }
     //早餐摄入热量
     var breakfast = food*0.3;
     //午餐摄入热量
@@ -79,7 +82,6 @@ Page({
       dinnerArray[key][4] = (dinner/dinnerArray[key][2]).toFixed(1)
     }
 
-console.log(username)
     this.setData({
       windowWidth: app.systemInfo.windowWidth,
       windowHeight: app.systemInfo.windowHeight,
@@ -101,22 +103,91 @@ console.log(username)
       targetDay: targetDay,
       weightLoss: weightLoss
     })
-
-    wx.setStorageSync("weightLoss", weightLoss);
-    wx.setStorageSync("targetDay", targetDay);
-    wx.setStorageSync("totalExp", totalExp);
-    wx.setStorageSync("dayExp", dayExp);
-
-    //没有缓存 跳转到首页
-    if(dinnerArray.length == 0){
-      wx.redirectTo({
-        url: '/pages/index/index?showIndex=' + true + '&storage=' + dinnerArray.length,
-        success: (result)=>{
-            
-        }
-    });
+    console.log("food " + food)
+    console.log(isNaN(food))
+    //更新用户
+    if(!isNaN(food)){
+      this.updateUser(wx.getStorageSync("wxData").id,food);
     }
 
+    //没有缓存 读数据库
+    if(dinnerArray.length == 0){
+      this.getUserFoods(breakfast,lunch,dinner)
+    }
+
+  },
+
+  /**
+   * 更新用户
+   * @param {*} id 
+   * @param {*} food 
+   */
+  updateUser: function (id,food) {
+    wx.request({
+        url: app.data.server + 'updateUser',
+        data: {
+            id: id,
+            food: food,
+        },
+        header: {'content-type':'application/json'},
+        method: 'GET',
+        dataType: 'json',
+        responseType: 'text',
+        success: (result)=>{
+            
+        },
+        fail: ()=>{},
+        complete: ()=>{}
+    });
+  },
+
+  /**
+   * 获取用户食谱
+   */
+  getUserFoods: function (breakfast,lunch,dinner) {
+    wx.request({
+      url: app.data.server + 'getUserFoods',
+      data: {
+        uid: wx.getStorageSync("wxData").id
+      },
+      header: {'content-type':'application/json'},
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: (result)=>{
+        console.log(result.data.foods)
+        var foods = result.data.foods;
+        //早餐
+        var breakfastArray = foods.breakfastArray;
+        for (const key in breakfastArray) {
+          breakfastArray[key][4] = (breakfast/breakfastArray[key][2]).toFixed(1)
+
+        }
+        //午餐
+        var lunchArray = foods.lunchArray;
+        for (const key in lunchArray) {
+          lunchArray[key][4] = (lunch/lunchArray[key][2]).toFixed(1)
+          
+        }
+        //晚餐
+        var dinnerArray = foods.dinnerArray;
+        for (const key in dinnerArray) {
+          dinnerArray[key][4] = (dinner/dinnerArray[key][2]).toFixed(1)
+          
+        }
+
+        this.setData({
+          breakfastArray: breakfastArray,
+          lunchArray: lunchArray,
+          dinnerArray: dinnerArray,
+        })
+        wx.setStorageSync("breakfastArray",breakfastArray)
+        wx.setStorageSync("lunchArray",lunchArray)
+        wx.setStorageSync("dinnerArray",dinnerArray)
+      },
+      fail: ()=>{},
+      complete: ()=>{}
+    });
   },
 
   /**

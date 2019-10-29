@@ -1,16 +1,16 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/planpay/planpay",
-    "pages/plandetails/plandetails",
     "pages/breakfast/breakfast",
     "pages/dinner/dinner",
+    "pages/lunch/lunch",
+    "pages/planpay/planpay",
+    "pages/plandetails/plandetails",
     "pages/lucky/lucky",
     "pages/agent/agent",
     "pages/eatingplan/eatingplan",
     "pages/calculate/calculate",
     "pages/parameter/parameter",
-    "pages/lunch/lunch",
     "pages/logs/logs"
   ],
   "permission": {

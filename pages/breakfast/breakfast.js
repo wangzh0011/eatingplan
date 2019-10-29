@@ -36,7 +36,9 @@ Page({
         that.setData({
           foodsList: result.data
         })
-        wx.hideLoading();
+        setTimeout(() => {
+          wx.hideLoading();
+        }, 500);
       },
       fail: ()=>{},
       complete: ()=>{}
@@ -111,8 +113,14 @@ Page({
     var index = e.currentTarget.dataset.index;
     var img = this.data.img;
     img[0] = this.data.foodsList[index].imgUrl;
+    console.log("图片预览路径 ==> ")
+    console.log(img)
     wx.previewImage({
       urls: img,
+      fail: (e) => {
+        console.log("error message ==> ")
+        console.log(e)
+      }
     })
   },
 

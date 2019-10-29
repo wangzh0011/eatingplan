@@ -16,8 +16,6 @@ Page({
     onLoad: function (options) {
         var that = this;
 
-       var showIndex = options.showIndex;
-
         var num = Math.floor(Math.random()*4500 + 20000);
         var windowWidth = app.systemInfo.windowWidth;
         that.setData({
@@ -50,32 +48,99 @@ Page({
             })
         }, 1000);
 
-        
-        //回调函数
-        app.loginCallback = res =>  {
+        // 登录
+      wx.login({
+        success: res => {
+          // 发送 res.code 到后台换取 openId, sessionKey, unionId
+          wx.request({
+            url: app.data.server + 'login',
+            data: {
+              code: res.code,
+              type: 'JK',
+            },
+            header: {'content-type':'application/json'},
+            method: 'GET',
+            dataType: 'json',
+            responseType: 'text',
+            success: (result)=>{
+              console.log("微信接口返回数据：")
+              console.log(result.data)
+              app.userInfo.userInfo = result.data//将openId, sessionKey, unionId赋值给userInfo.userInfo
+              wx.setStorageSync("wxData",result.data);//已注册用户返回openID和id，未注册用户返回openID
+                
+                //分享者的id
+                var shareuid = options.shareuid;
+                if (shareuid != undefined && shareuid != '' && result.data.id != shareuid) {
+                    console.log("设置分享信息")
+                    app.setShareInfo(result.data.id,shareuid)
+                }
 
-            var userInfo = wx.getStorageSync("wxData");
-            var uid = userInfo.id;
-            console.log("缓存uid:" + uid)
-            //注册用户
-            if(uid == null || uid == undefined){
-                console.log("开始注册用户信息")
-                userInfo = this.registerUser(options.shareuid)
-            }
-            console.log(options)
-            //更新用户
-            // if (uid != null && uid != undefined) {
-            //     var fqId = options.fqId;
-            //     if (fqId == undefined || fqId == '' || fqId == 'null') {
-            //         fqId = 0;
-            //     }
-            //     this.updateUser(userInfo.id,fqId,userInfo.id)
-            // }
-        }    
+                //查询用户是否支付
+                if(wx.getStorageSync("hasPay") != true && result.data.id != undefined) {
+                    console.log("判断用户是否支付 uid: " + result.data.id + " 支付 " + wx.getStorageSync("hasPay"))
+                    wx.request({
+                        url: app.data.server + 'getPayOrder',
+                        data: {
+                            uid: wx.getStorageSync("wxData").id
+                        },
+                        header: {'content-type':'application/json'},
+                        method: 'GET',
+                        dataType: 'json',
+                        responseType: 'text',
+                        success: (result)=>{
+                            if(result.data == true) {
+                                console.log("app,js 已支付")
+                                wx.setStorageSync("hasPay", result.data);
+                            }
+                        },
+                        fail: ()=>{},
+                        complete: ()=>{}
+                    });
+                }
+
+                //二维码
+                if(result.data.id != undefined){
+                  app.getQcCode()
+                }
+
+              //由于 login 是网络请求，可能会在 Page.onLoad 之后才返回
+              // 此处加入 callback 以防止这种情况
+            //   if (this.loginCallback) {
+            //     this.loginCallback(res)
+            //   }
+            },
+            fail: ()=>{},
+            complete: ()=>{}
+          });
+        }
+      })
+        
+        // //回调函数
+        // app.loginCallback = res =>  {
+
+        //     var userInfo = wx.getStorageSync("wxData");
+        //     var uid = userInfo.id;
+        //     console.log("缓存uid:" + uid)
+        //     //注册用户
+        //     // if(uid == null || uid == undefined){
+        //     //     console.log("开始注册用户信息")
+        //     //     userInfo = this.registerUser(options.shareuid)
+        //     // }
+        //     console.log(options)
+        //     //更新用户
+        //     // if (uid != null && uid != undefined) {
+        //     //     var fqId = options.fqId;
+        //     //     if (fqId == undefined || fqId == '' || fqId == 'null') {
+        //     //         fqId = 0;
+        //     //     }
+        //     //     this.updateUser(userInfo.id,fqId,userInfo.id)
+        //     // }
+        // }    
         setTimeout(() => {
             this.setData({
                 showIndex: true
             })
+            wx.hideLoading();
         }, 1000);
 
 
@@ -170,6 +235,7 @@ Page({
                             that.setData({
                                 showIndex: true
                             })
+                            wx.hideLoading();
                         }
                     },
                     fail: ()=>{},
@@ -177,6 +243,8 @@ Page({
                 });
             }
         } else {
+
+            //已支付
             wx.reLaunch({
                 url: '/pages/plandetails/plandetails?username=' + wx.getStorageSync("username"),
                 
@@ -196,7 +264,15 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-    
+        wx.showLoading({
+            title: "初始化中...",
+            mask: true,
+            success: (result)=>{
+                
+            },
+            fail: ()=>{},
+            complete: ()=>{}
+        });
     },
   
     /**
@@ -207,9 +283,10 @@ Page({
         //  app.loginCallback = res =>  {
 
             console.log("onShow()  hasPay ==> ")
-            console.log(wx.getStorageSync("hasPay"))
+            console.log("onShow(1)" + wx.getStorageSync("hasPay"))
             //查询用户是否支付
             this.isPay();
+            console.log("onShow(2)" + wx.getStorageSync("hasPay"))
 
         //  }    
     },

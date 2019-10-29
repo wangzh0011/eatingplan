@@ -17,7 +17,7 @@
     
 	style="left: {{50/2}}px; height: 36%; width: {{windowWidth-50}}px; top: 33%">
 
-        <view class="area_text" style="margin-top: 20px;">{{textDesc}}</view>
+        <view class="area_text" style="margin-top: 15px; margin-bottom: 10px">{{textDesc}}</view>
 
 	</view>
 	

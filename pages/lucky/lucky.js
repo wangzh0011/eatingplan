@@ -657,9 +657,8 @@ onShareAppMessage: function () {
   onPullDownRefresh: function () {
     wx.showNavigationBarLoading() //在标题栏中显示加载
     var userInfo = wx.getStorageSync("wxData")
-    var id = userInfo.jkId
     console.log("下拉刷新 jkid = " + userInfo.jkId)
-    this.getShareInfo(userInfo.jkId)
+    this.getShareInfo(userInfo.id)
     wx.hideNavigationBarLoading();
     wx.stopPullDownRefresh()
     

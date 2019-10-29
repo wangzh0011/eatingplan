@@ -38,60 +38,64 @@ App({
     wx.setStorageSync('logs', logs)
 
     // if (!wx.getStorageSync("wxData")) {
-      // 登录
-      wx.login({
-        success: res => {
-          // 发送 res.code 到后台换取 openId, sessionKey, unionId
-          wx.request({
-            url: this.data.server + 'login',
-            data: {
-              code: res.code,
-              type: 'JK'
-            },
-            header: {'content-type':'application/json'},
-            method: 'GET',
-            dataType: 'json',
-            responseType: 'text',
-            success: (result)=>{
-              console.log("微信接口返回数据：")
-              console.log(result.data)
-              this.userInfo.userInfo = result.data//将openId, sessionKey, unionId赋值给userInfo.userInfo
-              wx.setStorageSync("wxData",result.data);//已注册用户返回openID和id，未注册用户返回openID
+      // // 登录
+      // wx.login({
+      //   success: res => {
+      //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
+      //     wx.request({
+      //       url: this.data.server + 'login',
+      //       data: {
+      //         code: res.code,
+      //         type: 'JK'
+      //       },
+      //       header: {'content-type':'application/json'},
+      //       method: 'GET',
+      //       dataType: 'json',
+      //       responseType: 'text',
+      //       success: (result)=>{
+      //         console.log("微信接口返回数据：")
+      //         console.log(result.data)
+      //         this.userInfo.userInfo = result.data//将openId, sessionKey, unionId赋值给userInfo.userInfo
+      //         wx.setStorageSync("wxData",result.data);//已注册用户返回openID和id，未注册用户返回openID
                 
-                //查询用户是否支付
-                if(wx.getStorageSync("hasPay") != true && result.data.id != undefined) {
-                    console.log("判断用户是否支付 uid: " + result.data.id)
-                    wx.request({
-                        url: that.data.server + 'getPayOrder',
-                        data: {
-                            uid: wx.getStorageSync("wxData").id
-                        },
-                        header: {'content-type':'application/json'},
-                        method: 'GET',
-                        dataType: 'json',
-                        responseType: 'text',
-                        success: (result)=>{
-                            if(result.data == true) {
-                                console.log("app,js 已支付")
-                                wx.setStorageSync("hasPay", result.data);
-                            }
-                        },
-                        fail: ()=>{},
-                        complete: ()=>{}
-                    });
-                }
+      //           //查询用户是否支付
+      //           if(wx.getStorageSync("hasPay") != true && result.data.id != undefined) {
+      //               console.log("判断用户是否支付 uid: " + result.data.id)
+      //               wx.request({
+      //                   url: that.data.server + 'getPayOrder',
+      //                   data: {
+      //                       uid: wx.getStorageSync("wxData").id
+      //                   },
+      //                   header: {'content-type':'application/json'},
+      //                   method: 'GET',
+      //                   dataType: 'json',
+      //                   responseType: 'text',
+      //                   success: (result)=>{
+      //                       if(result.data == true) {
+      //                           console.log("app,js 已支付")
+      //                           wx.setStorageSync("hasPay", result.data);
+      //                       }
+      //                   },
+      //                   fail: ()=>{},
+      //                   complete: ()=>{}
+      //               });
+      //           }
 
-              //由于 login 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 此处加入 callback 以防止这种情况
-              if (this.loginCallback) {
-                this.loginCallback(res)
-              }
-            },
-            fail: ()=>{},
-            complete: ()=>{}
-          });
-        }
-      })
+      //           if(result.data.id != undefined){
+      //             this.getQcCode()
+      //           }
+
+      //         //由于 login 是网络请求，可能会在 Page.onLoad 之后才返回
+      //         // 此处加入 callback 以防止这种情况
+      //         if (this.loginCallback) {
+      //           this.loginCallback(res)
+      //         }
+      //       },
+      //       fail: ()=>{},
+      //       complete: ()=>{}
+      //     });
+      //   }
+      // })
     // }
 
     // 获取用户信息
@@ -130,9 +134,7 @@ App({
       complete: ()=>{}
     });
 
-    if(wx.getStorageSync("wxData").id != undefined){
-      this.getQcCode()
-    }
+    
   },
 
   /**

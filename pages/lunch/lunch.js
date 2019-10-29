@@ -38,7 +38,9 @@ Page({
         that.setData({
           foodsList: result.data
         })
-        wx.hideLoading();
+        setTimeout(() => {
+          wx.hideLoading();
+        }, 500);
       },
       fail: ()=>{},
       complete: ()=>{}

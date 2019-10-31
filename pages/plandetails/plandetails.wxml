@@ -38,7 +38,7 @@
                                     <view class="item">
                                         <image bindtap="previewBreakfast" data-index="{{index}}" src="{{item[0]}}" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
                                         <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px">
-                                            <view class="desc_title">{{item[1]}}<text space="nbsp">       可食用{{item[4]}}份</text></view>
+                                            <view class="desc_title">{{item[1]}}<text space="nbsp">    可食用{{item[4]}}份</text></view>
                                             <view class="desc_subtitle">例图：{{item[3]}}克 含热量{{item[2]}}kcal </view>
                                         </view>
                                     </view>
@@ -66,7 +66,7 @@
                                     <view class="item">
                                         <image bindtap="previewLunch" data-index="{{index}}" src="{{item[0]}}" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
                                         <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px">
-                                            <view class="desc_title">{{item[1]}}<text space="nbsp">       可食用{{item[4]}}份</text></view>
+                                            <view class="desc_title">{{item[1]}}<text space="nbsp">    可食用{{item[4]}}份</text></view>
                                             <view class="desc_subtitle">例图：{{item[3]}}克 含热量{{item[2]}}kcal </view>
                                         </view>
                                     </view>
@@ -94,7 +94,7 @@
                                     <view class="item">
                                         <image bindtap="previewDinner" data-index="{{index}}" src="{{item[0]}}" class="pic" style="width: {{windowHeight/12}}px; height: {{windowHeight/12}}px" />
                                         <view class="desc" style="width: {{(windowWidth-50)-(windowHeight/12)-5}}px; height: {{windowHeight/12}}px">
-                                            <view class="desc_title">{{item[1]}}<text space="nbsp">       可食用{{item[4]}}份</text></view>
+                                            <view class="desc_title">{{item[1]}}<text space="nbsp">    可食用{{item[4]}}份</text></view>
                                             <view class="desc_subtitle">例图：{{item[3]}}克 含热量{{item[2]}}kcal </view>
                                         </view>
                                     </view>

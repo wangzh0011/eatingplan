@@ -315,7 +315,7 @@ Page({
     wx.request({
       url: app.data.server + 'beAgent',
       data: {
-        uid: wx.getStorageSync("wxData").jkId
+        uid: wx.getStorageSync("wxData").id
       },
       header: {'content-type':'application/json'},
       method: 'GET',
@@ -390,7 +390,7 @@ Page({
     wx.request({
       url: app.data.server + 'lucky',
       data: {
-        uid: wx.getStorageSync("wxData").jkId
+        uid: wx.getStorageSync("wxData").id
       },
       header: {'content-type':'application/json'},
       method: 'GET',

@@ -73,7 +73,7 @@
   }
 
   .notpay{
-    background-color: #FFC361;
+    background-color: #B2C617;
     width: 45%;
     bottom: 0;
     border-radius: 12rpx;
@@ -81,7 +81,7 @@
   }
 
   .haspay{
-    background-color: #B2C617;
+    background-color: #FFC361;
     width: 45%;
     left: 55%;
     bottom: 0;

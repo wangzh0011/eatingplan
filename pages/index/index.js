@@ -323,6 +323,22 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: function () {
-    
+        return {
+            title: "您的好友向您推荐健康番茄瘦小程序",
+            path: '/pages/index/index?shareuid=' + wx.getStorageSync("wxData").id,
+            success: function (res) {
+              // console.log
+              wx.getShareInfo({
+                shareTicket: res.shareTickets[0],
+                success: function (res) { console.log("分享成功") },
+                fail: function (res) { console.log(res) },
+                complete: function (res) { console.log(res) }
+              })
+            },
+            fail: function (res) {
+              // 分享失败
+              console.log(res)
+            }
+        }
     }
   })

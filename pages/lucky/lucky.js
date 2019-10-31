@@ -631,7 +631,7 @@ Page({
 
 onShareAppMessage: function () {
   return {
-    title: "您的好友向您推荐健康番茄瘦小程序",
+    title: "您的好友向您推荐AI减肥计划小程序",
     path: '/pages/index/index?shareuid=' + wx.getStorageSync("wxData").id,
     success: function (res) {
       // console.log

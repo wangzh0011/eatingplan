@@ -281,14 +281,47 @@ Page({
                         app.updateUser(id,res.userInfo)
                     }
                 })
-                wx.navigateTo({
-                  url: '/pages/lucky/lucky',
-                  success: (result)=>{
-                    
-                  },
-                  fail: ()=>{},
-                  complete: ()=>{}
-                });
+                /**
+                 * 获取分享信息
+                 */
+                  wx.request({
+                    url: app.data.server + 'getShareInfo',
+                    data: {
+                      shareuid: id //自己的id  jkid
+                    },
+                    header: {'content-type':'application/json'},
+                    method: 'GET',
+                    dataType: 'json',
+                    responseType: 'text',
+                    success: (result)=>{
+                      var isAgent = result.data.shareInfo.isAgent;//是否是代理
+                      var money = result.data.shareInfo.money;//佣金
+                      wx.setStorageSync("money",money)
+                      console.log(isAgent)
+                      if (isAgent == 'Y') {
+                        wx.navigateTo({
+                          url: '/pages/agent/agent',
+                          success: (result)=>{
+                            
+                          },
+                          fail: ()=>{},
+                          complete: ()=>{}
+                        });
+                      } else {
+                        wx.navigateTo({
+                          url: '/pages/lucky/lucky',
+                          success: (result)=>{
+                            
+                          },
+                          fail: ()=>{},
+                          complete: ()=>{}
+                        });
+                      }
+                      
+                    },
+                    fail: ()=>{},
+                    complete: ()=>{}
+                  });
             }
         }
     })

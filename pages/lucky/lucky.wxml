@@ -37,7 +37,7 @@
       <view class="mask_title">积分说明</view>
       <view class="content_integral"><text >{{integralText}}</text></view>
       <view class="line"></view>
-      <view bindtap="closeIntegral" class="confrim_text">确定</view>
+      <view hover-class="detail-hover" hover-stay-time="{{hover_stay_time}}" bindtap="closeIntegral" class="confrim_text">确定</view>
     </view>
   <!-- end -->
    
@@ -51,7 +51,7 @@
       <view class="mask_title">获得积分</view>
       <view class="content_integral"><text >{{getintegralText}}</text></view>
       <view class="line"></view>
-      <view bindtap="navigateToFoodsTap"  class="confrim_text">去分享</view>
+      <view hover-class="detail-hover" hover-stay-time="{{hover_stay_time}}" bindtap="navigateToFoodsTap"  class="confrim_text">去分享</view>
     </view>
   <!-- end -->
 
@@ -72,14 +72,14 @@
         <view wx:for="{{goodsList}}" wx:for-item="item" wx:key="*.this">
           <view class="goodsItems">
             <view class="goodsItem">{{item.goods}}</view>
-            <view class="goods_use_button" bindtap="getmoneyTap">使用</view>
+            <view hover-class="detail-hover" hover-stay-time="{{hover_stay_time}}" class="goods_use_button" bindtap="getmoneyTap">使用</view>
           </view>
 
         </view>
       </scroll-view>
 
       <view class="line_goods"></view>
-      <view bindtap="navigateToFoodsTap" class="confrim_text">去赚积分抽奖</view>
+      <view hover-class="detail-hover" hover-stay-time="{{hover_stay_time}}" bindtap="navigateToFoodsTap" class="confrim_text">去赚积分抽奖</view>
     </view>
   <!-- end -->
 
@@ -94,7 +94,7 @@
       <view class="content_integral"><text >{{agentText}}</text></view>
 
       <view class="line_goods"></view>
-      <view bindtap="beAgent" class="confrim_text">申请成为代理</view>
+      <view hover-class="detail-hover" hover-stay-time="{{hover_stay_time}}" bindtap="beAgent" class="confrim_text">申请成为代理</view>
         
     </view>
   <!-- end   -->
@@ -109,7 +109,7 @@
       <view class="content_integral"><text >{{getmoneyText}}</text></view>
       <view class="uid">您的用户id是：<text style="color:red;font-size: 20rpx">{{id}}</text>，此id用于提现验证，请妥善保存</view>
       <view class="line"></view>
-      <view bindtap="closeGetmoney" class="confrim_text">知道了</view>
+      <view hover-class="detail-hover" hover-stay-time="{{hover_stay_time}}" bindtap="closeGetmoney" class="confrim_text">知道了</view>
     </view>
 <!-- end -->
 

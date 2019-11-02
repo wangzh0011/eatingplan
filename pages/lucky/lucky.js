@@ -178,9 +178,11 @@ Page({
    * 关闭我的积分
    */
   closeIntegral: function() {
-    this.setData({
-      showIntegral: false,
-    })
+    setTimeout(() => {
+      this.setData({
+        showIntegral: false,
+      })
+    }, 300);
   },
 
   /**
@@ -199,9 +201,11 @@ Page({
    * 关闭获取积分
    */
   closeGetintegral: function () {
-    this.setData({
-      showGetintegral: false,
-    })
+    setTimeout(() => {
+      this.setData({
+        showGetintegral: false,
+      })
+    }, 300);
   },
 
    /**
@@ -210,21 +214,25 @@ Page({
   navigateToFoodsTap: function () {
     //获取二维码
     app.getQcCode();
-    this.setData({
-      image: app.data.uploadUrl + wx.getStorageSync("image"),//二维码图片
-      showFanqie: true,
-      showGetintegral: false,
-      showMygoods:false
-    })
+    setTimeout(() => {
+      this.setData({
+        image: app.data.uploadUrl + wx.getStorageSync("image"),//二维码图片
+        showFanqie: true,
+        showGetintegral: false,
+        showMygoods:false
+      })
+    }, 300);
   },
 
   /**
    * 关闭 去分享
    */
   closeTap: function () {
-    this.setData({
-      showFanqie: false
-    })
+    setTimeout(() => {
+      this.setData({
+        showFanqie: false
+      })
+    }, 300);
   },
 
   /**
@@ -270,9 +278,11 @@ Page({
    * 关闭我的奖品
    */
   closeMygoods: function () {
-    this.setData({
-      showMygoods: false
-    })
+    setTimeout(() => {
+      this.setData({
+        showMygoods: false
+      })
+    }, 300);
   },
 
   /**
@@ -323,14 +333,16 @@ Page({
       responseType: 'text',
       success: (result)=>{
         if (result.data == true) {
-          wx.navigateTo({
-            url: '/pages/agent/agent',
-            success: () => {
-              that.setData({
-                showAgentMask: false,
-              })
-            }
-          });
+          setTimeout(() => {
+            wx.navigateTo({
+              url: '/pages/agent/agent',
+              success: () => {
+                that.setData({
+                  showAgentMask: false,
+                })
+              }
+            });
+          }, 300);
         } else {
           wx.showModal({
             title: '提示',
@@ -353,11 +365,13 @@ Page({
    */
   getmoneyTap: function() {
 
-      this.setData({
-        showGetmoney: true,
-        showMygoods: false,
-        getmoneyText: '由于微信资金交易限制 暂时只提供人工结现 请添加人工客服：duang_2c(林雨)备注提现及提供微信账号 我们会在1个工作日内核实并将佣金返现给您。'
-      })
+      setTimeout(() => {
+        this.setData({
+          showGetmoney: true,
+          showMygoods: false,
+          getmoneyText: '由于微信资金交易限制 暂时只提供人工结现 请添加人工客服：duang_2c(林雨)备注提现及提供微信账号 我们会在1个工作日内核实并将佣金返现给您。'
+        })
+      }, 300);
 
   },
 
@@ -365,10 +379,12 @@ Page({
    * 关闭提现
    */
   closeGetmoney: function () {
-    this.setData({
-      showMygoods: true,
-      showGetmoney: false,
-    })
+    setTimeout(() => {
+      this.setData({
+        showMygoods: true,
+        showGetmoney: false,
+      })
+    }, 300);
   },
 
 

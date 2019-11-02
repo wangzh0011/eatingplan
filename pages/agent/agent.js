@@ -117,9 +117,11 @@ Page({
    * 关闭提现
    */
   closeGetmoney: function () {
-    this.setData({
-      showGetmoney: false,
-    })
+    setTimeout(() => {
+      this.setData({
+        showGetmoney: false,
+      })
+    }, 300);
   },
 
   /**
@@ -191,7 +193,11 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    wx.showNavigationBarLoading() //在标题栏中显示加载
     this.getAgentData()
+    wx.hideNavigationBarLoading();
+    wx.stopPullDownRefresh()
+    
   },
 
   /**

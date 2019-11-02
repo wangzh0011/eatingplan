@@ -45,7 +45,7 @@
       <view class="content_integral"><text >{{getmoneyText}}</text></view>
       <view class="uid">您的用户id是：<text style="color:red;font-size: 20rpx">{{id}}</text>，此id用于提现验证，请妥善保存</view>
       <view class="line"></view>
-      <view bindtap="closeGetmoney" class="confrim_text">知道了</view>
+      <view hover-class="detail-hover" hover-stay-time="{{hover_stay_time}}" bindtap="closeGetmoney" class="confrim_text">知道了</view>
     </view>
 <!-- end -->
 

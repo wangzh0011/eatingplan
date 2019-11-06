@@ -69,8 +69,8 @@
 	<view wx:if="{{showFanqie}}" class="mask">
 		<view class="fanqie">
             <block wx:if="{{sex == 'man'}}">
-                <image class="image" src="../images/share1-2.png" />
-                <image class="qccode" src="{{image}}" />
+                <image class="image" src="../images/share1-1.png" />
+                <image class="qccode1" src="{{image}}" />
             </block>
             <block wx:else>
                 <image class="image" src="../images/share1-3.png" />
